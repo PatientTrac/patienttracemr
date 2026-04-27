@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>PatientTrac EMR — Futuristic AI-Powered Health Informatics</title>
-<meta name="description" content="PatientTrac Corp — twenty-five years of clinical data engineering, now AI-native. 550+ database tables. Four specialty platforms. One institutional spine for inpatient and outpatient care." />
+<meta name="description" content="PatientTrac Corp — twenty-eight years of clinical data engineering, now AI-native. 550+ database tables. Four specialty platforms. One institutional spine for inpatient and outpatient care." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -414,7 +414,276 @@
   /* LEADERSHIP */
   .leadership { background: var(--bg-deep); position: relative; overflow: hidden; }
   .leadership::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(92, 214, 255, 0.06), transparent 70%); pointer-events: none; }
-  .leader-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; position: relative; }
+
+  /* FOUNDER SPOTLIGHT */
+  .founder-spotlight {
+    display: grid; grid-template-columns: 360px 1fr;
+    gap: 4rem; align-items: start;
+    margin: 3.5rem 0 5rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .founder-portrait-wrap {
+    position: relative; aspect-ratio: 1 / 1.05;
+    width: 100%;
+  }
+
+  .founder-portrait-frame {
+    position: relative; width: 100%; height: 100%;
+    border: 1px solid var(--line-bright);
+    background: var(--bg-base); overflow: hidden;
+  }
+
+  .founder-portrait-frame::before, .founder-portrait-frame::after {
+    content: ''; position: absolute;
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--cyan); z-index: 3;
+    box-shadow: 0 0 12px rgba(92, 214, 255, 0.5);
+  }
+  .founder-portrait-frame::before {
+    top: -1px; left: -1px;
+    border-right: none; border-bottom: none;
+  }
+  .founder-portrait-frame::after {
+    bottom: -1px; right: -1px;
+    border-left: none; border-top: none;
+  }
+
+  .founder-portrait-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    filter: grayscale(0.15) contrast(1.05);
+  }
+
+  .founder-portrait-frame::before, .founder-portrait-frame::after { z-index: 4; }
+
+  .founder-portrait-hud {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 3;
+  }
+  .founder-portrait-hud .corner-tl,
+  .founder-portrait-hud .corner-tr,
+  .founder-portrait-hud .corner-bl,
+  .founder-portrait-hud .corner-br {
+    position: absolute; width: 28px; height: 28px;
+  }
+  .founder-portrait-hud .corner-tl { top: 12px; left: 12px; border-top: 1px solid var(--cyan); border-left: 1px solid var(--cyan); }
+  .founder-portrait-hud .corner-tr { top: 12px; right: 12px; border-top: 1px solid var(--cyan); border-right: 1px solid var(--cyan); }
+  .founder-portrait-hud .corner-bl { bottom: 12px; left: 12px; border-bottom: 1px solid var(--cyan); border-left: 1px solid var(--cyan); }
+  .founder-portrait-hud .corner-br { bottom: 12px; right: 12px; border-bottom: 1px solid var(--cyan); border-right: 1px solid var(--cyan); }
+
+  .founder-portrait-tag {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.2em;
+    color: var(--cyan); text-transform: uppercase;
+    background: rgba(2, 6, 16, 0.78);
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--line-bright);
+    z-index: 4;
+  }
+  .founder-portrait-tag.tl { top: 22px; left: 50px; }
+  .founder-portrait-tag.br { bottom: 22px; right: 50px; color: var(--cyan-soft); }
+
+  .founder-content { padding-top: 0.5rem; }
+
+  .founder-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.24em;
+    color: var(--cyan); text-transform: uppercase;
+    margin-bottom: 1.2rem; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.9rem;
+  }
+  .founder-eyebrow::before {
+    content: ''; width: 36px; height: 1px;
+    background: var(--cyan); box-shadow: 0 0 8px var(--cyan);
+  }
+
+  .founder-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 3.6vw, 3rem);
+    font-weight: 400; color: var(--text-primary);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  .founder-title {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic; font-size: 1.3rem;
+    color: var(--cyan-soft); font-weight: 400;
+    margin-bottom: 2rem;
+  }
+
+  .founder-divider {
+    width: 60px; height: 1px;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+    margin-bottom: 2rem;
+  }
+
+  .founder-bio { display: flex; flex-direction: column; gap: 1.3rem; }
+
+  .founder-bio p {
+    font-size: 1rem; line-height: 1.85;
+    color: var(--text-soft); font-weight: 300;
+  }
+
+  .founder-bio p strong {
+    color: var(--text-primary); font-weight: 500;
+  }
+
+  .founder-pull {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic; font-size: 1.4rem;
+    line-height: 1.45; color: var(--cyan-soft);
+    border-left: 2px solid var(--cyan);
+    padding: 0.4rem 0 0.4rem 1.6rem;
+    margin: 0.8rem 0;
+    box-shadow: -2px 0 12px -4px rgba(92, 214, 255, 0.4);
+    font-weight: 400;
+  }
+
+  .founder-signature {
+    margin-top: 1.4rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem; letter-spacing: 0.2em;
+    color: var(--text-mute); text-transform: uppercase;
+  }
+  .founder-signature .sig-name {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic; font-size: 1.15rem;
+    color: var(--cyan); letter-spacing: 0;
+    text-transform: none; font-weight: 400;
+  }
+
+  /* CHIEF MEDICAL ADVISORY COUNCIL */
+  .advisory {
+    margin-top: 2rem;
+    padding: 3rem 3rem 2.8rem;
+    border: 1px solid var(--line-bright);
+    background: linear-gradient(145deg, rgba(13, 28, 51, 0.6) 0%, rgba(5, 11, 26, 0.6) 100%);
+    backdrop-filter: blur(10px);
+    position: relative;
+  }
+  .advisory::before, .advisory::after {
+    content: ''; position: absolute;
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--cyan);
+    box-shadow: 0 0 10px rgba(92, 214, 255, 0.4);
+  }
+  .advisory::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .advisory::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+  .advisory-header {
+    display: flex; justify-content: space-between; align-items: end;
+    gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .advisory-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.24em;
+    color: var(--cyan); text-transform: uppercase;
+    margin-bottom: 0.9rem; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.9rem;
+  }
+  .advisory-eyebrow::before {
+    content: ''; width: 36px; height: 1px;
+    background: var(--cyan); box-shadow: 0 0 8px var(--cyan);
+  }
+
+  .advisory-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    font-weight: 400; color: var(--text-primary);
+    line-height: 1.1; letter-spacing: -0.015em;
+  }
+  .advisory-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic; color: var(--cyan-soft); font-weight: 400;
+  }
+
+  .advisory-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.2em;
+    color: var(--cyan); text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line-bright);
+    background: rgba(92, 214, 255, 0.04);
+    white-space: nowrap;
+  }
+
+  .advisory-body {
+    color: var(--text-soft); font-size: 1rem; line-height: 1.85;
+    font-weight: 300;
+  }
+  .advisory-body p { margin-bottom: 1.2rem; }
+  .advisory-body p:last-child { margin-bottom: 0; }
+  .advisory-body strong {
+    color: var(--text-primary); font-weight: 500;
+  }
+
+  .specialty-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1rem; margin: 2rem 0 1.8rem;
+  }
+
+  .specialty-pill {
+    border: 1px solid var(--line);
+    padding: 1.2rem 0.9rem;
+    background: rgba(2, 6, 16, 0.5);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .specialty-pill:hover {
+    border-color: var(--line-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(92, 214, 255, 0.3);
+  }
+
+  .specialty-icon {
+    font-family: 'Cormorant Garamond', 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--cyan);
+    line-height: 1;
+    margin-bottom: 0.7rem;
+    text-shadow: 0 0 12px rgba(92, 214, 255, 0.4);
+  }
+
+  .specialty-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.16em;
+    color: var(--text-primary); text-transform: uppercase;
+    line-height: 1.3; font-weight: 500;
+  }
+
+  .specialty-detail {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-mute);
+    margin-top: 0.4rem;
+    font-weight: 300;
+    line-height: 1.3;
+  }
+
+  .advisory-footnote {
+    margin-top: 1.6rem; padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.18em;
+    color: var(--text-mute); text-transform: uppercase;
+    line-height: 1.6;
+  }
+
+  .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 1.4rem; position: relative; max-width: 900px; }
   .leader-card {
     border: 1px solid var(--line); padding: 2.5rem 2.2rem;
     background: rgba(13, 28, 51, 0.4); backdrop-filter: blur(10px);
@@ -430,6 +699,12 @@
     font-size: 1.6rem; color: var(--cyan);
     margin-bottom: 1.6rem; font-weight: 500;
     box-shadow: 0 0 20px rgba(92, 214, 255, 0.2);
+    overflow: hidden;
+  }
+  .leader-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 50%;
+    filter: grayscale(0.15) contrast(1.05);
   }
   .leader-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.3rem; font-weight: 500; letter-spacing: -0.01em; }
   .leader-role { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.18em; color: var(--cyan); text-transform: uppercase; margin-bottom: 1.2rem; }
@@ -798,6 +1073,11 @@
     .product-card.reverse .product-visual { order: 1; }
     .product-card.reverse .product-content { order: 2; }
     .leader-grid { grid-template-columns: 1fr; }
+    .founder-spotlight { grid-template-columns: 1fr; gap: 2.5rem; }
+    .founder-portrait-wrap { max-width: 320px; margin: 0 auto; }
+    .specialty-grid { grid-template-columns: repeat(2, 1fr); }
+    .advisory { padding: 2rem 1.6rem 1.8rem; }
+    .advisory-header { flex-direction: column; align-items: start; gap: 1rem; }
     .schema-bar { grid-template-columns: 1fr 1fr; }
     .press-grid { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1281,28 +1561,119 @@
       <div class="section-label mono">Leadership</div>
       <h2 class="section-heading">Built by the people who <em>practice the work.</em></h2>
       <p class="section-lede">
-        PatientTrac is led by clinicians and engineers who have spent careers at the intersection of medicine and software — not by a venture team that discovered healthcare last quarter.
+        PatientTrac is led by a founder who has spent twenty-five years inside the data structures of clinical practice — and a leadership team of clinicians and engineers who have spent their careers at the intersection of medicine and software.
       </p>
     </div>
 
-    <div class="leader-grid">
-      <div class="leader-card reveal">
-        <div class="leader-portrait">WH</div>
-        <div class="leader-name">Wayne Hayes</div>
-        <div class="leader-role">Founder & Chief Executive Officer</div>
-        <div class="leader-bio">Founder of PatientTrac in 2001 and architect of the platform's clinical schema. Twenty-five years of continuous engagement with the data structures that underpin practice management, clinical documentation, and revenue cycle.</div>
+    <!-- FOUNDER SPOTLIGHT -->
+    <div class="founder-spotlight reveal">
+      <div class="founder-portrait-wrap">
+        <div class="founder-portrait-frame">
+          <div class="founder-portrait-hud">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+          </div>
+          <div class="founder-portrait-tag tl">FOUNDER · 2001</div>
+          <div class="founder-portrait-tag br">EST. ARCH</div>
+          <img src="assets/wayne-hayes.jpg" alt="H. Wayne Hayes Jr., Founder and Chief Executive Officer" />
+        </div>
       </div>
-      <div class="leader-card reveal">
-        <div class="leader-portrait">CX</div>
-        <div class="leader-name">Chief Medical Officer</div>
-        <div class="leader-role">Clinical Strategy</div>
-        <div class="leader-bio">Provides clinical governance across all four PatientTrac platforms, with primary oversight of the behavioral health and surgical specialty modules. Ensures every workflow earns its place in a clinician's day.</div>
+
+      <div class="founder-content">
+        <div class="founder-eyebrow">A Letter from the Founder</div>
+        <h3 class="founder-name">H. Wayne Hayes Jr.</h3>
+        <div class="founder-title">Founder &amp; Chief Executive Officer</div>
+        <div class="founder-divider"></div>
+
+        <div class="founder-bio">
+          <p>
+            <strong>I founded PatientTrac in 2001</strong> with a conviction that ran counter to the prevailing wisdom of the era: that the long-term value of a clinical software platform would be measured not by its interface, but by the depth, integrity, and discipline of its underlying data model. The industry, then and now, prefers the easier path — chasing screens, dashboards, and workflows. I have spent twenty-five years building schemas.
+          </p>
+
+          <div class="founder-pull">
+            We did not adopt artificial intelligence. The architecture I began drafting in 2001 was waiting for it.
+          </div>
+
+          <p>
+            What started as a Visual Basic 6 practice management system has become a 550-table relational architecture spanning every dimension of inpatient and outpatient care. Behavioral health. Plastic and reconstructive surgery. Pain management. Trauma. Surgical centers. Each specialty extension has been engineered with the same principle: a defined place for every clinical observation, every diagnosis, every billable code. Nothing improvised. Nothing left to interpretation.
+          </p>
+
+          <p>
+            That long discipline matters more now than at any moment in the platform's history. The recent emergence of large language models has not required me to rebuild PatientTrac — it has required only that I expose what was already there. Our schemas became prompts. Our normalized clinical vocabularies became context. Our cross-specialty integrity became the substrate on which clinical AI can finally operate safely. Most of our competitors are retrofitting AI onto data models that were never engineered for this moment. We were.
+          </p>
+
+          <p>
+            Today, PatientTrac Corp operates four production platforms and is engineering five more. My role, as the company has grown, has shifted from solo architect to founder-CEO — but my standards have not. Every schema is reviewed against the same question I asked in 2001: <em>does this serve the clinician, the patient, and the long arc of medicine?</em> If it doesn't, it does not ship.
+          </p>
+
+          <p>
+            I invite you to evaluate PatientTrac on those terms. Talk to me directly. Talk to our customers. Compare our data model line-for-line with anyone in our category. The institutional record of twenty-first-century medicine deserves more than what is currently being shipped — and we are building it.
+          </p>
+        </div>
+
+        <div class="founder-signature">
+          <span class="sig-name">H. Wayne Hayes Jr.</span>
+          <span>· Founder, PatientTrac Corp · Est. 2001</span>
+        </div>
       </div>
-      <div class="leader-card reveal">
-        <div class="leader-portrait">CT</div>
-        <div class="leader-name">Chief Technology Officer</div>
-        <div class="leader-role">Engineering & Architecture</div>
-        <div class="leader-bio">Leads the multi-tenant database architecture, the cross-app bridge protocol, and the AI feature platform. Responsible for HIPAA-grade security posture and continuous deployment infrastructure.</div>
+    </div>
+
+    <!-- CHIEF MEDICAL ADVISORY COUNCIL -->
+    <div class="advisory reveal">
+      <div class="advisory-header">
+        <div>
+          <div class="advisory-eyebrow">Clinical Governance</div>
+          <h3 class="advisory-title">Chief Medical <em>Advisory Council</em></h3>
+        </div>
+        <div class="advisory-meta">Multidisciplinary · International</div>
+      </div>
+
+      <div class="advisory-body">
+        <p>
+          <strong>PatientTrac Electronic Medical Records was developed by an elite, multidisciplinary team of international surgeons, psychiatrists, trauma surgeons, and emergency medicine specialists</strong> from some of America's most renowned major hospitals. The council also includes several of the world's most successful and accomplished plastic and reconstructive surgeons.
+        </p>
+
+        <div class="specialty-grid">
+          <div class="specialty-pill">
+            <div class="specialty-icon">§</div>
+            <div class="specialty-name">International<br/>Surgeons</div>
+            <div class="specialty-detail">Multi-system operative care</div>
+          </div>
+          <div class="specialty-pill">
+            <div class="specialty-icon">ψ</div>
+            <div class="specialty-name">Psychiatrists</div>
+            <div class="specialty-detail">DSM-5 governance</div>
+          </div>
+          <div class="specialty-pill">
+            <div class="specialty-icon">⊕</div>
+            <div class="specialty-name">Trauma<br/>Surgeons</div>
+            <div class="specialty-detail">Acute &amp; critical care</div>
+          </div>
+          <div class="specialty-pill">
+            <div class="specialty-icon">⚕</div>
+            <div class="specialty-name">Emergency<br/>Medicine</div>
+            <div class="specialty-detail">Triage &amp; intake protocols</div>
+          </div>
+          <div class="specialty-pill">
+            <div class="specialty-icon">∞</div>
+            <div class="specialty-name">Plastic &amp;<br/>Reconstructive</div>
+            <div class="specialty-detail">Aesthetic &amp; restorative</div>
+          </div>
+        </div>
+
+        <p>
+          For years, these visionary clinicians dedicated their unparalleled expertise and countless hours to meticulously designing the sophisticated clinical logic and robust database architecture that serves as the very foundation of the PatientTrac system.
+        </p>
+
+        <p>
+          Their deep real-world experience and forward-thinking approach ensure that PatientTrac delivers <strong>clinically intelligent, secure, and highly effective</strong> electronic medical records software — tailored to the complex demands of modern psychiatric, surgical, and multidisciplinary medical practice.
+        </p>
+      </div>
+
+      <div class="advisory-footnote">
+        Council membership · Confidential by design · Available under NDA for institutional partners
       </div>
     </div>
   </div>
