@@ -16,9 +16,8 @@ const RESEND_API = 'https://api.resend.com';
 const ALLOWED_MODULES = new Set([
   'Pain Management',
   'Dermatology',
-  'InPatient & Trauma',
-  'OutPatient Surgical Centers',
-  'Surgeon Suite'
+  'Cardiology',
+  'InPatient & Trauma'
 ]);
 
 exports.handler = async (event) => {
