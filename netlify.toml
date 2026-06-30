@@ -20,3 +20,50 @@
   to = "/.netlify/functions/waitlist"
   status = 200
   force = true
+
+# Clean URLs for product pages
+[[redirects]]
+  from = "/products/forge"
+  to = "/products/forge.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/revela"
+  to = "/products/revela.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/mind"
+  to = "/products/mind.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/asc"
+  to = "/products/asc.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/continuum"
+  to = "/products/continuum.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/profiler"
+  to = "/products/profiler.html"
+  status = 200
+
+[[redirects]]
+  from = "/products/companion"
+  to = "/products/companion.html"
+  status = 200
+
+# Clean URLs for top-level pages
+[[redirects]]
+  from = "/pricing"
+  to = "/pricing.html"
+  status = 200
+
+[[redirects]]
+  from = "/compare"
+  to = "/compare.html"
+  status = 200

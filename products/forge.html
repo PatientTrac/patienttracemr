@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forge — PatientTrac | Patient Management, Scheduling & Revenue-Cycle Hub</title>
+<meta name="description" content="Forge is the operational foundation of the PatientTrac network — patient registration, scheduling, insurance verification, check-in workflows, and encounter creation." />
+<meta property="og:title" content="PatientTrac Forge — Patient Management, Scheduling & Revenue-Cycle Hub" />
+<meta property="og:description" content="The operational foundation of the PatientTrac network. Patient registration, demographics, insurance, scheduling, check-in and encounter creation." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy:#060e1c;--bg:#081426;--bg-raised:#0c1c34;--bg-card:#0f2240;--bg-card-2:#102a4d;
+  --cyan:#00d4ff;--teal:#0097a7;--sky:#4db6e5;
+  --gold:#c9a96e;--gold-logo:#d4af37;
+  --text:#e7f1fc;--text-soft:#a4b8d2;--text-mute:#6a809d;
+  --line:rgba(0,212,255,0.14);--line-soft:rgba(167,184,210,0.12);
+  --gold-line:rgba(212,175,55,0.55);
+  --radius:16px;--maxw:1180px;--ease:cubic-bezier(.22,.61,.36,1);
+  --accent:#00d4ff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--navy);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(1100px 700px at 78% -8%,rgba(0,212,255,0.16),transparent 60%),radial-gradient(900px 600px at 8% 18%,rgba(0,212,255,0.10),transparent 55%),radial-gradient(800px 800px at 50% 120%,rgba(212,175,55,0.06),transparent 60%),var(--navy);}
+body::after{content:'';position:fixed;inset:0;z-index:-1;opacity:.5;pointer-events:none;background-image:linear-gradient(rgba(0,212,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);}
+h1,h2,h3,h4{font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1.06;letter-spacing:-0.01em;}
+a{color:inherit;text-decoration:none;}
+::selection{background:rgba(0,212,255,0.28);color:#fff;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:inline-block;}
+.eyebrow.gold{color:var(--gold);}
+section{padding:118px 0;position:relative;}
+.lede{font-size:1.12rem;color:var(--text-soft);max-width:680px;}
+
+/* TOPBAR */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:all .4s var(--ease);border-bottom:1px solid transparent;}
+#topbar.scrolled{background:rgba(6,14,28,0.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:12px 0;}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.nav-links{display:flex;gap:30px;align-items:center;}
+.nav-links a{font-size:.86rem;color:var(--text-soft);font-weight:500;position:relative;transition:color .25s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .3s var(--ease);}
+.nav-links a:hover::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:18px;}
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;}
+.lang button{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:var(--text-mute);background:none;border:none;cursor:pointer;padding:5px 9px;border-radius:999px;transition:all .2s;}
+.lang button.active{background:var(--accent);color:var(--navy);font-weight:500;}
+.lang button:hover:not(.active){color:var(--text);}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;padding:12px 22px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:all .28s var(--ease);white-space:nowrap;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--teal));color:var(--navy);box-shadow:0 8px 30px rgba(0,212,255,0.22);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(0,212,255,0.34);}
+.btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,0.02);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.logo{display:flex;align-items:center;gap:13px;}
+.logo svg{width:42px;height:42px;flex-shrink:0;}
+.logo .word{display:flex;flex-direction:column;line-height:1;}
+.logo .word .name{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.42rem;letter-spacing:-0.01em;}
+.logo .word .name .p1{color:#eef5ff;}
+.logo .word .name .p2{color:var(--gold-logo);}
+.logo .word .tag{display:flex;align-items:center;gap:7px;margin-top:5px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);white-space:nowrap;}
+.logo .word .tag::before,.logo .word .tag::after{content:'';height:1px;width:14px;background:var(--gold-logo);opacity:.8;}
+
+/* HERO */
+#hero{padding:172px 0 100px;position:relative;overflow:hidden;}
+#hero .wrap{position:relative;z-index:1;}
+.hero-content{max-width:780px;}
+.hero-content h1{font-size:clamp(2.6rem,5.6vw,4.2rem);margin:14px 0 22px;}
+.hero-content h1 em{font-style:normal;background:linear-gradient(120deg,var(--accent),var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-content .lede{font-size:1.18rem;margin-bottom:34px;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+
+/* SECTION */
+.sec-head{max-width:760px;margin-bottom:56px;}
+.sec-head h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-bottom:18px;}
+.sec-head h2 em{font-style:normal;color:var(--accent);}
+
+/* DESCRIPTION */
+.desc-section{background:linear-gradient(180deg,transparent,rgba(12,28,52,0.4),transparent);}
+.desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.desc-text p{color:var(--text-soft);font-size:1.05rem;line-height:1.7;margin-bottom:18px;}
+
+/* WORKFLOWS */
+.wf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.wf-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:rgba(15,34,64,0.4);transition:all .3s var(--ease);}
+.wf-card:hover{border-color:var(--accent);transform:translateY(-3px);background:rgba(15,34,64,0.7);}
+.wf-card .num{font-family:'DM Mono',monospace;color:var(--accent);font-size:.8rem;margin-bottom:8px;}
+.wf-card h4{font-size:1.18rem;margin-bottom:6px;}
+.wf-card p{color:var(--text-soft);font-size:.9rem;}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.feat-card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:rgba(15,34,64,0.35);transition:all .3s var(--ease);display:flex;gap:16px;align-items:start;}
+.feat-card:hover{border-color:var(--accent);background:rgba(15,34,64,0.6);}
+.feat-icon{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:rgba(0,212,255,0.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;}
+.feat-icon svg{width:20px;height:20px;color:var(--accent);}
+.feat-card h4{font-size:1.05rem;margin-bottom:4px;}
+.feat-card p{color:var(--text-soft);font-size:.88rem;}
+
+/* BENEFITS */
+.benefits{background:linear-gradient(180deg,transparent,rgba(12,28,52,0.5),transparent);}
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ben-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--bg-card);text-align:center;}
+.ben-card h4{font-size:1.2rem;margin:12px 0 8px;}
+.ben-card p{color:var(--text-soft);font-size:.9rem;}
+.ben-icon{width:48px;height:48px;margin:0 auto;border-radius:12px;background:rgba(0,212,255,0.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;}
+.ben-icon svg{width:24px;height:24px;color:var(--accent);}
+
+/* AI */
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ai-card{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:rgba(15,34,64,0.4);transition:all .3s var(--ease);}
+.ai-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+.ai-card .pill{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:3px 8px;border-radius:6px;background:rgba(0,212,255,0.1);color:var(--accent);margin-bottom:10px;display:inline-block;}
+.ai-card h4{font-size:1.15rem;margin-bottom:6px;}
+.ai-card p{color:var(--text-soft);font-size:.9rem;}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.price-card{border:1px solid var(--line);border-radius:var(--radius);padding:32px;background:var(--bg-card);position:relative;transition:all .3s var(--ease);}
+.price-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+.price-card.popular{border-color:var(--accent);background:linear-gradient(160deg,rgba(0,212,255,0.06),var(--bg-card));}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 16px;border-radius:999px;background:var(--accent);color:var(--navy);white-space:nowrap;}
+.price-card .tier{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.price-card .amount{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:2.4rem;line-height:1;margin-bottom:4px;}
+.price-card .period{font-size:.85rem;color:var(--text-mute);margin-bottom:20px;}
+.price-card .desc{color:var(--text-soft);font-size:.9rem;margin-bottom:20px;}
+.price-feats{list-style:none;display:grid;gap:10px;margin-bottom:24px;}
+.price-feats li{position:relative;padding-left:20px;font-size:.88rem;color:var(--text-soft);}
+.price-feats li::before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:2px;background:var(--accent);}
+
+/* CTA SECTION */
+.cta-section{text-align:center;background:linear-gradient(180deg,transparent,rgba(12,28,52,0.6));}
+.cta-section h2{font-size:clamp(2rem,3.6vw,2.8rem);margin-bottom:14px;}
+.cta-section h2 em{font-style:normal;color:var(--accent);}
+.cta-section p{color:var(--text-soft);font-size:1.05rem;max-width:600px;margin:0 auto 30px;}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:64px 0 36px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px;}
+.foot-brand p{color:var(--text-soft);font-size:.9rem;margin-top:16px;max-width:300px;}
+.foot-col h5{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-mute);margin-bottom:16px;}
+.foot-col a{display:block;color:var(--text-soft);font-size:.88rem;margin-bottom:10px;transition:color .2s;}
+.foot-col a:hover{color:var(--accent);}
+.foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.foot-bottom p{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--text-mute);}
+.foot-bottom .legal{display:flex;gap:20px;}
+.foot-bottom .legal a{font-size:.78rem;color:var(--text-mute);}
+.foot-bottom .legal a:hover{color:var(--text-soft);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+
+/* MOBILE NAV */
+.menu-toggle{display:none;background:none;border:none;color:var(--text);cursor:pointer;}
+@media(max-width:980px){
+  .hero-content{max-width:100%;}
+  .desc-grid,.feat-grid{grid-template-columns:1fr;}
+  .wf-grid,.ai-grid,.ben-grid,.pricing-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .menu-toggle{display:block;}
+}
+@media(max-width:560px){
+  section{padding:80px 0;}
+  .foot-grid{grid-template-columns:1fr;}
+  .logo .word .name{font-size:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header id="topbar">
+  <div class="wrap nav">
+    <a href="../index.html" class="logo" aria-label="PatientTrac home">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <defs><linearGradient id="pgrad" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/></linearGradient></defs>
+        <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z" fill="url(#pgrad)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+        <g stroke="#d4af37" stroke-width="0.9" opacity="0.9"><line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/><line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/><line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/><line x1="38" y1="20" x2="30" y2="26"/><line x1="24" y1="22" x2="30" y2="26"/></g>
+        <g><circle cx="18" cy="13" r="2.1" fill="#fff"/><circle cx="31" cy="11" r="2.1" fill="#d4af37"/><circle cx="38" cy="20" r="2.1" fill="#fff"/><circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/><circle cx="30" cy="26" r="1.9" fill="#d4af37"/><circle cx="20" cy="34" r="1.9" fill="#fff"/></g>
+      </svg>
+      <span class="word">
+        <span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span>
+        <span class="tag">The Clinical Intelligence Network</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html#about" data-i18n="nav_about">Company</a>
+      <a href="../index.html#products" data-i18n="nav_products">Platform</a>
+      <a href="../pricing.html" data-i18n="nav_pricing">Pricing</a>
+      <a href="../compare.html" data-i18n="nav_compare">Compare</a>
+      <a href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="fr">FR</button>
+      </div>
+      <a href="https://patienttracforge.com" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="nav_cta">Launch Forge</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-content reveal">
+      <span class="eyebrow" data-i18n="hero_eyebrow">Patient Management, Scheduling & Revenue-Cycle Hub</span>
+      <h1 data-i18n-html="hero_h1"><em>Forge</em> — the operational command center of the network.</h1>
+      <p class="lede" data-i18n="hero_lede">Every patient, encounter, and dollar originates here — with international demographics, AI scheduling intelligence, a full X12 837P/835 revenue cycle, and the encounter router that launches every specialty app on one record.</p>
+      <div class="hero-cta">
+        <a href="https://patienttracforge.com" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="cta_launch">Launch Forge</a>
+        <a href="../pricing.html#forge" class="btn btn-ghost" data-i18n="cta_pricing">View Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="desc-section">
+  <div class="wrap">
+    <div class="desc-grid">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="desc_eyebrow">About Forge</span>
+        <h2 style="font-size:clamp(2rem,3.8vw,2.6rem);margin-bottom:20px;" data-i18n-html="desc_h2">Not a commodity <em>scheduler.</em></h2>
+      </div>
+      <div class="desc-text reveal">
+        <p data-i18n="desc_p">Forge is a clearinghouse-integrated, internationally-aware practice-management spine with an AI operational layer, a complete revenue cycle (837/835/appeals/COB/aging), patient financing, ONC-grade interoperability, and a native router into specialty EMRs — all on one secured, RLS-isolated record. It is not a commodity scheduler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE WORKFLOWS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="wf_eyebrow">Core Workflows</span>
+      <h2 data-i18n-html="wf_h2">From registration to <em>encounter routing.</em></h2>
+    </div>
+    <div class="wf-grid">
+      <div class="wf-card reveal"><div class="num">01</div><h4 data-i18n="wf1_t">Patient management</h4><p data-i18n="wf1_p">Master patient record (55 fields) with US + 16-country international support: per-country phone, postal, province, and tax-ID formats (SSN, ITIN, EIN, NIT, RFC, CPF, RIF), passport capture, smart address with geo-intelligence (ZIP/postal lookup auto-fills city + state/province).</p></div>
+      <div class="wf-card reveal"><div class="num">02</div><h4 data-i18n="wf2_t">Scheduling & check-in</h4><p data-i18n="wf2_p">Multi-provider, multi-facility drag-and-drop calendar; 23 configurable appointment types each mapped to CPT, default fee, POS, duration, and color. Four-step check-in: arrival, insurance verification, encounter open, route to specialty app.</p></div>
+      <div class="wf-card reveal"><div class="num">03</div><h4 data-i18n="wf3_t">The encounter router</h4><p data-i18n="wf3_p">cr.open_encounter() mints an encounter_id; checkin_and_route() resolves the provider's specialty against enabled modules and launches the correct app (Revela / Mind / ASC / Continuum) with a cross-app token carrying encounter_id, patient_id, provider_id — no second login, no re-keyed chart.</p></div>
+      <div class="wf-card reveal"><div class="num">04</div><h4 data-i18n="wf4_t">Electronic claims (837P)</h4><p data-i18n="wf4_p">True X12 837P generation (005010X222A1) — builds the complete professional claim and transmits to the clearinghouse over OAuth2 (Optum / Change Healthcare). Pluggable international gateways: US 837P live, Colombia RIPS/DIAN and UK NHS registered.</p></div>
+      <div class="wf-card reveal"><div class="num">05</div><h4 data-i18n="wf5_t">ERA/835 & revenue cycle</h4><p data-i18n="wf5_p">Imports remittance, parses BPR/TRN/CLP/CAS, auto-matches to superbills, posts payments and adjustments. Nine-tab workspace: superbills, AI coding, EDI, ERA, rejections, A/R aging (0-30/31-60/61-90/91-120/120+), pre-auth, AI-drafted appeals, secondary claims/COB.</p></div>
+      <div class="wf-card reveal"><div class="num">06</div><h4 data-i18n="wf6_t">Proposals & financing</h4><p data-i18n="wf6_p">AI-assisted, itemized cost estimates by procedure with financing options (down payment, monthly, term, discount), AI patient-summary narrative, branded PDF output, and email/secure-link delivery. Built for elective/cash-pay conversion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="benefits">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="feat_eyebrow">Features</span>
+      <h2 data-i18n-html="feat_h2">Built for the <em>operational core.</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></div>
+        <div><h4 data-i18n="f1_t">55-field international demographics</h4><p data-i18n="f1_p">US + 16-country support with per-country tax IDs, passport capture, and smart address geo-intelligence.</p></div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
+        <div><h4 data-i18n="f2_t">23 appointment types</h4><p data-i18n="f2_p">Each mapped to CPT, fee, POS, duration, and color with multi-provider drag-and-drop scheduling.</p></div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
+        <div><h4 data-i18n="f3_t">Cross-app encounter routing</h4><p data-i18n="f3_p">One-click launch into Revela, Mind, ASC, or Continuum with token-based auth — no re-login, no re-keyed chart.</p></div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div><h4 data-i18n="f4_t">X12 837P claims engine</h4><p data-i18n="f4_p">True professional claims with pluggable international gateways (US Optum/Change Healthcare, Colombia RIPS, UK NHS).</p></div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><h4 data-i18n="f5_t">ERA/835 auto-posting</h4><p data-i18n="f5_p">Remittance parsing, auto-match to superbills, payment and adjustment posting.</p></div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+        <div><h4 data-i18n="f6_t">Records & ROI</h4><p data-i18n="f6_p">HIPAA right-of-access with signed-ROI capture, post-Ciox fee logic, hash-chained disclosure entries to the PHI audit log.</p></div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div><h4 data-i18n="f7_t">ONC interoperability</h4><p data-i18n="f7_p">C-CDA generation, medication reconciliation, EHI export (single + bulk), consent templates, RBAC (6 roles x 8 resources).</p></div>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><h4 data-i18n="f8_t">ProposalBuilder</h4><p data-i18n="f8_p">AI-drafted patient proposals with procedure itemization, financing terms, branded PDF, and secure delivery.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI / COMPLIANCE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="ai_eyebrow">Clinical Intelligence</span>
+      <h2 data-i18n-html="ai_h2">AI woven into <em>scheduling and revenue.</em></h2>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card reveal"><div class="pill">AI</div><h4 data-i18n="ai1_t">No-show prediction</h4><p data-i18n="ai1_p">1-10 risk score at booking from prior no-show rate, self-pay status, day/time, visit type, insurance, recency, new-vs-established; high-risk triggers extra reminders, critical suggests double-book.</p></div>
+      <div class="ai-card reveal"><div class="pill">AI</div><h4 data-i18n="ai2_t">Smart scheduling</h4><p data-i18n="ai2_p">Analyzes a 14-day window and ranks 3 optimal slots with reasons — checking conflicts, no-show risk, insurance visit-interval rules, and specialty patterns.</p></div>
+      <div class="ai-card reveal"><div class="pill">AI</div><h4 data-i18n="ai3_t">AI pre-visit intake</h4><p data-i18n="ai3_p">Tokenized 48-hour patient link collects chief complaint, meds, symptoms, severity; returns clinician summary, suggested ICD-10, and red-flag triage (emergent/urgent/routine) that pre-fills the encounter.</p></div>
+      <div class="ai-card reveal"><div class="pill">AI</div><h4 data-i18n="ai4_t">Wait-time intelligence</h4><p data-i18n="ai4_p">Arrived/called-back/seen/departed timestamps; dashboards by provider, day, hour; automatic service-recovery message when wait exceeds 20 minutes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow gold" data-i18n="ben_eyebrow">Benefits</span>
+      <h2 data-i18n-html="ben_h2">Why practices choose <em>Forge.</em></h2>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-card reveal">
+        <div class="ben-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg></div>
+        <h4 data-i18n="b1_t">One record, one network</h4>
+        <p data-i18n="b1_p">The encounter_id minted here flows through every specialty app. No re-keying, no duplicate charts, no data reconciliation.</p>
+      </div>
+      <div class="ben-card reveal">
+        <div class="ben-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <h4 data-i18n="b2_t">Revenue captured end-to-end</h4>
+        <p data-i18n="b2_p">From charge capture through 837P transmission, ERA posting, denial management, A/R aging, and AI-drafted appeals — nothing falls through.</p>
+      </div>
+      <div class="ben-card reveal">
+        <div class="ben-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h4 data-i18n="b3_t">International from day one</h4>
+        <p data-i18n="b3_p">16-country demographics, multi-region billing gateways, trilingual (EN/ES/FR) across every screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERTWINES -->
+<section class="desc-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow gold" data-i18n="intw_eyebrow">The Connected Journey</span>
+      <h2 data-i18n-html="intw_h2">How it <em>intertwines.</em></h2>
+    </div>
+    <div class="desc-text reveal" style="max-width:800px;">
+      <p data-i18n="intw_p">Every patient, encounter, and dollar originates in Forge. The encounter router launches Revela, Mind, ASC, or Continuum with a cross-app token — no second login, no re-keyed chart. Superbills auto-populate on encounter close. ERA remittances post back. ProposalBuilder combines the professional fee with ASC facility costs into one patient-facing estimate. Forge is where the network begins and where the revenue resolves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DIFFERENT -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="diff_eyebrow">Why It's Different</span>
+      <h2 data-i18n-html="diff_h2">Not a <em>commodity scheduler.</em></h2>
+    </div>
+    <div class="desc-text reveal" style="max-width:800px;">
+      <p data-i18n="diff_p">A commodity scheduler stops at appointments. Forge is a clearinghouse-integrated, internationally-aware practice-management spine with an AI operational layer, a complete revenue cycle (837/835/appeals/COB/aging), patient financing, ONC-grade interoperability, and a native router into specialty EMRs — on one secured, RLS-isolated record.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="price_eyebrow">Pricing</span>
+      <h2 data-i18n-html="price_h2">Plans that scale with <em>your practice.</em></h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="tier" data-i18n="t1_tier">Starter</div>
+        <div class="amount">$299</div>
+        <div class="period" data-i18n="t1_period">/provider/month</div>
+        <div class="desc" data-i18n="t1_desc">For solo practitioners and small practices getting started with the PatientTrac network.</div>
+        <ul class="price-feats">
+          <li data-i18n="t1_f1">Single provider</li>
+          <li data-i18n="t1_f2">Full scheduling & check-in</li>
+          <li data-i18n="t1_f3">Insurance verification</li>
+          <li data-i18n="t1_f4">Encounter routing</li>
+          <li data-i18n="t1_f5">837P claim generation</li>
+        </ul>
+        <a href="../pricing.html#forge" class="btn btn-ghost" style="width:100%;justify-content:center;" data-i18n="price_select">Get started</a>
+      </div>
+      <div class="price-card popular reveal">
+        <div class="price-badge" data-i18n="price_popular">Most Popular</div>
+        <div class="tier" data-i18n="t2_tier">Professional</div>
+        <div class="amount">$699</div>
+        <div class="period" data-i18n="t2_period">/month (up to 5 providers)</div>
+        <div class="desc" data-i18n="t2_desc">For growing practices that need multi-provider scheduling and advanced AI features.</div>
+        <ul class="price-feats">
+          <li data-i18n="t2_f1">Up to 5 providers</li>
+          <li data-i18n="t2_f2">Everything in Starter</li>
+          <li data-i18n="t2_f3">No-show prediction AI</li>
+          <li data-i18n="t2_f4">Smart scheduling AI</li>
+          <li data-i18n="t2_f5">Denial-risk scoring</li>
+        </ul>
+        <a href="../pricing.html#forge" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="price_select">Get started</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="tier" data-i18n="t3_tier">Enterprise</div>
+        <div class="amount">$1,499</div>
+        <div class="period" data-i18n="t3_period">/month (unlimited providers)</div>
+        <div class="desc" data-i18n="t3_desc">For large practices and groups requiring unlimited providers and dedicated support.</div>
+        <ul class="price-feats">
+          <li data-i18n="t3_f1">Unlimited providers</li>
+          <li data-i18n="t3_f2">Everything in Professional</li>
+          <li data-i18n="t3_f3">Priority support</li>
+          <li data-i18n="t3_f4">Custom integrations</li>
+          <li data-i18n="t3_f5">Dedicated onboarding</li>
+        </ul>
+        <a href="../pricing.html#forge" class="btn btn-ghost" style="width:100%;justify-content:center;" data-i18n="price_contact">Contact sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="wrap reveal">
+    <h2 data-i18n-html="cta_h2">Ready to build on <em>Forge?</em></h2>
+    <p data-i18n="cta_p">Start scheduling, registering patients, and generating encounters today.</p>
+    <div class="cta-buttons">
+      <a href="https://patienttracforge.com" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="cta_launch">Launch Forge</a>
+      <a href="../pricing.html#forge" class="btn btn-ghost" data-i18n="cta_pricing">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="pgrad2" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/></linearGradient></defs>
+            <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z" fill="url(#pgrad2)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+            <g stroke="#d4af37" stroke-width="0.9" opacity="0.9"><line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/><line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/><line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/><line x1="38" y1="20" x2="30" y2="26"/></g>
+            <g><circle cx="18" cy="13" r="2.1" fill="#fff"/><circle cx="31" cy="11" r="2.1" fill="#d4af37"/><circle cx="38" cy="20" r="2.1" fill="#fff"/><circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/><circle cx="30" cy="26" r="1.9" fill="#d4af37"/><circle cx="20" cy="34" r="1.9" fill="#fff"/></g>
+          </svg>
+          <span class="word"><span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span></span>
+        </a>
+        <p data-i18n="foot_blurb">The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_platform">Platform</h5>
+        <a href="forge.html">Forge</a>
+        <a href="revela.html">Revela</a>
+        <a href="mind.html">Mind</a>
+        <a href="asc.html">ASC</a>
+        <a href="continuum.html">Continuum</a>
+        <a href="profiler.html">Profiler</a>
+        <a href="companion.html">Companion</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_company">Company</h5>
+        <a href="../index.html#about" data-i18n="nav_about">Company</a>
+        <a href="../pricing.html" data-i18n="nav_pricing">Pricing</a>
+        <a href="../compare.html" data-i18n="nav_compare">Compare</a>
+        <a href="../index.html#contact" data-i18n="foot_contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_legal_h">Legal</h5>
+        <a href="#" data-i18n="foot_privacy">Privacy Policy</a>
+        <a href="#" data-i18n="foot_terms">Terms of Service</a>
+        <a href="#" data-i18n="foot_hipaa">HIPAA Notice</a>
+        <a href="#" data-i18n="foot_ba">Business Associate Agreement</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; <span id="year"></span> PatientTrac Corp. <span data-i18n="foot_rights">All rights reserved.</span></p>
+      <div class="legal">
+        <span style="font-family:'DM Mono',monospace;font-size:.74rem;color:var(--text-mute);" data-i18n="foot_compliance">HIPAA Compliant &middot; ONC &sect;170.315</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N={
+  en:{
+    nav_about:"Company",nav_products:"Platform",nav_pricing:"Pricing",nav_compare:"Compare",nav_contact:"Contact",nav_cta:"Launch Forge",
+    hero_eyebrow:"Patient Management, Scheduling & Revenue-Cycle Hub",
+    hero_h1:"<em>Forge</em> — the operational command center of the network.",
+    hero_lede:"Every patient, encounter, and dollar originates here — with international demographics, AI scheduling intelligence, a full X12 837P/835 revenue cycle, and the encounter router that launches every specialty app on one record.",
+    cta_launch:"Launch Forge",cta_pricing:"View Pricing",
+    desc_eyebrow:"About Forge",desc_h2:"Not a commodity <em>scheduler.</em>",
+    desc_p:"Forge is a clearinghouse-integrated, internationally-aware practice-management spine with an AI operational layer, a complete revenue cycle (837/835/appeals/COB/aging), patient financing, ONC-grade interoperability, and a native router into specialty EMRs — all on one secured, RLS-isolated record. It is not a commodity scheduler.",
+    wf_eyebrow:"Core Workflows",wf_h2:"From registration to <em>encounter routing.</em>",
+    wf1_t:"Patient management",wf1_p:"Master patient record (55 fields) with US + 16-country international support: per-country phone, postal, province, and tax-ID formats (SSN, ITIN, EIN, NIT, RFC, CPF, RIF), passport capture, smart address with geo-intelligence (ZIP/postal lookup auto-fills city + state/province).",
+    wf2_t:"Scheduling & check-in",wf2_p:"Multi-provider, multi-facility drag-and-drop calendar; 23 configurable appointment types each mapped to CPT, default fee, POS, duration, and color. Four-step check-in: arrival, insurance verification, encounter open, route to specialty app.",
+    wf3_t:"The encounter router",wf3_p:"cr.open_encounter() mints an encounter_id; checkin_and_route() resolves the provider's specialty against enabled modules and launches the correct app (Revela / Mind / ASC / Continuum) with a cross-app token carrying encounter_id, patient_id, provider_id — no second login, no re-keyed chart.",
+    wf4_t:"Electronic claims (837P)",wf4_p:"True X12 837P generation (005010X222A1) — builds the complete professional claim and transmits to the clearinghouse over OAuth2 (Optum / Change Healthcare). Pluggable international gateways: US 837P live, Colombia RIPS/DIAN and UK NHS registered.",
+    wf5_t:"ERA/835 & revenue cycle",wf5_p:"Imports remittance, parses BPR/TRN/CLP/CAS, auto-matches to superbills, posts payments and adjustments. Nine-tab workspace: superbills, AI coding, EDI, ERA, rejections, A/R aging (0-30/31-60/61-90/91-120/120+), pre-auth, AI-drafted appeals, secondary claims/COB.",
+    wf6_t:"Proposals & financing",wf6_p:"AI-assisted, itemized cost estimates by procedure with financing options (down payment, monthly, term, discount), AI patient-summary narrative, branded PDF output, and email/secure-link delivery. Built for elective/cash-pay conversion.",
+    feat_eyebrow:"Features",feat_h2:"Built for the <em>operational core.</em>",
+    f1_t:"55-field international demographics",f1_p:"US + 16-country support with per-country tax IDs, passport capture, and smart address geo-intelligence.",
+    f2_t:"23 appointment types",f2_p:"Each mapped to CPT, fee, POS, duration, and color with multi-provider drag-and-drop scheduling.",
+    f3_t:"Cross-app encounter routing",f3_p:"One-click launch into Revela, Mind, ASC, or Continuum with token-based auth — no re-login, no re-keyed chart.",
+    f4_t:"X12 837P claims engine",f4_p:"True professional claims with pluggable international gateways (US Optum/Change Healthcare, Colombia RIPS, UK NHS).",
+    f5_t:"ERA/835 auto-posting",f5_p:"Remittance parsing, auto-match to superbills, payment and adjustment posting.",
+    f6_t:"Records & ROI",f6_p:"HIPAA right-of-access with signed-ROI capture, post-Ciox fee logic, hash-chained disclosure entries to the PHI audit log.",
+    f7_t:"ONC interoperability",f7_p:"C-CDA generation, medication reconciliation, EHI export (single + bulk), consent templates, RBAC (6 roles x 8 resources).",
+    f8_t:"ProposalBuilder",f8_p:"AI-drafted patient proposals with procedure itemization, financing terms, branded PDF, and secure delivery.",
+    ai_eyebrow:"Clinical Intelligence",ai_h2:"AI woven into <em>scheduling and revenue.</em>",
+    ai1_t:"No-show prediction",ai1_p:"1-10 risk score at booking from prior no-show rate, self-pay status, day/time, visit type, insurance, recency, new-vs-established; high-risk triggers extra reminders, critical suggests double-book.",
+    ai2_t:"Smart scheduling",ai2_p:"Analyzes a 14-day window and ranks 3 optimal slots with reasons — checking conflicts, no-show risk, insurance visit-interval rules, and specialty patterns.",
+    ai3_t:"AI pre-visit intake",ai3_p:"Tokenized 48-hour patient link collects chief complaint, meds, symptoms, severity; returns clinician summary, suggested ICD-10, and red-flag triage (emergent/urgent/routine) that pre-fills the encounter.",
+    ai4_t:"Wait-time intelligence",ai4_p:"Arrived/called-back/seen/departed timestamps; dashboards by provider, day, hour; automatic service-recovery message when wait exceeds 20 minutes.",
+    ben_eyebrow:"Benefits",ben_h2:"Why practices choose <em>Forge.</em>",
+    b1_t:"One record, one network",b1_p:"The encounter_id minted here flows through every specialty app. No re-keying, no duplicate charts, no data reconciliation.",
+    b2_t:"Revenue captured end-to-end",b2_p:"From charge capture through 837P transmission, ERA posting, denial management, A/R aging, and AI-drafted appeals — nothing falls through.",
+    b3_t:"International from day one",b3_p:"16-country demographics, multi-region billing gateways, trilingual (EN/ES/FR) across every screen.",
+    intw_eyebrow:"The Connected Journey",intw_h2:"How it <em>intertwines.</em>",intw_p:"Every patient, encounter, and dollar originates in Forge. The encounter router launches Revela, Mind, ASC, or Continuum with a cross-app token — no second login, no re-keyed chart. Superbills auto-populate on encounter close. ERA remittances post back. ProposalBuilder combines the professional fee with ASC facility costs into one patient-facing estimate. Forge is where the network begins and where the revenue resolves.",
+    diff_eyebrow:"Why It's Different",diff_h2:"Not a <em>commodity scheduler.</em>",diff_p:"A commodity scheduler stops at appointments. Forge is a clearinghouse-integrated, internationally-aware practice-management spine with an AI operational layer, a complete revenue cycle (837/835/appeals/COB/aging), patient financing, ONC-grade interoperability, and a native router into specialty EMRs — on one secured, RLS-isolated record.",
+    price_eyebrow:"Pricing",price_h2:"Plans that scale with <em>your practice.</em>",price_popular:"Most Popular",price_select:"Get started",price_contact:"Contact sales",
+    t1_tier:"Starter",t1_period:"/provider/month",t1_desc:"For solo practitioners and small practices getting started with the PatientTrac network.",t1_f1:"Single provider",t1_f2:"Full scheduling & check-in",t1_f3:"Insurance verification",t1_f4:"Encounter routing",t1_f5:"837P claim generation",
+    t2_tier:"Professional",t2_period:"/month (up to 5 providers)",t2_desc:"For growing practices that need multi-provider scheduling and advanced AI features.",t2_f1:"Up to 5 providers",t2_f2:"Everything in Starter",t2_f3:"No-show prediction AI",t2_f4:"Smart scheduling AI",t2_f5:"Denial-risk scoring",
+    t3_tier:"Enterprise",t3_period:"/month (unlimited providers)",t3_desc:"For large practices and groups requiring unlimited providers and dedicated support.",t3_f1:"Unlimited providers",t3_f2:"Everything in Professional",t3_f3:"Priority support",t3_f4:"Custom integrations",t3_f5:"Dedicated onboarding",
+    cta_h2:"Ready to build on <em>Forge?</em>",cta_p:"Start scheduling, registering patients, and generating encounters today.",
+    foot_blurb:"The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.",
+    foot_platform:"Platform",foot_company:"Company",foot_contact:"Contact",
+    foot_legal_h:"Legal",foot_privacy:"Privacy Policy",foot_terms:"Terms of Service",foot_hipaa:"HIPAA Notice",foot_ba:"Business Associate Agreement",
+    foot_rights:"All rights reserved.",foot_compliance:"HIPAA Compliant · ONC §170.315"
+  },
+  es:{
+    nav_about:"Empresa",nav_products:"Plataforma",nav_pricing:"Precios",nav_compare:"Comparar",nav_contact:"Contacto",nav_cta:"Abrir Forge",
+    hero_eyebrow:"Gestión de Pacientes, Agendamiento y Ciclo de Ingresos",
+    hero_h1:"<em>Forge</em> — el centro de mando operativo de la red.",
+    hero_lede:"Cada paciente, encuentro y dolar se origina aqui — con demografia internacional, inteligencia de agendamiento con IA, un ciclo de ingresos X12 837P/835 completo, y el enrutador de encuentros que lanza cada app de especialidad sobre un mismo registro.",
+    cta_launch:"Abrir Forge",cta_pricing:"Ver precios",
+    desc_eyebrow:"Acerca de Forge",desc_h2:"No es un agendador <em>convencional.</em>",
+    desc_p:"Forge es una columna de gestion de consultas integrada con camaras de compensacion, con soporte internacional, una capa operativa de IA, un ciclo de ingresos completo (837/835/apelaciones/COB/antiguedad), financiamiento de pacientes, interoperabilidad grado ONC, y un enrutador nativo hacia EMRs de especialidad — todo en un registro unico, seguro y aislado por RLS. No es un agendador convencional.",
+    wf_eyebrow:"Flujos de trabajo",wf_h2:"Del registro al <em>enrutamiento de encuentros.</em>",
+    wf1_t:"Gestion de pacientes",wf1_p:"Registro maestro de pacientes (55 campos) con soporte para EE. UU. + 16 paises: formatos de telefono, postal, provincia e ID fiscal por pais (SSN, ITIN, EIN, NIT, RFC, CPF, RIF), captura de pasaporte, direccion inteligente con geo-inteligencia (busqueda por codigo postal auto-completa ciudad + estado/provincia).",
+    wf2_t:"Agendamiento y admision",wf2_p:"Calendario multiproveedor y multi-sede con arrastrar y soltar; 23 tipos de cita configurables, cada uno mapeado a CPT, tarifa, POS, duracion y color. Admision en cuatro pasos: llegada, verificacion de seguro, apertura de encuentro, enrutamiento a app de especialidad.",
+    wf3_t:"El enrutador de encuentros",wf3_p:"cr.open_encounter() genera un encounter_id; checkin_and_route() resuelve la especialidad del proveedor contra los modulos habilitados y lanza la app correcta (Revela / Mind / ASC / Continuum) con un token cross-app que lleva encounter_id, patient_id, provider_id — sin segundo login, sin re-digitar la historia.",
+    wf4_t:"Reclamaciones electronicas (837P)",wf4_p:"Generacion real de X12 837P (005010X222A1) — construye la reclamacion profesional completa y la transmite a la camara de compensacion por OAuth2 (Optum / Change Healthcare). Pasarelas internacionales conectables: EE. UU. 837P en vivo, Colombia RIPS/DIAN y Reino Unido NHS registrado.",
+    wf5_t:"ERA/835 y ciclo de ingresos",wf5_p:"Importa remesas, analiza BPR/TRN/CLP/CAS, auto-empareja con superbills, registra pagos y ajustes. Espacio de trabajo de nueve pestanas: superbills, codificacion IA, EDI, ERA, rechazos, antiguedad de C/C (0-30/31-60/61-90/91-120/120+), pre-autorizacion, apelaciones con IA, reclamaciones secundarias/COB.",
+    wf6_t:"Propuestas y financiamiento",wf6_p:"Estimaciones de costos detalladas por procedimiento asistidas por IA con opciones de financiamiento (enganche, mensualidad, plazo, descuento), narrativa de resumen para el paciente con IA, PDF con marca, y entrega por correo/enlace seguro. Disenado para conversion electiva/pago directo.",
+    feat_eyebrow:"Caracteristicas",feat_h2:"Construido para el <em>nucleo operativo.</em>",
+    f1_t:"Demografia internacional de 55 campos",f1_p:"Soporte para EE. UU. + 16 paises con IDs fiscales por pais, captura de pasaporte y geo-inteligencia de direccion.",
+    f2_t:"23 tipos de cita",f2_p:"Cada uno mapeado a CPT, tarifa, POS, duracion y color con agendamiento multiproveedor de arrastrar y soltar.",
+    f3_t:"Enrutamiento cross-app de encuentros",f3_p:"Lanzamiento con un clic a Revela, Mind, ASC o Continuum con autenticacion basada en token — sin re-login, sin re-digitar la historia.",
+    f4_t:"Motor de reclamaciones X12 837P",f4_p:"Reclamaciones profesionales reales con pasarelas internacionales conectables (EE. UU. Optum/Change Healthcare, Colombia RIPS, Reino Unido NHS).",
+    f5_t:"Auto-registro ERA/835",f5_p:"Analisis de remesas, auto-emparejamiento con superbills, registro de pagos y ajustes.",
+    f6_t:"Registros y ROI",f6_p:"Derecho de acceso HIPAA con captura de ROI firmado, logica de tarifas post-Ciox, entradas de divulgacion con hash encadenado al registro de auditoria PHI.",
+    f7_t:"Interoperabilidad ONC",f7_p:"Generacion C-CDA, reconciliacion de medicamentos, exportacion EHI (individual + masiva), plantillas de consentimiento, RBAC (6 roles x 8 recursos).",
+    f8_t:"ProposalBuilder",f8_p:"Propuestas para pacientes redactadas con IA con detalle de procedimientos, terminos de financiamiento, PDF con marca y entrega segura.",
+    ai_eyebrow:"Inteligencia clinica",ai_h2:"IA integrada en <em>agendamiento e ingresos.</em>",
+    ai1_t:"Prediccion de ausencias",ai1_p:"Puntuacion de riesgo 1-10 al agendar basada en tasa previa de ausencias, estatus de pago directo, dia/hora, tipo de visita, seguro, recencia, nuevo vs. establecido; alto riesgo activa recordatorios extra, critico sugiere doble-agendamiento.",
+    ai2_t:"Agendamiento inteligente",ai2_p:"Analiza una ventana de 14 dias y clasifica 3 horarios optimos con razones — revisando conflictos, riesgo de ausencia, reglas de intervalo de visita del seguro y patrones de especialidad.",
+    ai3_t:"Admision pre-visita con IA",ai3_p:"Enlace tokenizado de 48 horas para el paciente que recopila queja principal, medicamentos, sintomas, severidad; devuelve resumen clinico, ICD-10 sugerido y triaje de banderas rojas (emergente/urgente/rutinario) que pre-llena el encuentro.",
+    ai4_t:"Inteligencia de tiempo de espera",ai4_p:"Marcas de tiempo de llegada/llamado/atendido/salida; paneles por proveedor, dia, hora; mensaje automatico de recuperacion de servicio cuando la espera supera 20 minutos.",
+    ben_eyebrow:"Beneficios",ben_h2:"Por que las consultas eligen <em>Forge.</em>",
+    b1_t:"Un registro, una red",b1_p:"El encounter_id generado aqui fluye a traves de cada app de especialidad. Sin re-digitacion, sin historias duplicadas, sin reconciliacion de datos.",
+    b2_t:"Ingresos capturados de extremo a extremo",b2_p:"Desde la captura de cargos hasta la transmision 837P, registro de ERA, gestion de rechazos, antiguedad de C/C y apelaciones con IA — nada se pierde.",
+    b3_t:"Internacional desde el primer dia",b3_p:"Demografia de 16 paises, pasarelas de facturacion multi-region, trilingue (EN/ES/FR) en cada pantalla.",
+    intw_eyebrow:"El viaje conectado",intw_h2:"Como se <em>entrelaza.</em>",intw_p:"Cada paciente, encuentro y dolar se origina en Forge. El enrutador de encuentros lanza Revela, Mind, ASC o Continuum con un token cross-app — sin segundo login, sin re-digitar la historia. Los superbills se auto-completan al cerrar el encuentro. Las remesas ERA se registran de vuelta. ProposalBuilder combina el honorario profesional con los costos de instalacion ASC en un estimado unico para el paciente. Forge es donde la red comienza y donde los ingresos se resuelven.",
+    diff_eyebrow:"Por que es diferente",diff_h2:"No es un <em>agendador convencional.</em>",diff_p:"Un agendador convencional se detiene en las citas. Forge es una columna de gestion de consultas integrada con camaras de compensacion, con soporte internacional, una capa operativa de IA, un ciclo de ingresos completo (837/835/apelaciones/COB/antiguedad), financiamiento de pacientes, interoperabilidad grado ONC, y un enrutador nativo hacia EMRs de especialidad — en un registro unico, seguro y aislado por RLS.",
+    price_eyebrow:"Precios",price_h2:"Planes que escalan con <em>su consulta.</em>",price_popular:"Mas popular",price_select:"Comenzar",price_contact:"Contactar ventas",
+    t1_tier:"Inicial",t1_period:"/proveedor/mes",t1_desc:"Para practicantes individuales y consultas pequenas que comienzan con la red PatientTrac.",t1_f1:"Un proveedor",t1_f2:"Agendamiento y admision completos",t1_f3:"Verificacion de seguros",t1_f4:"Enrutamiento de encuentros",t1_f5:"Generacion de reclamaciones 837P",
+    t2_tier:"Profesional",t2_period:"/mes (hasta 5 proveedores)",t2_desc:"Para consultas en crecimiento que necesitan agendamiento multiproveedor y funciones avanzadas de IA.",t2_f1:"Hasta 5 proveedores",t2_f2:"Todo lo del plan Inicial",t2_f3:"IA de prediccion de ausencias",t2_f4:"IA de agendamiento inteligente",t2_f5:"Puntuacion de riesgo de rechazo",
+    t3_tier:"Empresarial",t3_period:"/mes (proveedores ilimitados)",t3_desc:"Para consultas grandes y grupos que requieren proveedores ilimitados y soporte dedicado.",t3_f1:"Proveedores ilimitados",t3_f2:"Todo lo del plan Profesional",t3_f3:"Soporte prioritario",t3_f4:"Integraciones personalizadas",t3_f5:"Incorporacion dedicada",
+    cta_h2:"Listo para construir con <em>Forge?</em>",cta_p:"Comience a agendar, registrar pacientes y generar encuentros hoy.",
+    foot_blurb:"The Clinical Intelligence Network — un conjunto conectado de plataformas clínicas con IA sobre una columna de datos segura.",
+    foot_platform:"Plataforma",foot_company:"Empresa",foot_contact:"Contacto",
+    foot_legal_h:"Legal",foot_privacy:"Politica de privacidad",foot_terms:"Terminos del servicio",foot_hipaa:"Aviso HIPAA",foot_ba:"Acuerdo de Asociado Comercial",
+    foot_rights:"Todos los derechos reservados.",foot_compliance:"Cumple HIPAA · ONC §170.315"
+  },
+  fr:{
+    nav_about:"Societe",nav_products:"Plateforme",nav_pricing:"Tarifs",nav_compare:"Comparer",nav_contact:"Contact",nav_cta:"Ouvrir Forge",
+    hero_eyebrow:"Gestion des Patients, Planification et Cycle de Revenus",
+    hero_h1:"<em>Forge</em> — le centre de commandement operationnel du reseau.",
+    hero_lede:"Chaque patient, rencontre et dollar prend naissance ici — avec une demographie internationale, une intelligence de planification par IA, un cycle de revenus X12 837P/835 complet, et le routeur de rencontres qui lance chaque appli de specialite sur un seul dossier.",
+    cta_launch:"Ouvrir Forge",cta_pricing:"Voir les tarifs",
+    desc_eyebrow:"A propos de Forge",desc_h2:"Pas un planificateur <em>ordinaire.</em>",
+    desc_p:"Forge est une colonne vertebrale de gestion de cabinet integree aux chambres de compensation, avec support international, une couche operationnelle d'IA, un cycle de revenus complet (837/835/appels/COB/anciennete), financement patient, interoperabilite de niveau ONC, et un routeur natif vers les DME de specialite — le tout sur un seul dossier securise et isole par RLS. Ce n'est pas un planificateur ordinaire.",
+    wf_eyebrow:"Flux de travail",wf_h2:"De l'enregistrement au <em>routage des rencontres.</em>",
+    wf1_t:"Gestion des patients",wf1_p:"Dossier patient maitre (55 champs) avec support EE. UU. + 16 pays : formats de telephone, postal, province et ID fiscal par pays (SSN, ITIN, EIN, NIT, RFC, CPF, RIF), capture de passeport, adresse intelligente avec geo-intelligence (recherche par code postal auto-remplit ville + etat/province).",
+    wf2_t:"Planification et accueil",wf2_p:"Calendrier multi-praticiens et multi-sites par glisser-deposer ; 23 types de rendez-vous configurables chacun associe a un CPT, tarif, POS, duree et couleur. Accueil en quatre etapes : arrivee, verification d'assurance, ouverture de rencontre, routage vers l'appli de specialite.",
+    wf3_t:"Le routeur de rencontres",wf3_p:"cr.open_encounter() genere un encounter_id ; checkin_and_route() resout la specialite du praticien contre les modules actives et lance la bonne appli (Revela / Mind / ASC / Continuum) avec un jeton cross-app portant encounter_id, patient_id, provider_id — sans deuxieme connexion, sans ressaisie de dossier.",
+    wf4_t:"Reclamations electroniques (837P)",wf4_p:"Generation reelle de X12 837P (005010X222A1) — construit la reclamation professionnelle complete et la transmet a la chambre de compensation par OAuth2 (Optum / Change Healthcare). Passerelles internationales modulaires : EE. UU. 837P en direct, Colombie RIPS/DIAN et Royaume-Uni NHS enregistre.",
+    wf5_t:"ERA/835 et cycle de revenus",wf5_p:"Importe les remises, analyse BPR/TRN/CLP/CAS, associe automatiquement aux superbills, enregistre paiements et ajustements. Espace de travail a neuf onglets : superbills, codage IA, EDI, ERA, rejets, anciennete C/R (0-30/31-60/61-90/91-120/120+), pre-autorisation, appels rediges par IA, reclamations secondaires/COB.",
+    wf6_t:"Propositions et financement",wf6_p:"Estimations de couts detaillees par procedure assistees par IA avec options de financement (acompte, mensualite, duree, remise), recit-resume patient par IA, PDF de marque, et livraison par courriel/lien securise. Concu pour la conversion elective/paiement direct.",
+    feat_eyebrow:"Fonctionnalites",feat_h2:"Concu pour le <em>coeur operationnel.</em>",
+    f1_t:"Demographie internationale a 55 champs",f1_p:"Support EE. UU. + 16 pays avec ID fiscaux par pays, capture de passeport et geo-intelligence d'adresse.",
+    f2_t:"23 types de rendez-vous",f2_p:"Chacun associe a un CPT, tarif, POS, duree et couleur avec planification multi-praticiens par glisser-deposer.",
+    f3_t:"Routage cross-app des rencontres",f3_p:"Lancement en un clic vers Revela, Mind, ASC ou Continuum avec authentification par jeton — sans reconnexion, sans ressaisie de dossier.",
+    f4_t:"Moteur de reclamations X12 837P",f4_p:"Reclamations professionnelles reelles avec passerelles internationales modulaires (EE. UU. Optum/Change Healthcare, Colombie RIPS, Royaume-Uni NHS).",
+    f5_t:"Auto-enregistrement ERA/835",f5_p:"Analyse des remises, association automatique aux superbills, enregistrement des paiements et ajustements.",
+    f6_t:"Dossiers et ROI",f6_p:"Droit d'acces HIPAA avec capture de ROI signe, logique de frais post-Ciox, entrees de divulgation a chaine de hachage dans le journal d'audit PHI.",
+    f7_t:"Interoperabilite ONC",f7_p:"Generation C-CDA, reconciliation medicamenteuse, export EHI (individuel + en masse), modeles de consentement, RBAC (6 roles x 8 ressources).",
+    f8_t:"ProposalBuilder",f8_p:"Propositions patient redigees par IA avec detail des procedures, termes de financement, PDF de marque et livraison securisee.",
+    ai_eyebrow:"Intelligence clinique",ai_h2:"IA integree dans <em>la planification et les revenus.</em>",
+    ai1_t:"Prediction d'absences",ai1_p:"Score de risque 1-10 a la reservation base sur le taux d'absences anterieur, statut de paiement direct, jour/heure, type de visite, assurance, recence, nouveau vs. etabli ; risque eleve declenche des rappels supplementaires, critique suggere un double-rendez-vous.",
+    ai2_t:"Planification intelligente",ai2_p:"Analyse une fenetre de 14 jours et classe 3 creneaux optimaux avec justifications — verifiant conflits, risque d'absence, regles d'intervalle de visite de l'assurance et schemas de specialite.",
+    ai3_t:"Accueil pre-visite par IA",ai3_p:"Lien tokenise de 48 heures pour le patient qui recueille plainte principale, medicaments, symptomes, severite ; renvoie un resume clinique, ICD-10 suggere et triage de drapeaux rouges (emergent/urgent/routine) qui pre-remplit la rencontre.",
+    ai4_t:"Intelligence du temps d'attente",ai4_p:"Horodatages d'arrivee/appele/vu/depart ; tableaux de bord par praticien, jour, heure ; message automatique de recuperation de service lorsque l'attente depasse 20 minutes.",
+    ben_eyebrow:"Avantages",ben_h2:"Pourquoi les cabinets choisissent <em>Forge.</em>",
+    b1_t:"Un dossier, un reseau",b1_p:"L'encounter_id genere ici circule dans chaque appli de specialite. Pas de ressaisie, pas de dossiers en double, pas de reconciliation de donnees.",
+    b2_t:"Revenus captes de bout en bout",b2_p:"De la saisie des charges a la transmission 837P, l'enregistrement ERA, la gestion des refus, l'anciennete C/R et les appels rediges par IA — rien ne passe entre les mailles.",
+    b3_t:"International des le premier jour",b3_p:"Demographie de 16 pays, passerelles de facturation multi-region, trilingue (EN/ES/FR) sur chaque ecran.",
+    intw_eyebrow:"Le parcours connecte",intw_h2:"Comment ca <em>s'entrelace.</em>",intw_p:"Chaque patient, rencontre et dollar prend naissance dans Forge. Le routeur de rencontres lance Revela, Mind, ASC ou Continuum avec un jeton cross-app — sans deuxieme connexion, sans ressaisie de dossier. Les superbills se remplissent automatiquement a la cloture de la rencontre. Les remises ERA s'enregistrent en retour. ProposalBuilder combine les honoraires professionnels avec les couts d'installation ASC en un seul devis patient. Forge est la ou le reseau commence et ou les revenus se resolvent.",
+    diff_eyebrow:"Pourquoi c'est different",diff_h2:"Pas un <em>planificateur ordinaire.</em>",diff_p:"Un planificateur ordinaire s'arrete aux rendez-vous. Forge est une colonne vertebrale de gestion de cabinet integree aux chambres de compensation, avec support international, une couche operationnelle d'IA, un cycle de revenus complet (837/835/appels/COB/anciennete), financement patient, interoperabilite de niveau ONC, et un routeur natif vers les DME de specialite — sur un seul dossier securise et isole par RLS.",
+    price_eyebrow:"Tarifs",price_h2:"Des plans qui evoluent avec <em>votre cabinet.</em>",price_popular:"Le plus populaire",price_select:"Commencer",price_contact:"Contacter les ventes",
+    t1_tier:"Initial",t1_period:"/praticien/mois",t1_desc:"Pour les praticiens individuels et les petits cabinets qui commencent avec le reseau PatientTrac.",t1_f1:"Un praticien",t1_f2:"Planification et accueil complets",t1_f3:"Verification d'assurance",t1_f4:"Routage des rencontres",t1_f5:"Generation de reclamations 837P",
+    t2_tier:"Professionnel",t2_period:"/mois (jusqu'a 5 praticiens)",t2_desc:"Pour les cabinets en croissance ayant besoin de planification multi-praticiens et de fonctionnalites IA avancees.",t2_f1:"Jusqu'a 5 praticiens",t2_f2:"Tout du plan Initial",t2_f3:"IA de prediction d'absences",t2_f4:"IA de planification intelligente",t2_f5:"Notation du risque de refus",
+    t3_tier:"Entreprise",t3_period:"/mois (praticiens illimites)",t3_desc:"Pour les grands cabinets et les groupes necessitant des praticiens illimites et un support dedie.",t3_f1:"Praticiens illimites",t3_f2:"Tout du plan Professionnel",t3_f3:"Support prioritaire",t3_f4:"Integrations personnalisees",t3_f5:"Integration dediee",
+    cta_h2:"Pret a construire avec <em>Forge ?</em>",cta_p:"Commencez a planifier, enregistrer des patients et generer des rencontres des aujourd'hui.",
+    foot_blurb:"The Clinical Intelligence Network — un ensemble connecté de plateformes cliniques pilotées par l'IA sur une colonne de donnees securisee.",
+    foot_platform:"Plateforme",foot_company:"Societe",foot_contact:"Contact",
+    foot_legal_h:"Mentions legales",foot_privacy:"Politique de confidentialite",foot_terms:"Conditions d'utilisation",foot_hipaa:"Avis HIPAA",foot_ba:"Accord de sous-traitance (BAA)",
+    foot_rights:"Tous droits reserves.",foot_compliance:"Conforme HIPAA · ONC §170.315"
+  }
+};
+let LANG='en';
+function applyLang(lang){
+  if(!I18N[lang])lang='en';LANG=lang;const d=I18N[lang];document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k]!=null)el.textContent=d[k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(d[k]!=null)el.innerHTML=d[k];});
+  document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('active',b.getAttribute('data-lang')===lang);});
+  try{localStorage.setItem('ptemr_lang',lang);}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>{b.addEventListener('click',()=>applyLang(b.getAttribute('data-lang')));});
+const topbar=document.getElementById('topbar');
+window.addEventListener('scroll',()=>{topbar.classList.toggle('scrolled',window.scrollY>40);});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.getElementById('year').textContent=new Date().getFullYear();
+(function init(){let s=null;try{s=localStorage.getItem('ptemr_lang');}catch(e){}if(!s){const n=(navigator.language||'en').slice(0,2);if(['es','fr'].includes(n))s=n;}applyLang(s||'en');})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pricing — PatientTrac</title>
+<meta name="description" content="Transparent pricing for every PatientTrac platform — Forge, Revela, Mind, ASC, Continuum, Profiler, and Companion. From $299/provider/month." />
+<meta property="og:title" content="Pricing — PatientTrac" />
+<meta property="og:description" content="Transparent pricing for every PatientTrac platform. From $299/provider/month." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:        #060e1c;
+    --bg:          #081426;
+    --bg-raised:   #0c1c34;
+    --bg-card:     #0f2240;
+    --bg-card-2:   #102a4d;
+    --cyan:        #00d4ff;
+    --teal:        #0097a7;
+    --sky:         #4db6e5;
+    --gold:        #c9a96e;
+    --gold-logo:   #d4af37;
+    --text:        #e7f1fc;
+    --text-soft:   #a4b8d2;
+    --text-mute:   #6a809d;
+    --line:        rgba(0,212,255,0.14);
+    --line-soft:   rgba(167,184,210,0.12);
+    --gold-line:   rgba(212,175,55,0.55);
+    --radius:      16px;
+    --maxw:        1180px;
+    --ease:        cubic-bezier(.22,.61,.36,1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body {
+    font-family:'DM Sans',system-ui,sans-serif;
+    background:var(--navy);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:''; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1100px 700px at 78% -8%, rgba(0,151,167,0.16), transparent 60%),
+      radial-gradient(900px 600px at 8% 18%, rgba(0,212,255,0.10), transparent 55%),
+      radial-gradient(800px 800px at 50% 120%, rgba(212,175,55,0.06), transparent 60%),
+      var(--navy);
+  }
+  body::after{
+    content:''; position:fixed; inset:0; z-index:-1; opacity:.5; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.035) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+  }
+
+  h1,h2,h3,h4 { font-family:'Rajdhani',sans-serif; font-weight:700; line-height:1.06; letter-spacing:-0.01em; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:rgba(0,212,255,0.28); color:#fff; }
+  .wrap { max-width:var(--maxw); margin:0 auto; padding:0 26px; }
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--cyan); margin-bottom:18px; display:inline-block;
+  }
+  .eyebrow.gold{ color:var(--gold); }
+  section { padding:118px 0; position:relative; }
+  .lede { font-size:1.12rem; color:var(--text-soft); max-width:680px; }
+
+  /* ---------- TOPBAR ---------- */
+  #topbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:18px 0; transition:all .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  #topbar.scrolled{
+    background:rgba(6,14,28,0.82); backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line); padding:12px 0;
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{
+    font-size:.86rem; color:var(--text-soft); font-weight:500; position:relative; transition:color .25s;
+  }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--cyan); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-links a.active{ color:var(--cyan); }
+  .nav-links a.active::after{ width:100%; }
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+
+  /* language switch */
+  .lang{ display:flex; gap:2px; border:1px solid var(--line); border-radius:999px; padding:3px; }
+  .lang button{
+    font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--text-mute);
+    background:none; border:none; cursor:pointer; padding:5px 9px; border-radius:999px; transition:all .2s;
+  }
+  .lang button.active{ background:var(--cyan); color:var(--navy); font-weight:500; }
+  .lang button:hover:not(.active){ color:var(--text); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; font-family:'DM Sans',sans-serif;
+    font-weight:600; font-size:.9rem; padding:12px 22px; border-radius:999px; cursor:pointer;
+    border:1px solid transparent; transition:all .28s var(--ease); white-space:nowrap;
+  }
+  .btn-primary{ background:linear-gradient(135deg,var(--cyan),var(--teal)); color:var(--navy); box-shadow:0 8px 30px rgba(0,212,255,0.22); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 38px rgba(0,212,255,0.34); }
+  .btn-ghost{ border-color:var(--line); color:var(--text); background:rgba(255,255,255,0.02); }
+  .btn-ghost:hover{ border-color:var(--cyan); color:var(--cyan); }
+
+  /* ---------- LOGO ---------- */
+  .logo{ display:flex; align-items:center; gap:13px; }
+  .logo svg{ width:42px; height:42px; flex-shrink:0; }
+  .logo .word{ display:flex; flex-direction:column; line-height:1; }
+  .logo .word .name{ font-family:'Poppins',sans-serif; font-weight:700; font-size:1.42rem; letter-spacing:-0.01em; }
+  .logo .word .name .p1{ color:#eef5ff; }
+  .logo .word .name .p2{ color:var(--gold-logo); }
+  .logo .word .tag{
+    display:flex; align-items:center; gap:7px; margin-top:5px;
+    font-family:'DM Mono',monospace; font-size:.54rem; letter-spacing:.2em; text-transform:uppercase; color:var(--sky); white-space:nowrap;
+  }
+  .logo .word .tag::before,.logo .word .tag::after{ content:''; height:1px; width:14px; background:var(--gold-logo); opacity:.8; }
+  .logo.sm .word .tag{ display:none; }
+
+  /* ---------- HERO ---------- */
+  #pricing-hero{ padding:172px 0 80px; position:relative; text-align:center; }
+  #pricing-hero .wrap{ position:relative; z-index:1; }
+  #pricing-hero h1{ font-size:clamp(2.4rem,5vw,3.8rem); margin:14px 0 22px; }
+  #pricing-hero h1 em{ font-style:normal; background:linear-gradient(120deg,var(--cyan),var(--sky)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  #pricing-hero .lede{ margin:0 auto 34px; max-width:720px; font-size:1.18rem; }
+
+  /* ---------- SECTION HEADER ---------- */
+  .sec-head{ max-width:760px; margin-bottom:56px; }
+  .sec-head h2{ font-size:clamp(2rem,3.8vw,2.9rem); margin-bottom:18px; }
+  .sec-head h2 em{ font-style:normal; color:var(--cyan); }
+
+  /* ---------- PRODUCT NAV ---------- */
+  .pricing-nav{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:56px; }
+  .pricing-nav a{
+    font-family:'DM Mono',monospace; font-size:.76rem; letter-spacing:.1em; text-transform:uppercase;
+    padding:8px 18px; border-radius:999px; border:1px solid var(--line); color:var(--text-soft);
+    background:rgba(15,34,64,0.3); transition:all .25s var(--ease);
+  }
+  .pricing-nav a:hover{ border-color:var(--cyan); color:var(--cyan); }
+
+  /* ---------- PRICING SECTIONS ---------- */
+  .pricing-section{ padding:80px 0; position:relative; }
+  .pricing-section:nth-child(even){ background:linear-gradient(180deg,transparent,rgba(12,28,52,0.4),transparent); }
+  .pricing-section .sec-head{ text-align:center; margin-left:auto; margin-right:auto; }
+  .pricing-section .sec-head .eyebrow{ color:var(--section-accent,var(--cyan)); }
+
+  /* tier cards */
+  .tier-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-bottom:36px; }
+  .tier-card{
+    border:1px solid var(--line); border-radius:var(--radius); padding:32px 28px; background:var(--bg-card);
+    display:flex; flex-direction:column; position:relative; transition:all .35s var(--ease);
+  }
+  .tier-card:hover{ transform:translateY(-4px); box-shadow:0 18px 50px rgba(0,0,0,0.4); }
+  .tier-card.popular{
+    border-color:var(--section-accent,var(--cyan));
+    box-shadow:0 0 40px rgba(0,212,255,0.10);
+  }
+  .tier-badge{
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    font-family:'DM Mono',monospace; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase;
+    padding:5px 14px; border-radius:999px;
+    background:var(--section-accent,var(--cyan)); color:var(--navy); font-weight:600;
+    white-space:nowrap;
+  }
+  .tier-name{
+    font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1.4rem; margin-bottom:8px;
+  }
+  .tier-price{
+    font-family:'Rajdhani',sans-serif; font-weight:700; font-size:2.6rem; line-height:1;
+    color:var(--section-accent,var(--cyan)); margin-bottom:4px;
+  }
+  .tier-price .per{
+    font-family:'DM Sans',sans-serif; font-weight:400; font-size:.85rem; color:var(--text-soft);
+  }
+  .tier-scope{
+    font-family:'DM Mono',monospace; font-size:.74rem; color:var(--text-mute); letter-spacing:.06em;
+    margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--line);
+  }
+  .tier-features{ list-style:none; display:grid; gap:10px; margin-bottom:24px; flex:1; }
+  .tier-features li{
+    position:relative; padding-left:20px; font-size:.88rem; color:var(--text-soft);
+  }
+  .tier-features li::before{
+    content:''; position:absolute; left:0; top:8px; width:8px; height:8px; border-radius:2px;
+    background:var(--section-accent,var(--cyan));
+  }
+  .tier-ctas{ display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; }
+  .tier-ctas .btn{ flex:1; justify-content:center; font-size:.82rem; padding:10px 16px; }
+
+  /* add-ons */
+  .addons{ border:1px solid var(--line); border-radius:var(--radius); padding:28px; background:rgba(15,34,64,0.4); margin-top:10px; }
+  .addons h4{
+    font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--section-accent,var(--cyan)); margin-bottom:16px;
+  }
+  .addon-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+  .addon-item{
+    border:1px solid var(--line); border-radius:12px; padding:18px; background:rgba(15,34,64,0.3);
+  }
+  .addon-item .addon-name{ font-weight:600; font-size:.94rem; margin-bottom:4px; }
+  .addon-item .addon-price{
+    font-family:'DM Mono',monospace; font-size:.82rem; color:var(--section-accent,var(--cyan));
+    margin-bottom:6px;
+  }
+  .addon-item .addon-desc{ font-size:.84rem; color:var(--text-mute); }
+
+  /* Companion special table */
+  .companion-table{ width:100%; border-collapse:collapse; margin-bottom:24px; }
+  .companion-table th{
+    font-family:'DM Mono',monospace; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--text-mute); text-align:left; padding:10px 16px; border-bottom:1px solid var(--line);
+  }
+  .companion-table td{
+    padding:14px 16px; border-bottom:1px solid var(--line); font-size:.9rem; color:var(--text-soft);
+    vertical-align:top;
+  }
+  .companion-table tr:last-child td{ border-bottom:none; }
+  .companion-table .price-cell{
+    font-family:'DM Mono',monospace; font-size:.88rem; color:var(--section-accent,var(--sky));
+    white-space:nowrap;
+  }
+  .companion-table .tier-name-cell{ font-weight:600; color:var(--text); }
+  .companion-table .deferred{ color:var(--text-mute); font-style:italic; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:64px 0 36px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; margin-bottom:46px; }
+  .foot-brand p{ color:var(--text-soft); font-size:.9rem; margin-top:16px; max-width:300px; }
+  .foot-col h5{ font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-mute); margin-bottom:16px; }
+  .foot-col a{ display:block; color:var(--text-soft); font-size:.88rem; margin-bottom:10px; transition:color .2s; }
+  .foot-col a:hover{ color:var(--cyan); }
+  .foot-bottom{ border-top:1px solid var(--line); padding-top:26px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+  .foot-bottom p{ font-family:'DM Mono',monospace; font-size:.74rem; color:var(--text-mute); }
+  .foot-bottom .legal{ display:flex; gap:20px; }
+  .foot-bottom .legal a{ font-size:.78rem; color:var(--text-mute); }
+  .foot-bottom .legal a:hover{ color:var(--text-soft); }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- RESPONSIVE ---------- */
+  .menu-toggle{ display:none; background:none; border:none; color:var(--text); cursor:pointer; }
+  @media (max-width:980px){
+    .tier-grid{ grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto; }
+    .nav-links{ display:none; }
+    .menu-toggle{ display:block; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .addon-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width:560px){
+    section,.pricing-section{ padding:80px 0; }
+    .foot-grid{ grid-template-columns:1fr; }
+    .logo .word .name{ font-size:1.2rem; }
+    .pricing-nav{ gap:6px; }
+    .pricing-nav a{ font-size:.66rem; padding:6px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOPBAR ================= -->
+<header id="topbar">
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="PatientTrac home">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="pgrad" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/>
+          </linearGradient>
+        </defs>
+        <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z"
+              fill="url(#pgrad)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+        <g stroke="#d4af37" stroke-width="0.9" opacity="0.9">
+          <line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/>
+          <line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/>
+          <line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/>
+          <line x1="38" y1="20" x2="30" y2="26"/><line x1="24" y1="22" x2="30" y2="26"/>
+        </g>
+        <g>
+          <circle cx="18" cy="13" r="2.1" fill="#fff"/>
+          <circle cx="31" cy="11" r="2.1" fill="#d4af37"/>
+          <circle cx="38" cy="20" r="2.1" fill="#fff"/>
+          <circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/>
+          <circle cx="30" cy="26" r="1.9" fill="#d4af37"/>
+          <circle cx="20" cy="34" r="1.9" fill="#fff"/>
+        </g>
+      </svg>
+      <span class="word">
+        <span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span>
+        <span class="tag">The Clinical Intelligence Network</span>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html#about" data-i18n="nav_about">Company</a>
+      <a href="index.html#products" data-i18n="nav_products">Platform</a>
+      <a href="pricing.html" class="active" data-i18n="nav_pricing">Pricing</a>
+      <a href="compare.html" data-i18n="nav_compare">Compare</a>
+      <a href="index.html#contact" data-i18n="nav_contact_link">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="fr">FR</button>
+      </div>
+      <a href="index.html#roadmap" class="btn btn-primary" data-i18n="nav_cta">Join the Waitlist</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="pricing-hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="pr_hero_eyebrow">Pricing</span>
+      <h1 data-i18n-html="pr_hero_h1"><em>Transparent pricing</em> for every platform.</h1>
+      <p class="lede" data-i18n="pr_hero_lede">Each PatientTrac application is priced independently. Start with one, connect more as your practice grows — every app shares the same patient, encounter, and security layer at no extra integration cost.</p>
+    </div>
+    <div class="pricing-nav reveal">
+      <a href="#forge">Forge</a>
+      <a href="#revela">Revela</a>
+      <a href="#mind">Mind</a>
+      <a href="#asc">ASC</a>
+      <a href="#continuum">Continuum</a>
+      <a href="#profiler">Profiler</a>
+      <a href="#companion">Companion</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORGE ================= -->
+<div class="pricing-section" id="forge" style="--section-accent:#00d4ff;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">PatientTrac Forge</span>
+      <h2 data-i18n-html="pr_forge_h2">Forge — <em data-i18n="pr_forge_h2_em">Patient Management, Scheduling & Revenue-Cycle Hub</em></h2>
+      <p class="lede" data-i18n="pr_forge_lede">The operational foundation of the PatientTrac network. From $299/provider/month.</p>
+    </div>
+    <div class="tier-grid reveal">
+      <!-- Essential -->
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_essential">Essential</div>
+        <div class="tier-price">$299 <span class="per" data-i18n="pr_per_provider_mo">/provider/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_1_provider">1 provider</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_forge_e1">Patient registration & demographics</li>
+          <li data-i18n="pr_forge_e2">Multi-provider scheduling</li>
+          <li data-i18n="pr_forge_e3">Insurance & billing fundamentals</li>
+          <li data-i18n="pr_forge_e4">Role-based access with TOTP MFA</li>
+          <li data-i18n="pr_forge_e5">Encounter creation & routing</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracforge.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <!-- Professional -->
+      <div class="tier-card popular">
+        <span class="tier-badge" data-i18n="pr_most_popular">Most Popular</span>
+        <div class="tier-name" data-i18n="pr_tier_professional">Professional</div>
+        <div class="tier-price">$699 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_5_providers">Up to 5 providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_forge_p1">Everything in Essential</li>
+          <li data-i18n="pr_forge_p2">Up to 5 providers on one account</li>
+          <li data-i18n="pr_forge_p3">AI no-show prediction & smart scheduling</li>
+          <li data-i18n="pr_forge_p4">AI denial-risk scoring</li>
+          <li data-i18n="pr_forge_p5">Priority support</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracforge.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <!-- Enterprise -->
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_enterprise">Enterprise</div>
+        <div class="tier-price">$1,499 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_unlimited">Unlimited providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_forge_x1">Everything in Professional</li>
+          <li data-i18n="pr_forge_x2">Unlimited providers</li>
+          <li data-i18n="pr_forge_x3">Multi-site & multi-location</li>
+          <li data-i18n="pr_forge_x4">Custom integrations & onboarding</li>
+          <li data-i18n="pr_forge_x5">Dedicated account manager</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracforge.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= REVELA ================= -->
+<div class="pricing-section" id="revela" style="--section-accent:#c9a96e;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">PatientTrac Revela</span>
+      <h2 data-i18n-html="pr_revela_h2">Revela — <em data-i18n="pr_revela_h2_em">Cosmetic Surgery & Beauty EMR</em></h2>
+      <p class="lede" data-i18n="pr_revela_lede">Premium documentation for aesthetic and cosmetic care. Integration-ready with Nextech, ModMed, and Aesthetic Record.</p>
+    </div>
+    <div class="tier-grid reveal">
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_essential">Essential</div>
+        <div class="tier-price">$299 <span class="per" data-i18n="pr_per_provider_mo">/provider/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_1_provider">1 provider</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_revela_e1">Specialty operative & post-op note templates</li>
+          <li data-i18n="pr_revela_e2">Breast & body exam documentation</li>
+          <li data-i18n="pr_revela_e3">Shared encounter access via Forge</li>
+          <li data-i18n="pr_revela_e4">Patient Profiler intake pairing</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttrac-revela.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card popular">
+        <span class="tier-badge" data-i18n="pr_most_popular">Most Popular</span>
+        <div class="tier-name" data-i18n="pr_tier_professional">Professional</div>
+        <div class="tier-price">$699 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_5_providers">Up to 5 providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_revela_p1">Everything in Essential</li>
+          <li data-i18n="pr_revela_p2">Up to 5 providers on one account</li>
+          <li data-i18n="pr_revela_p3">Integration-ready with third-party PMSs</li>
+          <li data-i18n="pr_revela_p4">Priority support</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttrac-revela.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_enterprise">Enterprise</div>
+        <div class="tier-price">$1,499 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_unlimited">Unlimited providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_revela_x1">Everything in Professional</li>
+          <li data-i18n="pr_revela_x2">Unlimited providers</li>
+          <li data-i18n="pr_revela_x3">Custom integrations & onboarding</li>
+          <li data-i18n="pr_revela_x4">Dedicated account manager</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttrac-revela.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+    </div>
+    <div class="addons reveal">
+      <h4 data-i18n="pr_addons">Add-ons</h4>
+      <div class="addon-grid">
+        <div class="addon-item">
+          <div class="addon-name" data-i18n="pr_revela_ao1_name">Data Migration</div>
+          <div class="addon-price" data-i18n="pr_revela_ao1_price">$1,500 one-time</div>
+          <div class="addon-desc" data-i18n="pr_revela_ao1_desc">Full migration of existing patient and clinical records into the PatientTrac spine.</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-name" data-i18n="pr_revela_ao2_name">Custom AI Workflows</div>
+          <div class="addon-price" data-i18n="pr_revela_ao2_price">$2,500 setup + $199/mo</div>
+          <div class="addon-desc" data-i18n="pr_revela_ao2_desc">Bespoke AI-powered clinical workflows tailored to your practice's aesthetic specialty.</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-name" data-i18n="pr_revela_ao3_name">Forge Integration</div>
+          <div class="addon-price" data-i18n="pr_revela_ao3_price">Included</div>
+          <div class="addon-desc" data-i18n="pr_revela_ao3_desc">Revela reads and writes the shared encounter from Forge at no additional charge.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MIND ================= -->
+<div class="pricing-section" id="mind" style="--section-accent:#4db6e5;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">PatientTrac Mind</span>
+      <h2 data-i18n-html="pr_mind_h2">Mind — <em data-i18n="pr_mind_h2_em">Neurobehavioral Health EMR</em></h2>
+      <p class="lede" data-i18n="pr_mind_lede">One record across psychiatry, psychology, and neurology. DSM-5 reference data built in.</p>
+    </div>
+    <div class="tier-grid reveal">
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_essential">Essential</div>
+        <div class="tier-price">$299 <span class="per" data-i18n="pr_per_provider_mo">/provider/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_1_provider">1 provider</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_mind_e1">Psychiatric evaluation & follow-up forms</li>
+          <li data-i18n="pr_mind_e2">Medication management & inpatient notes</li>
+          <li data-i18n="pr_mind_e3">DSM-5 diagnosis reference</li>
+          <li data-i18n="pr_mind_e4">Secure login with TOTP MFA</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracmind.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card popular">
+        <span class="tier-badge" data-i18n="pr_most_popular">Most Popular</span>
+        <div class="tier-name" data-i18n="pr_tier_professional">Professional</div>
+        <div class="tier-price">$699 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_5_providers">Up to 5 providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_mind_p1">Everything in Essential</li>
+          <li data-i18n="pr_mind_p2">Up to 5 providers on one account</li>
+          <li data-i18n="pr_mind_p3">AI-assisted clinical documentation</li>
+          <li data-i18n="pr_mind_p4">Priority support</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracmind.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_enterprise">Enterprise</div>
+        <div class="tier-price">$1,499 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_unlimited">Unlimited providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_mind_x1">Everything in Professional</li>
+          <li data-i18n="pr_mind_x2">Unlimited providers</li>
+          <li data-i18n="pr_mind_x3">Multi-site & multi-location</li>
+          <li data-i18n="pr_mind_x4">Custom integrations & onboarding</li>
+          <li data-i18n="pr_mind_x5">Dedicated account manager</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracmind.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+    </div>
+    <div class="addons reveal">
+      <h4 data-i18n="pr_addons">Add-ons</h4>
+      <div class="addon-grid">
+        <div class="addon-item">
+          <div class="addon-name" data-i18n="pr_mind_ao1_name">Revela Module</div>
+          <div class="addon-price" data-i18n="pr_mind_ao1_price">+$299/mo</div>
+          <div class="addon-desc" data-i18n="pr_mind_ao1_desc">Add cosmetic and aesthetic documentation capabilities to your Mind installation.</div>
+        </div>
+        <div class="addon-item">
+          <div class="addon-name" data-i18n="pr_mind_ao2_name">Custom AI Training</div>
+          <div class="addon-price" data-i18n="pr_mind_ao2_price">From $2,500</div>
+          <div class="addon-desc" data-i18n="pr_mind_ao2_desc">Custom AI model training tailored to your practice's neurobehavioral specialty workflows.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ASC ================= -->
+<div class="pricing-section" id="asc" style="--section-accent:#0097a7;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">PatientTrac ASC</span>
+      <h2 data-i18n-html="pr_asc_h2">ASC — <em data-i18n="pr_asc_h2_em">Ambulatory Surgery Center Operations</em></h2>
+      <p class="lede" data-i18n="pr_asc_lede">Real-time visibility across cases, rooms, supplies, and revenue. Facility-scoped pricing.</p>
+    </div>
+    <div class="tier-grid reveal">
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_starter">Starter</div>
+        <div class="tier-price">$299 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_asc_scope1">1 center, up to 2 ORs</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_asc_e1">Equipment catalog with sterile workflow</li>
+          <li data-i18n="pr_asc_e2">Case scheduling & room management</li>
+          <li data-i18n="pr_asc_e3">Medication & DEA logging</li>
+          <li data-i18n="pr_asc_e4">Preference cards</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracsurgery.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card popular">
+        <span class="tier-badge" data-i18n="pr_most_popular">Most Popular</span>
+        <div class="tier-name" data-i18n="pr_tier_professional">Professional</div>
+        <div class="tier-price">$699 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_asc_scope2">Multi-suite, single center</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_asc_p1">Everything in Starter</li>
+          <li data-i18n="pr_asc_p2">Multi-suite OR management</li>
+          <li data-i18n="pr_asc_p3">AAMI ST79-aligned sterile processing</li>
+          <li data-i18n="pr_asc_p4">Live case console</li>
+          <li data-i18n="pr_asc_p5">Priority support</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracsurgery.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_enterprise">Enterprise</div>
+        <div class="tier-price">$1,499 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_asc_scope3">Multi-center / network</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_asc_x1">Everything in Professional</li>
+          <li data-i18n="pr_asc_x2">Multi-center network management</li>
+          <li data-i18n="pr_asc_x3">Cross-facility reporting & analytics</li>
+          <li data-i18n="pr_asc_x4">Custom integrations & onboarding</li>
+          <li data-i18n="pr_asc_x5">Dedicated account manager</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracsurgery.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CONTINUUM ================= -->
+<div class="pricing-section" id="continuum" style="--section-accent:#00d4ff;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">PatientTrac Continuum</span>
+      <h2 data-i18n-html="pr_continuum_h2">Continuum — <em data-i18n="pr_continuum_h2_em">Perioperative & Procedural Documentation</em></h2>
+      <p class="lede" data-i18n="pr_continuum_lede">One record for the entire procedural episode. Pre-op through recovery in one place.</p>
+    </div>
+    <div class="tier-grid reveal">
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_essential">Essential</div>
+        <div class="tier-price">$299 <span class="per" data-i18n="pr_per_provider_mo">/provider/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_1_provider">1 provider</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_cont_e1">Full procedural episode documentation</li>
+          <li data-i18n="pr_cont_e2">Pre-op through recovery in one record</li>
+          <li data-i18n="pr_cont_e3">Shared encounter access</li>
+          <li data-i18n="pr_cont_e4">Multi-specialty procedural support</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracsurg.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card popular">
+        <span class="tier-badge" data-i18n="pr_most_popular">Most Popular</span>
+        <div class="tier-name" data-i18n="pr_tier_professional">Professional</div>
+        <div class="tier-price">$699 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_5_providers">Up to 5 providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_cont_p1">Everything in Essential</li>
+          <li data-i18n="pr_cont_p2">Up to 5 providers on one account</li>
+          <li data-i18n="pr_cont_p3">Revenue cycle integration</li>
+          <li data-i18n="pr_cont_p4">Priority support</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracsurg.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_enterprise">Enterprise</div>
+        <div class="tier-price">$1,499 <span class="per" data-i18n="pr_per_mo">/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_scope_unlimited">Unlimited providers</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_cont_x1">Everything in Professional</li>
+          <li data-i18n="pr_cont_x2">Unlimited providers</li>
+          <li data-i18n="pr_cont_x3">Multi-site & multi-location</li>
+          <li data-i18n="pr_cont_x4">Custom integrations & onboarding</li>
+          <li data-i18n="pr_cont_x5">Dedicated account manager</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracsurg.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PROFILER ================= -->
+<div class="pricing-section" id="profiler" style="--section-accent:#c9a96e;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Patient Profiler</span>
+      <h2 data-i18n-html="pr_profiler_h2">Profiler — <em data-i18n="pr_profiler_h2_em">Intelligent Patient Intake Portal</em></h2>
+      <p class="lede" data-i18n="pr_profiler_lede">The patient's front door before the visit. Trilingual, eight-step intake with AI conversational mode.</p>
+    </div>
+    <div class="tier-grid reveal">
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_profiler_t1">Profiler</div>
+        <div class="tier-price" data-i18n-html="pr_profiler_price1"><span style="font-size:.7em;font-weight:400;color:var(--text-soft)">from </span>$149 <span class="per">/location/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_profiler_scope1">Base intake portal</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_profiler_f1">Trilingual (EN/ES/FR) 8-step intake</li>
+          <li data-i18n="pr_profiler_f2">Nine specialty form branches</li>
+          <li data-i18n="pr_profiler_f3">Tokenized links & walk-in mode</li>
+          <li data-i18n="pr_profiler_f4">E-signature consent capture</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracprofiler.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card popular">
+        <span class="tier-badge" data-i18n="pr_recommended">Recommended</span>
+        <div class="tier-name" data-i18n="pr_profiler_t2">Profiler Intelligence</div>
+        <div class="tier-price">+$149 <span class="per" data-i18n="pr_per_loc_mo">/location/mo</span></div>
+        <div class="tier-scope" data-i18n="pr_profiler_scope2">AI add-on ($299 standalone)</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_profiler_ai1">Everything in Profiler</li>
+          <li data-i18n="pr_profiler_ai2">AI conversational intake</li>
+          <li data-i18n="pr_profiler_ai3">AI triage & red-flag detection</li>
+          <li data-i18n="pr_profiler_ai4">Pre-filled encounter for providers</li>
+          <li data-i18n="pr_profiler_ai5">Server-side AI key management</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+          <a href="https://patienttracprofiler.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name" data-i18n="pr_tier_enterprise">Enterprise</div>
+        <div class="tier-price" data-i18n="pr_custom">Custom</div>
+        <div class="tier-scope" data-i18n="pr_profiler_scope3">Multi-location networks</div>
+        <ul class="tier-features">
+          <li data-i18n="pr_profiler_x1">Everything in Profiler Intelligence</li>
+          <li data-i18n="pr_profiler_x2">Volume-based location pricing</li>
+          <li data-i18n="pr_profiler_x3">Custom form branches & workflows</li>
+          <li data-i18n="pr_profiler_x4">Dedicated account manager</li>
+        </ul>
+        <div class="tier-ctas">
+          <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_contact_sales">Contact Sales</a>
+          <a href="https://patienttracprofiler.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= COMPANION ================= -->
+<div class="pricing-section" id="companion" style="--section-accent:#4db6e5;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">PatientTrac Companion</span>
+      <h2 data-i18n-html="pr_companion_h2">Companion — <em data-i18n="pr_companion_h2_em">Patient Engagement & Remote Monitoring</em></h2>
+      <p class="lede" data-i18n="pr_companion_lede">Care continues after the visit. RTM-billable monitoring maps to codes 98975 through 98981.</p>
+    </div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="companion-table">
+        <thead>
+          <tr>
+            <th data-i18n="pr_col_tier">Tier</th>
+            <th data-i18n="pr_col_price">Price</th>
+            <th data-i18n="pr_col_details">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name-cell" data-i18n="pr_comp_engage">Engage</td>
+            <td class="price-cell" data-i18n="pr_comp_engage_price">from $299/site/mo</td>
+            <td data-i18n="pr_comp_engage_detail">Includes 50 active patients; $3 per active patient above 50</td>
+          </tr>
+          <tr>
+            <td class="tier-name-cell" data-i18n="pr_comp_care">Care Monitoring</td>
+            <td class="price-cell" data-i18n="pr_comp_care_price">$699/site/mo</td>
+            <td data-i18n="pr_comp_care_detail">Includes 100 monitored patients; $7 per monitored above 100. RTM-billable (98975-98981)</td>
+          </tr>
+          <tr>
+            <td class="tier-name-cell" data-i18n="pr_comp_recovery">Recovery Episode</td>
+            <td class="price-cell" data-i18n="pr_comp_recovery_price">$29 / $49 / $79</td>
+            <td data-i18n="pr_comp_recovery_detail">30-day / 60-day / 90-day recovery episodes</td>
+          </tr>
+          <tr>
+            <td class="tier-name-cell" data-i18n="pr_comp_rpm">RPM-Ready</td>
+            <td class="price-cell" data-i18n="pr_comp_rpm_price">$25/active patient/mo</td>
+            <td data-i18n="pr_comp_rpm_detail">Software only; devices and services are separate</td>
+          </tr>
+          <tr>
+            <td class="tier-name-cell" data-i18n="pr_tier_enterprise">Enterprise</td>
+            <td class="price-cell" data-i18n="pr_custom">Custom</td>
+            <td data-i18n="pr_comp_enterprise_detail">Multi-site / networks. Contact sales for volume pricing.</td>
+          </tr>
+          <tr>
+            <td class="tier-name-cell deferred" data-i18n="pr_comp_personal">Personal</td>
+            <td class="price-cell deferred" data-i18n="pr_comp_personal_price">Deferred</td>
+            <td class="deferred" data-i18n="pr_comp_personal_detail">Not available in v1. Coming in a future release.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tier-ctas reveal" style="justify-content:center; display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;">
+      <a href="index.html#contact" class="btn btn-ghost" data-i18n="pr_demo">Request a Demo</a>
+      <a href="https://patienttraccompanion.com" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="pr_launch">Launch App</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="logo sm">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="pgrad2" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/>
+              </linearGradient>
+            </defs>
+            <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z" fill="url(#pgrad2)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+            <g stroke="#d4af37" stroke-width="0.9" opacity="0.9"><line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/><line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/><line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/><line x1="38" y1="20" x2="30" y2="26"/></g>
+            <g><circle cx="18" cy="13" r="2.1" fill="#fff"/><circle cx="31" cy="11" r="2.1" fill="#d4af37"/><circle cx="38" cy="20" r="2.1" fill="#fff"/><circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/><circle cx="30" cy="26" r="1.9" fill="#d4af37"/><circle cx="20" cy="34" r="1.9" fill="#fff"/></g>
+          </svg>
+          <span class="word"><span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span></span>
+        </a>
+        <p data-i18n="foot_blurb">The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_platform">Platform</h5>
+        <a href="products/forge.html">Forge</a>
+        <a href="products/revela.html">Revela</a>
+        <a href="products/mind.html">Mind</a>
+        <a href="products/asc.html">ASC</a>
+        <a href="products/continuum.html">Continuum</a>
+        <a href="products/profiler.html">Profiler</a>
+        <a href="products/companion.html">Companion</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_company">Company</h5>
+        <a href="index.html#about" data-i18n="nav_about">Company</a>
+        <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+        <a href="compare.html" data-i18n="nav_compare">Compare</a>
+        <a href="index.html#leadership" data-i18n="foot_leadership">Leadership</a>
+        <a href="index.html#contact" data-i18n="foot_contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_legal_h">Legal</h5>
+        <a href="#" data-i18n="foot_privacy">Privacy Policy</a>
+        <a href="#" data-i18n="foot_terms">Terms of Service</a>
+        <a href="#" data-i18n="foot_hipaa">HIPAA Notice</a>
+        <a href="#" data-i18n="foot_ba">Business Associate Agreement</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; <span id="year"></span> PatientTrac Corp. <span data-i18n="foot_rights">All rights reserved.</span></p>
+      <div class="legal">
+        <span style="font-family:'DM Mono',monospace;font-size:.74rem;color:var(--text-mute);" data-i18n="foot_compliance">HIPAA Compliant &middot; ONC &sect;170.315</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ I18N ============ */
+const I18N = {
+  en: {
+    /* nav & shared */
+    nav_about:"Company", nav_products:"Platform", nav_pricing:"Pricing", nav_compare:"Compare", nav_contact_link:"Contact", nav_cta:"Join the Waitlist",
+    foot_blurb:"The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.",
+    foot_platform:"Platform", foot_company:"Company", foot_leadership:"Leadership", foot_contact:"Contact",
+    foot_legal_h:"Legal", foot_privacy:"Privacy Policy", foot_terms:"Terms of Service", foot_hipaa:"HIPAA Notice", foot_ba:"Business Associate Agreement",
+    foot_rights:"All rights reserved.", foot_compliance:"HIPAA Compliant \u00b7 ONC \u00a7170.315",
+
+    /* hero */
+    pr_hero_eyebrow:"Pricing",
+    pr_hero_h1:"<em>Transparent pricing</em> for every platform.",
+    pr_hero_lede:"Each PatientTrac application is priced independently. Start with one, connect more as your practice grows \u2014 every app shares the same patient, encounter, and security layer at no extra integration cost.",
+
+    /* shared tier labels */
+    pr_tier_essential:"Essential",
+    pr_tier_starter:"Starter",
+    pr_tier_professional:"Professional",
+    pr_tier_enterprise:"Enterprise",
+    pr_per_provider_mo:"/provider/mo",
+    pr_per_mo:"/mo",
+    pr_per_loc_mo:"/location/mo",
+    pr_scope_1_provider:"1 provider",
+    pr_scope_5_providers:"Up to 5 providers",
+    pr_scope_unlimited:"Unlimited providers",
+    pr_most_popular:"Most Popular",
+    pr_recommended:"Recommended",
+    pr_demo:"Request a Demo",
+    pr_launch:"Launch App",
+    pr_addons:"Add-ons",
+    pr_custom:"Custom",
+    pr_contact_sales:"Contact Sales",
+
+    /* Forge */
+    pr_forge_h2:"Forge \u2014 <em>Patient Management, Scheduling & Revenue-Cycle Hub</em>",
+    pr_forge_h2_em:"Patient Management, Scheduling & Revenue-Cycle Hub",
+    pr_forge_lede:"The operational foundation of the PatientTrac network. From $299/provider/month.",
+    pr_forge_e1:"Patient registration & demographics",
+    pr_forge_e2:"Multi-provider scheduling",
+    pr_forge_e3:"Insurance & billing fundamentals",
+    pr_forge_e4:"Role-based access with TOTP MFA",
+    pr_forge_e5:"Encounter creation & routing",
+    pr_forge_p1:"Everything in Essential",
+    pr_forge_p2:"Up to 5 providers on one account",
+    pr_forge_p3:"AI no-show prediction & smart scheduling",
+    pr_forge_p4:"AI denial-risk scoring",
+    pr_forge_p5:"Priority support",
+    pr_forge_x1:"Everything in Professional",
+    pr_forge_x2:"Unlimited providers",
+    pr_forge_x3:"Multi-site & multi-location",
+    pr_forge_x4:"Custom integrations & onboarding",
+    pr_forge_x5:"Dedicated account manager",
+
+    /* Revela */
+    pr_revela_h2:"Revela \u2014 <em>Cosmetic Surgery & Beauty EMR</em>",
+    pr_revela_h2_em:"Cosmetic Surgery & Beauty EMR",
+    pr_revela_lede:"Premium documentation for aesthetic and cosmetic care. Integration-ready with Nextech, ModMed, and Aesthetic Record.",
+    pr_revela_e1:"Specialty operative & post-op note templates",
+    pr_revela_e2:"Breast & body exam documentation",
+    pr_revela_e3:"Shared encounter access via Forge",
+    pr_revela_e4:"Patient Profiler intake pairing",
+    pr_revela_p1:"Everything in Essential",
+    pr_revela_p2:"Up to 5 providers on one account",
+    pr_revela_p3:"Integration-ready with third-party PMSs",
+    pr_revela_p4:"Priority support",
+    pr_revela_x1:"Everything in Professional",
+    pr_revela_x2:"Unlimited providers",
+    pr_revela_x3:"Custom integrations & onboarding",
+    pr_revela_x4:"Dedicated account manager",
+    pr_revela_ao1_name:"Data Migration",
+    pr_revela_ao1_price:"$1,500 one-time",
+    pr_revela_ao1_desc:"Full migration of existing patient and clinical records into the PatientTrac spine.",
+    pr_revela_ao2_name:"Custom AI Workflows",
+    pr_revela_ao2_price:"$2,500 setup + $199/mo",
+    pr_revela_ao2_desc:"Bespoke AI-powered clinical workflows tailored to your practice's aesthetic specialty.",
+    pr_revela_ao3_name:"Forge Integration",
+    pr_revela_ao3_price:"Included",
+    pr_revela_ao3_desc:"Revela reads and writes the shared encounter from Forge at no additional charge.",
+
+    /* Mind */
+    pr_mind_h2:"Mind \u2014 <em>Neurobehavioral Health EMR</em>",
+    pr_mind_h2_em:"Neurobehavioral Health EMR",
+    pr_mind_lede:"One record across psychiatry, psychology, and neurology. DSM-5 reference data built in.",
+    pr_mind_e1:"Psychiatric evaluation & follow-up forms",
+    pr_mind_e2:"Medication management & inpatient notes",
+    pr_mind_e3:"DSM-5 diagnosis reference",
+    pr_mind_e4:"Secure login with TOTP MFA",
+    pr_mind_p1:"Everything in Essential",
+    pr_mind_p2:"Up to 5 providers on one account",
+    pr_mind_p3:"AI-assisted clinical documentation",
+    pr_mind_p4:"Priority support",
+    pr_mind_x1:"Everything in Professional",
+    pr_mind_x2:"Unlimited providers",
+    pr_mind_x3:"Multi-site & multi-location",
+    pr_mind_x4:"Custom integrations & onboarding",
+    pr_mind_x5:"Dedicated account manager",
+    pr_mind_ao1_name:"Revela Module",
+    pr_mind_ao1_price:"+$299/mo",
+    pr_mind_ao1_desc:"Add cosmetic and aesthetic documentation capabilities to your Mind installation.",
+    pr_mind_ao2_name:"Custom AI Training",
+    pr_mind_ao2_price:"From $2,500",
+    pr_mind_ao2_desc:"Custom AI model training tailored to your practice's neurobehavioral specialty workflows.",
+
+    /* ASC */
+    pr_asc_h2:"ASC \u2014 <em>Ambulatory Surgery Center Operations</em>",
+    pr_asc_h2_em:"Ambulatory Surgery Center Operations",
+    pr_asc_lede:"Real-time visibility across cases, rooms, supplies, and revenue. Facility-scoped pricing.",
+    pr_asc_scope1:"1 center, up to 2 ORs",
+    pr_asc_scope2:"Multi-suite, single center",
+    pr_asc_scope3:"Multi-center / network",
+    pr_asc_e1:"Equipment catalog with sterile workflow",
+    pr_asc_e2:"Case scheduling & room management",
+    pr_asc_e3:"Medication & DEA logging",
+    pr_asc_e4:"Preference cards",
+    pr_asc_p1:"Everything in Starter",
+    pr_asc_p2:"Multi-suite OR management",
+    pr_asc_p3:"AAMI ST79-aligned sterile processing",
+    pr_asc_p4:"Live case console",
+    pr_asc_p5:"Priority support",
+    pr_asc_x1:"Everything in Professional",
+    pr_asc_x2:"Multi-center network management",
+    pr_asc_x3:"Cross-facility reporting & analytics",
+    pr_asc_x4:"Custom integrations & onboarding",
+    pr_asc_x5:"Dedicated account manager",
+
+    /* Continuum */
+    pr_continuum_h2:"Continuum \u2014 <em>Perioperative & Procedural Documentation</em>",
+    pr_continuum_h2_em:"Perioperative & Procedural Documentation",
+    pr_continuum_lede:"One record for the entire procedural episode. Pre-op through recovery in one place.",
+    pr_cont_e1:"Full procedural episode documentation",
+    pr_cont_e2:"Pre-op through recovery in one record",
+    pr_cont_e3:"Shared encounter access",
+    pr_cont_e4:"Multi-specialty procedural support",
+    pr_cont_p1:"Everything in Essential",
+    pr_cont_p2:"Up to 5 providers on one account",
+    pr_cont_p3:"Revenue cycle integration",
+    pr_cont_p4:"Priority support",
+    pr_cont_x1:"Everything in Professional",
+    pr_cont_x2:"Unlimited providers",
+    pr_cont_x3:"Multi-site & multi-location",
+    pr_cont_x4:"Custom integrations & onboarding",
+    pr_cont_x5:"Dedicated account manager",
+
+    /* Profiler */
+    pr_profiler_h2:"Profiler \u2014 <em>Intelligent Patient Intake Portal</em>",
+    pr_profiler_h2_em:"Intelligent Patient Intake Portal",
+    pr_profiler_lede:"The patient's front door before the visit. Trilingual, eight-step intake with AI conversational mode.",
+    pr_profiler_t1:"Profiler",
+    pr_profiler_price1:"<span style=\"font-size:.7em;font-weight:400;color:var(--text-soft)\">from </span>$149 <span class=\"per\">/location/mo</span>",
+    pr_profiler_scope1:"Base intake portal",
+    pr_profiler_f1:"Trilingual (EN/ES/FR) 8-step intake",
+    pr_profiler_f2:"Nine specialty form branches",
+    pr_profiler_f3:"Tokenized links & walk-in mode",
+    pr_profiler_f4:"E-signature consent capture",
+    pr_profiler_t2:"Profiler Intelligence",
+    pr_profiler_scope2:"AI add-on ($299 standalone)",
+    pr_profiler_ai1:"Everything in Profiler",
+    pr_profiler_ai2:"AI conversational intake",
+    pr_profiler_ai3:"AI triage & red-flag detection",
+    pr_profiler_ai4:"Pre-filled encounter for providers",
+    pr_profiler_ai5:"Server-side AI key management",
+    pr_profiler_scope3:"Multi-location networks",
+    pr_profiler_x1:"Everything in Profiler Intelligence",
+    pr_profiler_x2:"Volume-based location pricing",
+    pr_profiler_x3:"Custom form branches & workflows",
+    pr_profiler_x4:"Dedicated account manager",
+
+    /* Companion */
+    pr_companion_h2:"Companion \u2014 <em>Patient Engagement & Remote Monitoring</em>",
+    pr_companion_h2_em:"Patient Engagement & Remote Monitoring",
+    pr_companion_lede:"Care continues after the visit. RTM-billable monitoring maps to codes 98975 through 98981.",
+    pr_col_tier:"Tier",
+    pr_col_price:"Price",
+    pr_col_details:"Details",
+    pr_comp_engage:"Engage",
+    pr_comp_engage_price:"from $299/site/mo",
+    pr_comp_engage_detail:"Includes 50 active patients; $3 per active patient above 50",
+    pr_comp_care:"Care Monitoring",
+    pr_comp_care_price:"$699/site/mo",
+    pr_comp_care_detail:"Includes 100 monitored patients; $7 per monitored above 100. RTM-billable (98975\u201398981)",
+    pr_comp_recovery:"Recovery Episode",
+    pr_comp_recovery_price:"$29 / $49 / $79",
+    pr_comp_recovery_detail:"30-day / 60-day / 90-day recovery episodes",
+    pr_comp_rpm:"RPM-Ready",
+    pr_comp_rpm_price:"$25/active patient/mo",
+    pr_comp_rpm_detail:"Software only; devices and services are separate",
+    pr_comp_enterprise_detail:"Multi-site / networks. Contact sales for volume pricing.",
+    pr_comp_personal:"Personal",
+    pr_comp_personal_price:"Deferred",
+    pr_comp_personal_detail:"Not available in v1. Coming in a future release."
+  },
+
+  es: {
+    nav_about:"Empresa", nav_products:"Plataforma", nav_pricing:"Precios", nav_compare:"Comparar", nav_contact_link:"Contacto", nav_cta:"Unirse a la lista",
+    foot_blurb:"The Clinical Intelligence Network \u2014 un conjunto conectado de plataformas cl\u00ednicas con IA sobre una columna de datos segura.",
+    foot_platform:"Plataforma", foot_company:"Empresa", foot_leadership:"Liderazgo", foot_contact:"Contacto",
+    foot_legal_h:"Legal", foot_privacy:"Pol\u00edtica de privacidad", foot_terms:"T\u00e9rminos del servicio", foot_hipaa:"Aviso HIPAA", foot_ba:"Acuerdo de Asociado Comercial",
+    foot_rights:"Todos los derechos reservados.", foot_compliance:"Cumple HIPAA \u00b7 ONC \u00a7170.315",
+
+    pr_hero_eyebrow:"Precios",
+    pr_hero_h1:"<em>Precios transparentes</em> para cada plataforma.",
+    pr_hero_lede:"Cada aplicaci\u00f3n de PatientTrac tiene un precio independiente. Comience con una, conecte m\u00e1s a medida que su consulta crece \u2014 todas comparten la misma capa de paciente, encuentro y seguridad sin costo de integraci\u00f3n adicional.",
+
+    pr_tier_essential:"Esencial",
+    pr_tier_starter:"Inicial",
+    pr_tier_professional:"Profesional",
+    pr_tier_enterprise:"Empresarial",
+    pr_per_provider_mo:"/proveedor/mes",
+    pr_per_mo:"/mes",
+    pr_per_loc_mo:"/ubicaci\u00f3n/mes",
+    pr_scope_1_provider:"1 proveedor",
+    pr_scope_5_providers:"Hasta 5 proveedores",
+    pr_scope_unlimited:"Proveedores ilimitados",
+    pr_most_popular:"M\u00e1s popular",
+    pr_recommended:"Recomendado",
+    pr_demo:"Solicitar demo",
+    pr_launch:"Iniciar app",
+    pr_addons:"Complementos",
+    pr_custom:"Personalizado",
+    pr_contact_sales:"Contactar ventas",
+
+    pr_forge_h2:"Forge \u2014 <em>Gesti\u00f3n de Pacientes, Agendamiento y Ciclo de Ingresos</em>",
+    pr_forge_h2_em:"Gesti\u00f3n de Pacientes, Agendamiento y Ciclo de Ingresos",
+    pr_forge_lede:"La base operativa de la red PatientTrac. Desde $299/proveedor/mes.",
+    pr_forge_e1:"Registro de pacientes y demograf\u00eda",
+    pr_forge_e2:"Agendamiento multiproveedor",
+    pr_forge_e3:"Fundamentos de seguros y facturaci\u00f3n",
+    pr_forge_e4:"Acceso por roles con TOTP MFA",
+    pr_forge_e5:"Creaci\u00f3n y enrutamiento de encuentros",
+    pr_forge_p1:"Todo lo del plan Esencial",
+    pr_forge_p2:"Hasta 5 proveedores en una cuenta",
+    pr_forge_p3:"Predicci\u00f3n de ausencias y agendamiento inteligente con IA",
+    pr_forge_p4:"Puntuaci\u00f3n de riesgo de rechazo con IA",
+    pr_forge_p5:"Soporte prioritario",
+    pr_forge_x1:"Todo lo del plan Profesional",
+    pr_forge_x2:"Proveedores ilimitados",
+    pr_forge_x3:"M\u00faltiples sedes y ubicaciones",
+    pr_forge_x4:"Integraciones y onboarding personalizados",
+    pr_forge_x5:"Gerente de cuenta dedicado",
+
+    pr_revela_h2:"Revela \u2014 <em>EMR de cirug\u00eda cosm\u00e9tica y est\u00e9tica</em>",
+    pr_revela_h2_em:"EMR de cirug\u00eda cosm\u00e9tica y est\u00e9tica",
+    pr_revela_lede:"Documentaci\u00f3n premium para el cuidado est\u00e9tico y cosm\u00e9tico. Lista para integraci\u00f3n con Nextech, ModMed y Aesthetic Record.",
+    pr_revela_e1:"Plantillas de notas operatorias y posoperatorias",
+    pr_revela_e2:"Documentaci\u00f3n de ex\u00e1menes de mama y cuerpo",
+    pr_revela_e3:"Acceso al encuentro compartido v\u00eda Forge",
+    pr_revela_e4:"Admisi\u00f3n con Patient Profiler",
+    pr_revela_p1:"Todo lo del plan Esencial",
+    pr_revela_p2:"Hasta 5 proveedores en una cuenta",
+    pr_revela_p3:"Lista para integraci\u00f3n con PMS de terceros",
+    pr_revela_p4:"Soporte prioritario",
+    pr_revela_x1:"Todo lo del plan Profesional",
+    pr_revela_x2:"Proveedores ilimitados",
+    pr_revela_x3:"Integraciones y onboarding personalizados",
+    pr_revela_x4:"Gerente de cuenta dedicado",
+    pr_revela_ao1_name:"Migraci\u00f3n de datos",
+    pr_revela_ao1_price:"$1,500 \u00fanico pago",
+    pr_revela_ao1_desc:"Migraci\u00f3n completa de registros cl\u00ednicos y de pacientes existentes a la columna PatientTrac.",
+    pr_revela_ao2_name:"Flujos de IA personalizados",
+    pr_revela_ao2_price:"$2,500 configuraci\u00f3n + $199/mes",
+    pr_revela_ao2_desc:"Flujos de trabajo cl\u00ednicos con IA a medida para la especialidad est\u00e9tica de su consulta.",
+    pr_revela_ao3_name:"Integraci\u00f3n con Forge",
+    pr_revela_ao3_price:"Incluida",
+    pr_revela_ao3_desc:"Revela lee y escribe el encuentro compartido desde Forge sin cargo adicional.",
+
+    pr_mind_h2:"Mind \u2014 <em>EMR de salud neuroconductual</em>",
+    pr_mind_h2_em:"EMR de salud neuroconductual",
+    pr_mind_lede:"Un registro para psiquiatr\u00eda, psicolog\u00eda y neurolog\u00eda. Datos de referencia DSM-5 integrados.",
+    pr_mind_e1:"Formularios de evaluaci\u00f3n psiqui\u00e1trica y seguimiento",
+    pr_mind_e2:"Manejo de medicaci\u00f3n y notas hospitalarias",
+    pr_mind_e3:"Referencia diagn\u00f3stica DSM-5",
+    pr_mind_e4:"Inicio de sesi\u00f3n seguro con TOTP MFA",
+    pr_mind_p1:"Todo lo del plan Esencial",
+    pr_mind_p2:"Hasta 5 proveedores en una cuenta",
+    pr_mind_p3:"Documentaci\u00f3n cl\u00ednica asistida por IA",
+    pr_mind_p4:"Soporte prioritario",
+    pr_mind_x1:"Todo lo del plan Profesional",
+    pr_mind_x2:"Proveedores ilimitados",
+    pr_mind_x3:"M\u00faltiples sedes y ubicaciones",
+    pr_mind_x4:"Integraciones y onboarding personalizados",
+    pr_mind_x5:"Gerente de cuenta dedicado",
+    pr_mind_ao1_name:"M\u00f3dulo Revela",
+    pr_mind_ao1_price:"+$299/mes",
+    pr_mind_ao1_desc:"Agregue capacidades de documentaci\u00f3n cosm\u00e9tica y est\u00e9tica a su instalaci\u00f3n de Mind.",
+    pr_mind_ao2_name:"Entrenamiento de IA personalizado",
+    pr_mind_ao2_price:"Desde $2,500",
+    pr_mind_ao2_desc:"Entrenamiento de modelo de IA a medida para los flujos de especialidad neuroconductual de su consulta.",
+
+    pr_asc_h2:"ASC \u2014 <em>Operaciones de centro de cirug\u00eda ambulatoria</em>",
+    pr_asc_h2_em:"Operaciones de centro de cirug\u00eda ambulatoria",
+    pr_asc_lede:"Visibilidad en tiempo real de casos, salas, insumos e ingresos. Precios por instalaci\u00f3n.",
+    pr_asc_scope1:"1 centro, hasta 2 quir\u00f3fanos",
+    pr_asc_scope2:"M\u00faltiples salas, un centro",
+    pr_asc_scope3:"M\u00faltiples centros / red",
+    pr_asc_e1:"Cat\u00e1logo de equipos con flujo est\u00e9ril",
+    pr_asc_e2:"Agendamiento de casos y gesti\u00f3n de salas",
+    pr_asc_e3:"Registro de medicaci\u00f3n y DEA",
+    pr_asc_e4:"Tarjetas de preferencia",
+    pr_asc_p1:"Todo lo del plan Inicial",
+    pr_asc_p2:"Gesti\u00f3n de m\u00faltiples salas de quir\u00f3fano",
+    pr_asc_p3:"Procesamiento est\u00e9ril alineado con AAMI ST79",
+    pr_asc_p4:"Consola de casos en vivo",
+    pr_asc_p5:"Soporte prioritario",
+    pr_asc_x1:"Todo lo del plan Profesional",
+    pr_asc_x2:"Gesti\u00f3n de red de m\u00faltiples centros",
+    pr_asc_x3:"Reportes y an\u00e1lisis entre instalaciones",
+    pr_asc_x4:"Integraciones y onboarding personalizados",
+    pr_asc_x5:"Gerente de cuenta dedicado",
+
+    pr_continuum_h2:"Continuum \u2014 <em>Documentaci\u00f3n perioperatoria y de procedimientos</em>",
+    pr_continuum_h2_em:"Documentaci\u00f3n perioperatoria y de procedimientos",
+    pr_continuum_lede:"Un registro para todo el episodio procedimental. Del preoperatorio a la recuperaci\u00f3n en un solo lugar.",
+    pr_cont_e1:"Documentaci\u00f3n completa del episodio procedimental",
+    pr_cont_e2:"Del preoperatorio a la recuperaci\u00f3n en un registro",
+    pr_cont_e3:"Acceso al encuentro compartido",
+    pr_cont_e4:"Soporte procedimental multiespecialidad",
+    pr_cont_p1:"Todo lo del plan Esencial",
+    pr_cont_p2:"Hasta 5 proveedores en una cuenta",
+    pr_cont_p3:"Integraci\u00f3n con ciclo de ingresos",
+    pr_cont_p4:"Soporte prioritario",
+    pr_cont_x1:"Todo lo del plan Profesional",
+    pr_cont_x2:"Proveedores ilimitados",
+    pr_cont_x3:"M\u00faltiples sedes y ubicaciones",
+    pr_cont_x4:"Integraciones y onboarding personalizados",
+    pr_cont_x5:"Gerente de cuenta dedicado",
+
+    pr_profiler_h2:"Profiler \u2014 <em>Portal Inteligente de Admisi\u00f3n del Paciente</em>",
+    pr_profiler_h2_em:"Portal Inteligente de Admisi\u00f3n del Paciente",
+    pr_profiler_lede:"La puerta de entrada del paciente antes de la visita. Admisi\u00f3n trilingue de ocho pasos con modo conversacional IA.",
+    pr_profiler_t1:"Profiler",
+    pr_profiler_price1:"<span style=\"font-size:.7em;font-weight:400;color:var(--text-soft)\">desde </span>$149 <span class=\"per\">/ubicaci\u00f3n/mes</span>",
+    pr_profiler_scope1:"Portal de admisi\u00f3n base",
+    pr_profiler_f1:"Admisi\u00f3n trilingue (EN/ES/FR) de 8 pasos",
+    pr_profiler_f2:"Nueve ramas de formularios por especialidad",
+    pr_profiler_f3:"Enlaces con token y modo presencial",
+    pr_profiler_f4:"Captura de consentimiento con firma electr\u00f3nica",
+    pr_profiler_t2:"Profiler Intelligence",
+    pr_profiler_scope2:"Complemento IA ($299 independiente)",
+    pr_profiler_ai1:"Todo lo de Profiler",
+    pr_profiler_ai2:"Admisi\u00f3n conversacional con IA",
+    pr_profiler_ai3:"Triaje con IA y detecci\u00f3n de alertas",
+    pr_profiler_ai4:"Encuentro precompletado para proveedores",
+    pr_profiler_ai5:"Gesti\u00f3n de clave de IA en el servidor",
+    pr_profiler_scope3:"Redes de m\u00faltiples ubicaciones",
+    pr_profiler_x1:"Todo lo de Profiler Intelligence",
+    pr_profiler_x2:"Precios por volumen de ubicaciones",
+    pr_profiler_x3:"Ramas de formularios y flujos personalizados",
+    pr_profiler_x4:"Gerente de cuenta dedicado",
+
+    pr_companion_h2:"Companion \u2014 <em>Participaci\u00f3n del Paciente y Monitoreo Remoto</em>",
+    pr_companion_h2_em:"Participaci\u00f3n del Paciente y Monitoreo Remoto",
+    pr_companion_lede:"La atenci\u00f3n contin\u00faa despu\u00e9s de la visita. Monitoreo facturable por RTM mapeado a c\u00f3digos 98975 a 98981.",
+    pr_col_tier:"Nivel",
+    pr_col_price:"Precio",
+    pr_col_details:"Detalles",
+    pr_comp_engage:"Engage",
+    pr_comp_engage_price:"desde $299/sitio/mes",
+    pr_comp_engage_detail:"Incluye 50 pacientes activos; $3 por paciente activo adicional",
+    pr_comp_care:"Care Monitoring",
+    pr_comp_care_price:"$699/sitio/mes",
+    pr_comp_care_detail:"Incluye 100 pacientes monitoreados; $7 por monitoreado adicional. Facturable por RTM (98975\u201398981)",
+    pr_comp_recovery:"Episodio de recuperaci\u00f3n",
+    pr_comp_recovery_price:"$29 / $49 / $79",
+    pr_comp_recovery_detail:"Episodios de recuperaci\u00f3n de 30 / 60 / 90 d\u00edas",
+    pr_comp_rpm:"RPM-Ready",
+    pr_comp_rpm_price:"$25/paciente activo/mes",
+    pr_comp_rpm_detail:"Solo software; dispositivos y servicios por separado",
+    pr_comp_enterprise_detail:"M\u00faltiples sitios / redes. Contacte ventas para precios por volumen.",
+    pr_comp_personal:"Personal",
+    pr_comp_personal_price:"Diferido",
+    pr_comp_personal_detail:"No disponible en v1. Pr\u00f3ximamente en una versi\u00f3n futura."
+  },
+
+  fr: {
+    nav_about:"Soci\u00e9t\u00e9", nav_products:"Plateforme", nav_pricing:"Tarifs", nav_compare:"Comparer", nav_contact_link:"Contact", nav_cta:"Rejoindre la liste",
+    foot_blurb:"The Clinical Intelligence Network \u2014 un ensemble connect\u00e9 de plateformes cliniques pilot\u00e9es par l\u2019IA sur une colonne de donn\u00e9es s\u00e9curis\u00e9e.",
+    foot_platform:"Plateforme", foot_company:"Soci\u00e9t\u00e9", foot_leadership:"Direction", foot_contact:"Contact",
+    foot_legal_h:"Mentions l\u00e9gales", foot_privacy:"Politique de confidentialit\u00e9", foot_terms:"Conditions d\u2019utilisation", foot_hipaa:"Avis HIPAA", foot_ba:"Accord de sous-traitance (BAA)",
+    foot_rights:"Tous droits r\u00e9serv\u00e9s.", foot_compliance:"Conforme HIPAA \u00b7 ONC \u00a7170.315",
+
+    pr_hero_eyebrow:"Tarifs",
+    pr_hero_h1:"<em>Tarifs transparents</em> pour chaque plateforme.",
+    pr_hero_lede:"Chaque application PatientTrac est tarif\u00e9e ind\u00e9pendamment. Commencez par une, connectez-en davantage au fur et \u00e0 mesure \u2014 toutes partagent la m\u00eame couche patient, rencontre et s\u00e9curit\u00e9 sans co\u00fbt d\u2019int\u00e9gration suppl\u00e9mentaire.",
+
+    pr_tier_essential:"Essentiel",
+    pr_tier_starter:"Starter",
+    pr_tier_professional:"Professionnel",
+    pr_tier_enterprise:"Entreprise",
+    pr_per_provider_mo:"/praticien/mois",
+    pr_per_mo:"/mois",
+    pr_per_loc_mo:"/site/mois",
+    pr_scope_1_provider:"1 praticien",
+    pr_scope_5_providers:"Jusqu\u2019\u00e0 5 praticiens",
+    pr_scope_unlimited:"Praticiens illimit\u00e9s",
+    pr_most_popular:"Le plus populaire",
+    pr_recommended:"Recommand\u00e9",
+    pr_demo:"Demander une d\u00e9mo",
+    pr_launch:"Lancer l\u2019app",
+    pr_addons:"Modules compl\u00e9mentaires",
+    pr_custom:"Sur mesure",
+    pr_contact_sales:"Contacter les ventes",
+
+    pr_forge_h2:"Forge \u2014 <em>Gestion des Patients, Planification et Cycle de Revenus</em>",
+    pr_forge_h2_em:"Gestion des Patients, Planification et Cycle de Revenus",
+    pr_forge_lede:"La fondation op\u00e9rationnelle du r\u00e9seau PatientTrac. \u00c0 partir de 299 $/praticien/mois.",
+    pr_forge_e1:"Enregistrement des patients et d\u00e9mographie",
+    pr_forge_e2:"Planification multi-praticiens",
+    pr_forge_e3:"Fondamentaux assurance et facturation",
+    pr_forge_e4:"Acc\u00e8s par r\u00f4les avec TOTP MFA",
+    pr_forge_e5:"Cr\u00e9ation et orientation des rencontres",
+    pr_forge_p1:"Tout du plan Essentiel",
+    pr_forge_p2:"Jusqu\u2019\u00e0 5 praticiens sur un compte",
+    pr_forge_p3:"Pr\u00e9diction d\u2019absences et planification intelligente par IA",
+    pr_forge_p4:"Score de risque de refus par IA",
+    pr_forge_p5:"Support prioritaire",
+    pr_forge_x1:"Tout du plan Professionnel",
+    pr_forge_x2:"Praticiens illimit\u00e9s",
+    pr_forge_x3:"Multi-sites et multi-emplacements",
+    pr_forge_x4:"Int\u00e9grations et onboarding personnalis\u00e9s",
+    pr_forge_x5:"Gestionnaire de compte d\u00e9di\u00e9",
+
+    pr_revela_h2:"Revela \u2014 <em>DME de chirurgie cosm\u00e9tique et esth\u00e9tique</em>",
+    pr_revela_h2_em:"DME de chirurgie cosm\u00e9tique et esth\u00e9tique",
+    pr_revela_lede:"Documentation premium pour les soins esth\u00e9tiques et cosm\u00e9tiques. Pr\u00eate \u00e0 l\u2019int\u00e9gration avec Nextech, ModMed et Aesthetic Record.",
+    pr_revela_e1:"Mod\u00e8les de comptes rendus op\u00e9ratoires et postop\u00e9ratoires",
+    pr_revela_e2:"Documentation des examens du sein et du corps",
+    pr_revela_e3:"Acc\u00e8s \u00e0 la rencontre partag\u00e9e via Forge",
+    pr_revela_e4:"Accueil avec Patient Profiler",
+    pr_revela_p1:"Tout du plan Essentiel",
+    pr_revela_p2:"Jusqu\u2019\u00e0 5 praticiens sur un compte",
+    pr_revela_p3:"Pr\u00eate \u00e0 l\u2019int\u00e9gration avec les PMS tiers",
+    pr_revela_p4:"Support prioritaire",
+    pr_revela_x1:"Tout du plan Professionnel",
+    pr_revela_x2:"Praticiens illimit\u00e9s",
+    pr_revela_x3:"Int\u00e9grations et onboarding personnalis\u00e9s",
+    pr_revela_x4:"Gestionnaire de compte d\u00e9di\u00e9",
+    pr_revela_ao1_name:"Migration de donn\u00e9es",
+    pr_revela_ao1_price:"1 500 $ unique",
+    pr_revela_ao1_desc:"Migration compl\u00e8te des dossiers patients et cliniques existants vers la colonne PatientTrac.",
+    pr_revela_ao2_name:"Flux IA personnalis\u00e9s",
+    pr_revela_ao2_price:"2 500 $ config. + 199 $/mois",
+    pr_revela_ao2_desc:"Flux de travail cliniques pilot\u00e9s par l\u2019IA, adapt\u00e9s \u00e0 la sp\u00e9cialit\u00e9 esth\u00e9tique de votre cabinet.",
+    pr_revela_ao3_name:"Int\u00e9gration Forge",
+    pr_revela_ao3_price:"Incluse",
+    pr_revela_ao3_desc:"Revela lit et \u00e9crit la rencontre partag\u00e9e depuis Forge sans frais suppl\u00e9mentaires.",
+
+    pr_mind_h2:"Mind \u2014 <em>DME de sant\u00e9 neurocomportementale</em>",
+    pr_mind_h2_em:"DME de sant\u00e9 neurocomportementale",
+    pr_mind_lede:"Un dossier unique pour la psychiatrie, la psychologie et la neurologie. R\u00e9f\u00e9rentiel DSM-5 int\u00e9gr\u00e9.",
+    pr_mind_e1:"Formulaires d\u2019\u00e9valuation psychiatrique et de suivi",
+    pr_mind_e2:"Gestion des m\u00e9dicaments et notes hospitali\u00e8res",
+    pr_mind_e3:"R\u00e9f\u00e9rence diagnostique DSM-5",
+    pr_mind_e4:"Connexion s\u00e9curis\u00e9e avec TOTP MFA",
+    pr_mind_p1:"Tout du plan Essentiel",
+    pr_mind_p2:"Jusqu\u2019\u00e0 5 praticiens sur un compte",
+    pr_mind_p3:"Documentation clinique assist\u00e9e par IA",
+    pr_mind_p4:"Support prioritaire",
+    pr_mind_x1:"Tout du plan Professionnel",
+    pr_mind_x2:"Praticiens illimit\u00e9s",
+    pr_mind_x3:"Multi-sites et multi-emplacements",
+    pr_mind_x4:"Int\u00e9grations et onboarding personnalis\u00e9s",
+    pr_mind_x5:"Gestionnaire de compte d\u00e9di\u00e9",
+    pr_mind_ao1_name:"Module Revela",
+    pr_mind_ao1_price:"+299 $/mois",
+    pr_mind_ao1_desc:"Ajoutez des capacit\u00e9s de documentation cosm\u00e9tique et esth\u00e9tique \u00e0 votre installation Mind.",
+    pr_mind_ao2_name:"Entra\u00eenement IA personnalis\u00e9",
+    pr_mind_ao2_price:"\u00c0 partir de 2 500 $",
+    pr_mind_ao2_desc:"Entra\u00eenement de mod\u00e8le IA adapt\u00e9 aux flux de sp\u00e9cialit\u00e9 neurocomportementale de votre cabinet.",
+
+    pr_asc_h2:"ASC \u2014 <em>Op\u00e9rations de centre de chirurgie ambulatoire</em>",
+    pr_asc_h2_em:"Op\u00e9rations de centre de chirurgie ambulatoire",
+    pr_asc_lede:"Visibilit\u00e9 en temps r\u00e9el des cas, des salles, des fournitures et des revenus. Tarification par installation.",
+    pr_asc_scope1:"1 centre, jusqu\u2019\u00e0 2 blocs",
+    pr_asc_scope2:"Multi-salles, un seul centre",
+    pr_asc_scope3:"Multi-centres / r\u00e9seau",
+    pr_asc_e1:"Catalogue d\u2019\u00e9quipements avec flux st\u00e9rile",
+    pr_asc_e2:"Planification des cas et gestion des salles",
+    pr_asc_e3:"Registre des m\u00e9dicaments et DEA",
+    pr_asc_e4:"Fiches de pr\u00e9f\u00e9rence",
+    pr_asc_p1:"Tout du plan Starter",
+    pr_asc_p2:"Gestion multi-salles de bloc op\u00e9ratoire",
+    pr_asc_p3:"Traitement st\u00e9rile align\u00e9 sur AAMI ST79",
+    pr_asc_p4:"Console de cas en direct",
+    pr_asc_p5:"Support prioritaire",
+    pr_asc_x1:"Tout du plan Professionnel",
+    pr_asc_x2:"Gestion de r\u00e9seau multi-centres",
+    pr_asc_x3:"Rapports et analyses inter-\u00e9tablissements",
+    pr_asc_x4:"Int\u00e9grations et onboarding personnalis\u00e9s",
+    pr_asc_x5:"Gestionnaire de compte d\u00e9di\u00e9",
+
+    pr_continuum_h2:"Continuum \u2014 <em>Documentation p\u00e9riop\u00e9ratoire et proc\u00e9durale</em>",
+    pr_continuum_h2_em:"Documentation p\u00e9riop\u00e9ratoire et proc\u00e9durale",
+    pr_continuum_lede:"Un dossier pour l\u2019ensemble de l\u2019\u00e9pisode proc\u00e9dural. Du pr\u00e9op\u00e9ratoire \u00e0 la r\u00e9cup\u00e9ration en un seul endroit.",
+    pr_cont_e1:"Documentation compl\u00e8te de l\u2019\u00e9pisode proc\u00e9dural",
+    pr_cont_e2:"Du pr\u00e9op\u00e9ratoire \u00e0 la r\u00e9cup\u00e9ration en un dossier",
+    pr_cont_e3:"Acc\u00e8s \u00e0 la rencontre partag\u00e9e",
+    pr_cont_e4:"Support proc\u00e9dural multispp\u00e9cialit\u00e9",
+    pr_cont_p1:"Tout du plan Essentiel",
+    pr_cont_p2:"Jusqu\u2019\u00e0 5 praticiens sur un compte",
+    pr_cont_p3:"Int\u00e9gration au cycle de revenus",
+    pr_cont_p4:"Support prioritaire",
+    pr_cont_x1:"Tout du plan Professionnel",
+    pr_cont_x2:"Praticiens illimit\u00e9s",
+    pr_cont_x3:"Multi-sites et multi-emplacements",
+    pr_cont_x4:"Int\u00e9grations et onboarding personnalis\u00e9s",
+    pr_cont_x5:"Gestionnaire de compte d\u00e9di\u00e9",
+
+    pr_profiler_h2:"Profiler \u2014 <em>Portail Intelligent d\u2019Accueil du Patient</em>",
+    pr_profiler_h2_em:"Portail Intelligent d\u2019Accueil du Patient",
+    pr_profiler_lede:"La porte d\u2019entr\u00e9e du patient avant la visite. Accueil trilingue en huit \u00e9tapes avec mode conversationnel IA.",
+    pr_profiler_t1:"Profiler",
+    pr_profiler_price1:"<span style=\"font-size:.7em;font-weight:400;color:var(--text-soft)\">\u00e0 partir de </span>149 $ <span class=\"per\">/site/mois</span>",
+    pr_profiler_scope1:"Portail d\u2019accueil de base",
+    pr_profiler_f1:"Accueil trilingue (EN/ES/FR) en 8 \u00e9tapes",
+    pr_profiler_f2:"Neuf branches de formulaires par sp\u00e9cialit\u00e9",
+    pr_profiler_f3:"Liens \u00e0 jeton et mode sur place",
+    pr_profiler_f4:"Capture du consentement par signature \u00e9lectronique",
+    pr_profiler_t2:"Profiler Intelligence",
+    pr_profiler_scope2:"Module IA (299 $ ind\u00e9pendant)",
+    pr_profiler_ai1:"Tout de Profiler",
+    pr_profiler_ai2:"Accueil conversationnel par IA",
+    pr_profiler_ai3:"Triage par IA et d\u00e9tection d\u2019alertes",
+    pr_profiler_ai4:"Rencontre pr\u00e9remplie pour les praticiens",
+    pr_profiler_ai5:"Gestion de cl\u00e9 IA c\u00f4t\u00e9 serveur",
+    pr_profiler_scope3:"R\u00e9seaux multi-emplacements",
+    pr_profiler_x1:"Tout de Profiler Intelligence",
+    pr_profiler_x2:"Tarification par volume de sites",
+    pr_profiler_x3:"Branches de formulaires et flux personnalis\u00e9s",
+    pr_profiler_x4:"Gestionnaire de compte d\u00e9di\u00e9",
+
+    pr_companion_h2:"Companion \u2014 <em>Engagement du Patient et Surveillance \u00e0 Distance</em>",
+    pr_companion_h2_em:"Engagement du Patient et Surveillance \u00e0 Distance",
+    pr_companion_lede:"Les soins continuent apr\u00e8s la visite. Suivi facturable par RTM mapp\u00e9 aux codes 98975 \u00e0 98981.",
+    pr_col_tier:"Niveau",
+    pr_col_price:"Prix",
+    pr_col_details:"D\u00e9tails",
+    pr_comp_engage:"Engage",
+    pr_comp_engage_price:"\u00e0 partir de 299 $/site/mois",
+    pr_comp_engage_detail:"Inclut 50 patients actifs ; 3 $ par patient actif suppl\u00e9mentaire",
+    pr_comp_care:"Care Monitoring",
+    pr_comp_care_price:"699 $/site/mois",
+    pr_comp_care_detail:"Inclut 100 patients suivis ; 7 $ par suivi suppl\u00e9mentaire. Facturable par RTM (98975\u201398981)",
+    pr_comp_recovery:"\u00c9pisode de r\u00e9cup\u00e9ration",
+    pr_comp_recovery_price:"29 $ / 49 $ / 79 $",
+    pr_comp_recovery_detail:"\u00c9pisodes de r\u00e9cup\u00e9ration de 30 / 60 / 90 jours",
+    pr_comp_rpm:"RPM-Ready",
+    pr_comp_rpm_price:"25 $/patient actif/mois",
+    pr_comp_rpm_detail:"Logiciel uniquement ; appareils et services s\u00e9par\u00e9s",
+    pr_comp_enterprise_detail:"Multi-sites / r\u00e9seaux. Contactez les ventes pour les tarifs volume.",
+    pr_comp_personal:"Personnel",
+    pr_comp_personal_price:"Diff\u00e9r\u00e9",
+    pr_comp_personal_detail:"Non disponible en v1. \u00c0 venir dans une version future."
+  }
+};
+
+let LANG = 'en';
+function applyLang(lang){
+  if(!I18N[lang]) lang = 'en';
+  LANG = lang;
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k] != null) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(dict[k] != null) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+  });
+  try{ localStorage.setItem('ptemr_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>applyLang(b.getAttribute('data-lang')));
+});
+
+/* ============ TOPBAR + REVEAL ============ */
+const topbar = document.getElementById('topbar');
+window.addEventListener('scroll',()=>{ topbar.classList.toggle('scrolled', window.scrollY>40); });
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============ INIT ============ */
+(function init(){
+  let saved = null;
+  try{ saved = localStorage.getItem('ptemr_lang'); }catch(e){}
+  if(!saved){
+    const nav = (navigator.language||'en').slice(0,2);
+    if(['es','fr'].includes(nav)) saved = nav;
+  }
+  applyLang(saved||'en');
+})();
+</script>
+</body>
+</html>

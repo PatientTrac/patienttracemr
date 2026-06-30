@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Revela — PatientTrac | Cosmetic Surgery & Beauty EMR</title>
+<meta name="description" content="Revela delivers premium documentation for aesthetic and cosmetic care — operative notes, breast and body assessments, post-op planning — integration-ready with Nextech, ModMed, and Aesthetic Record." />
+<meta property="og:title" content="PatientTrac Revela — Cosmetic Surgery & Beauty EMR" />
+<meta property="og:description" content="Premium documentation for aesthetic and cosmetic care. Integration-ready with leading practice management systems." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--navy:#060e1c;--bg:#081426;--bg-raised:#0c1c34;--bg-card:#0f2240;--bg-card-2:#102a4d;--cyan:#00d4ff;--teal:#0097a7;--sky:#4db6e5;--gold:#c9a96e;--gold-logo:#d4af37;--text:#e7f1fc;--text-soft:#a4b8d2;--text-mute:#6a809d;--line:rgba(0,212,255,0.14);--line-soft:rgba(167,184,210,0.12);--gold-line:rgba(212,175,55,0.55);--radius:16px;--maxw:1180px;--ease:cubic-bezier(.22,.61,.36,1);--accent:#c9a96e;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--navy);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(1100px 700px at 78% -8%,rgba(201,169,110,0.12),transparent 60%),radial-gradient(900px 600px at 8% 18%,rgba(212,175,55,0.08),transparent 55%),radial-gradient(800px 800px at 50% 120%,rgba(0,212,255,0.06),transparent 60%),var(--navy);}
+body::after{content:'';position:fixed;inset:0;z-index:-1;opacity:.5;pointer-events:none;background-image:linear-gradient(rgba(201,169,110,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,0.03) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);}
+h1,h2,h3,h4{font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1.06;letter-spacing:-0.01em;}
+a{color:inherit;text-decoration:none;}::selection{background:rgba(201,169,110,0.28);color:#fff;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:inline-block;}.eyebrow.gold{color:var(--gold);}
+section{padding:118px 0;position:relative;}.lede{font-size:1.12rem;color:var(--text-soft);max-width:680px;}
+#topbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:all .4s var(--ease);border-bottom:1px solid transparent;}
+#topbar.scrolled{background:rgba(6,14,28,0.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:12px 0;}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.nav-links{display:flex;gap:30px;align-items:center;}.nav-links a{font-size:.86rem;color:var(--text-soft);font-weight:500;position:relative;transition:color .25s;}.nav-links a:hover{color:var(--text);}.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .3s var(--ease);}.nav-links a:hover::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:18px;}
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;}.lang button{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:var(--text-mute);background:none;border:none;cursor:pointer;padding:5px 9px;border-radius:999px;transition:all .2s;}.lang button.active{background:var(--accent);color:var(--navy);font-weight:500;}.lang button:hover:not(.active){color:var(--text);}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;padding:12px 22px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:all .28s var(--ease);white-space:nowrap;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#a0834a);color:var(--navy);box-shadow:0 8px 30px rgba(201,169,110,0.22);}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(201,169,110,0.34);}
+.btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,0.02);}.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.logo{display:flex;align-items:center;gap:13px;}.logo svg{width:42px;height:42px;flex-shrink:0;}.logo .word{display:flex;flex-direction:column;line-height:1;}.logo .word .name{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.42rem;letter-spacing:-0.01em;}.logo .word .name .p1{color:#eef5ff;}.logo .word .name .p2{color:var(--gold-logo);}.logo .word .tag{display:flex;align-items:center;gap:7px;margin-top:5px;font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);white-space:nowrap;}.logo .word .tag::before,.logo .word .tag::after{content:'';height:1px;width:14px;background:var(--gold-logo);opacity:.8;}
+#hero{padding:172px 0 100px;position:relative;overflow:hidden;}#hero .wrap{position:relative;z-index:1;}.hero-content{max-width:780px;}.hero-content h1{font-size:clamp(2.6rem,5.6vw,4.2rem);margin:14px 0 22px;}.hero-content h1 em{font-style:normal;background:linear-gradient(120deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}.hero-content .lede{font-size:1.18rem;margin-bottom:34px;}.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.sec-head{max-width:760px;margin-bottom:56px;}.sec-head h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-bottom:18px;}.sec-head h2 em{font-style:normal;color:var(--accent);}
+.desc-section{background:linear-gradient(180deg,transparent,rgba(12,28,52,0.4),transparent);}.desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}.desc-text p{color:var(--text-soft);font-size:1.05rem;line-height:1.7;margin-bottom:18px;}
+.wf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}.wf-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:rgba(15,34,64,0.4);transition:all .3s var(--ease);}.wf-card:hover{border-color:var(--accent);transform:translateY(-3px);background:rgba(15,34,64,0.7);}.wf-card .num{font-family:'DM Mono',monospace;color:var(--accent);font-size:.8rem;margin-bottom:8px;}.wf-card h4{font-size:1.18rem;margin-bottom:6px;}.wf-card p{color:var(--text-soft);font-size:.9rem;}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}.feat-card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:rgba(15,34,64,0.35);transition:all .3s var(--ease);display:flex;gap:16px;align-items:start;}.feat-card:hover{border-color:var(--accent);background:rgba(15,34,64,0.6);}.feat-icon{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:rgba(201,169,110,0.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;}.feat-icon svg{width:20px;height:20px;color:var(--accent);}.feat-card h4{font-size:1.05rem;margin-bottom:4px;}.feat-card p{color:var(--text-soft);font-size:.88rem;}
+.benefits{background:linear-gradient(180deg,transparent,rgba(12,28,52,0.5),transparent);}.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}.ben-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--bg-card);text-align:center;}.ben-card h4{font-size:1.2rem;margin:12px 0 8px;}.ben-card p{color:var(--text-soft);font-size:.9rem;}.ben-icon{width:48px;height:48px;margin:0 auto;border-radius:12px;background:rgba(201,169,110,0.08);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;}.ben-icon svg{width:24px;height:24px;color:var(--accent);}
+.compliance-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:12px;overflow:hidden;margin-top:22px;}.compliance-cell{background:var(--bg-card);padding:22px;text-align:center;}.compliance-cell h4{font-size:1rem;margin-bottom:4px;}.compliance-cell p{color:var(--text-soft);font-size:.82rem;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}.price-card{border:1px solid var(--line);border-radius:var(--radius);padding:32px;background:var(--bg-card);position:relative;transition:all .3s var(--ease);}.price-card:hover{transform:translateY(-4px);border-color:var(--accent);}.price-card.popular{border-color:var(--accent);background:linear-gradient(160deg,rgba(201,169,110,0.06),var(--bg-card));}.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 16px;border-radius:999px;background:var(--accent);color:var(--navy);white-space:nowrap;}.price-card .tier{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}.price-card .amount{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:2.4rem;line-height:1;margin-bottom:4px;}.price-card .period{font-size:.85rem;color:var(--text-mute);margin-bottom:20px;}.price-card .desc{color:var(--text-soft);font-size:.9rem;margin-bottom:20px;}.price-feats{list-style:none;display:grid;gap:10px;margin-bottom:24px;}.price-feats li{position:relative;padding-left:20px;font-size:.88rem;color:var(--text-soft);}.price-feats li::before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:2px;background:var(--accent);}
+.cta-section{text-align:center;background:linear-gradient(180deg,transparent,rgba(12,28,52,0.6));}.cta-section h2{font-size:clamp(2rem,3.6vw,2.8rem);margin-bottom:14px;}.cta-section h2 em{font-style:normal;color:var(--accent);}.cta-section p{color:var(--text-soft);font-size:1.05rem;max-width:600px;margin:0 auto 30px;}.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+footer{border-top:1px solid var(--line);padding:64px 0 36px;}.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:46px;}.foot-brand p{color:var(--text-soft);font-size:.9rem;margin-top:16px;max-width:300px;}.foot-col h5{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-mute);margin-bottom:16px;}.foot-col a{display:block;color:var(--text-soft);font-size:.88rem;margin-bottom:10px;transition:color .2s;}.foot-col a:hover{color:var(--accent);}.foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}.foot-bottom p{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--text-mute);}.foot-bottom .legal{display:flex;gap:20px;}.foot-bottom .legal a{font-size:.78rem;color:var(--text-mute);}.foot-bottom .legal a:hover{color:var(--text-soft);}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}.reveal.in{opacity:1;transform:none;}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);cursor:pointer;}
+@media(max-width:980px){.hero-content{max-width:100%;}.desc-grid,.feat-grid{grid-template-columns:1fr;}.wf-grid,.ben-grid,.pricing-grid,.compliance-bar{grid-template-columns:1fr;}.foot-grid{grid-template-columns:1fr 1fr;}.nav-links{display:none;}.menu-toggle{display:block;}}
+@media(max-width:560px){section{padding:80px 0;}.foot-grid{grid-template-columns:1fr;}.logo .word .name{font-size:1.2rem;}}
+</style>
+</head>
+<body>
+
+<header id="topbar">
+  <div class="wrap nav">
+    <a href="../index.html" class="logo" aria-label="PatientTrac home">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="pgrad" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/></linearGradient></defs><path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z" fill="url(#pgrad)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/><g stroke="#d4af37" stroke-width="0.9" opacity="0.9"><line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/><line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/><line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/><line x1="38" y1="20" x2="30" y2="26"/><line x1="24" y1="22" x2="30" y2="26"/></g><g><circle cx="18" cy="13" r="2.1" fill="#fff"/><circle cx="31" cy="11" r="2.1" fill="#d4af37"/><circle cx="38" cy="20" r="2.1" fill="#fff"/><circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/><circle cx="30" cy="26" r="1.9" fill="#d4af37"/><circle cx="20" cy="34" r="1.9" fill="#fff"/></g></svg>
+      <span class="word"><span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span><span class="tag">The Clinical Intelligence Network</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html#about" data-i18n="nav_about">Company</a>
+      <a href="../index.html#products" data-i18n="nav_products">Platform</a>
+      <a href="../pricing.html" data-i18n="nav_pricing">Pricing</a>
+      <a href="../compare.html" data-i18n="nav_compare">Compare</a>
+      <a href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language"><button data-lang="en" class="active">EN</button><button data-lang="es">ES</button><button data-lang="fr">FR</button></div>
+      <a href="https://patienttrac-revela.com" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="nav_cta">Launch Revela</a>
+    </div>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-content reveal">
+      <span class="eyebrow" data-i18n="hero_eyebrow">Cosmetic Surgery & Beauty EMR</span>
+      <h1 data-i18n-html="hero_h1"><em>Revela</em> — the surgeon's cockpit for the connected aesthetic journey.</h1>
+      <p class="lede" data-i18n="hero_lede">Speed at the point of care and a connected record that Profiler, ASC, and Companion intertwine around. The patient is profiled before they arrive, evaluated and proposed-to chairside, scheduled and costed through the OR, and carried through recovery — without a chart ever being re-keyed.</p>
+      <div class="hero-cta">
+        <a href="https://patienttrac-revela.com" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="cta_launch">Launch Revela</a>
+        <a href="../pricing.html#revela" class="btn btn-ghost" data-i18n="cta_pricing">View Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="desc-section">
+  <div class="wrap">
+    <div class="desc-grid">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="desc_eyebrow">About Revela</span>
+        <h2 style="font-size:clamp(2rem,3.8vw,2.6rem);margin-bottom:20px;" data-i18n-html="desc_h2">The connected, mobile, <em>real-time journey.</em></h2>
+      </div>
+      <div class="desc-text reveal">
+        <p data-i18n="desc_p">Commodity aesthetic software makes a surgeon type into boxes at a desktop after the fact. Revela lets them photograph, draw on the patient's anatomy, run an AI safety check, and hand over a financed proposal — chairside, on an iPad, in real time — on a record that Profiler already populated and that ASC, Continuum, and Companion will carry through surgery and recovery. The differentiator is the connected, mobile, real-time journey, not any single screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="wf_eyebrow">Core Workflows</span>
+      <h2 data-i18n-html="wf_h2">From intake to <em>recovery — one record.</em></h2>
+    </div>
+    <div class="wf-grid">
+      <div class="wf-card reveal"><div class="num">01</div><h4 data-i18n="wf1_t">Before the visit — Profiler</h4><p data-i18n="wf1_p">Profiler captures comprehensive patient and family history a plastic-surgery consult depends on — surgical/healing history, pregnancy/breastfeeding, family history of breast cancer — through adaptive AI-branching intake. It lands in the shared record before the patient sits down.</p></div>
+      <div class="wf-card reveal"><div class="num">02</div><h4 data-i18n="wf2_t">In the room — iPhone/iPad</h4><p data-i18n="wf2_p">Chairside: capture clinical photos in real time, draw directly on professional anatomical SVG templates, document in region-specific modules (Face, Breast, Body, Liposuction), run an AI surgical-safety screen, and generate a patient proposal — all while the patient is still in the chair.</p></div>
+      <div class="wf-card reveal"><div class="num">03</div><h4 data-i18n="wf3_t">AI surgical safety</h4><p data-i18n="wf3_p">Contraindications, drug interactions, missing pre-op, risk factors — built on validated scores: Caprini, STOP-Bang, RCRI, ASA. Severity-graded safety flags for clinician review.</p></div>
+      <div class="wf-card reveal"><div class="num">04</div><h4 data-i18n="wf4_t">Pricing the case</h4><p data-i18n="wf4_p">ProposalBuilder combines the professional/surgeon fee and financing (branded PDF, down-payment/monthly/term options, emailed or secure link) with ASC facility and case costs from preference cards. One patient-facing proposal, professional and itemized.</p></div>
+      <div class="wf-card reveal"><div class="num">05</div><h4 data-i18n="wf5_t">Surgery day</h4><p data-i18n="wf5_p">ASC drives the live OR: real-time case console, preference-card supplies and implants, equipment usage, DEA logging. Continuum captures the operative record. Both open on the same encounter_id Revela created.</p></div>
+      <div class="wf-card reveal"><div class="num">06</div><h4 data-i18n="wf6_t">After — Companion</h4><p data-i18n="wf6_p">Post-op: guided recovery episodes, photo-based healing check-ins, medication/wound-care adherence, and care-team alerts when something looks off — closing the loop back to the surgeon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="feat_eyebrow">Features</span>
+      <h2 data-i18n-html="feat_h2">Chairside tools for <em>aesthetic surgery.</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><div><h4 data-i18n="f1_t">Real-time photo capture</h4><p data-i18n="f1_p">Before/after, multi-angle clinical photography straight into the encounter, chairside on iPhone/iPad.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M16 13H8M16 17H8"/></svg></div><div><h4 data-i18n="f2_t">Anatomical drawing tool</h4><p data-i18n="f2_p">Professional SVG templates (Face, Breast, Body) for planned incisions, markings, and annotations — self-contained, offline-capable, instant.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg></div><div><h4 data-i18n="f3_t">Region-specific modules</h4><p data-i18n="f3_p">Face, Breast, Body, Liposuction, Initial Exam, Basic Operative Note — purpose-built documentation, not free-text boxes.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg></div><div><h4 data-i18n="f4_t">AI surgical-safety screen</h4><p data-i18n="f4_p">Caprini, STOP-Bang, RCRI, ASA risk scoring with contraindications, drug interactions, and missing pre-op flags.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div><div><h4 data-i18n="f5_t">ProposalBuilder</h4><p data-i18n="f5_p">AI-drafted, itemized estimates with financing (down payment, monthly, term, discount), branded PDF, secure delivery.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg></div><div><h4 data-i18n="f6_t">AI operative-note draft</h4><p data-i18n="f6_p">Server-side AI assists with note generation, PROMs insights, and an interactive Revela AI Assistant.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><div><h4 data-i18n="f7_t">Records & ROI</h4><p data-i18n="f7_p">Third-party requestor portal, report builder, C-CDA, medication reconciliation, EHI export, hash-chained audit.</p></div></div>
+      <div class="feat-card reveal"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><div><h4 data-i18n="f8_t">Integration-ready</h4><p data-i18n="f8_p">Designed for integration with Nextech, ModMed, and Aesthetic Record practice management systems.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="comp_eyebrow">Compliance & Integration</span>
+      <h2 data-i18n-html="comp_h2">Integration-ready, <em>not bolted on.</em></h2>
+      <p class="lede" data-i18n="comp_p">Revela is designed to work alongside your existing practice management systems. Integration with Nextech, ModMed, and Aesthetic Record is available — connecting Revela to your established workflows without replacing them.</p>
+    </div>
+    <div class="compliance-bar reveal">
+      <div class="compliance-cell"><h4 data-i18n="c1_t">Nextech</h4><p data-i18n="c1_p">Integration-ready</p></div>
+      <div class="compliance-cell"><h4 data-i18n="c2_t">ModMed</h4><p data-i18n="c2_p">Integration-ready</p></div>
+      <div class="compliance-cell"><h4 data-i18n="c3_t">Aesthetic Record</h4><p data-i18n="c3_p">Integration-ready</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="ben_eyebrow">Benefits</span>
+      <h2 data-i18n-html="ben_h2">Why aesthetic practices choose <em>Revela.</em></h2>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-card reveal"><div class="ben-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><h4 data-i18n="b1_t">Speed at the point of care</h4><p data-i18n="b1_p">Photograph, draw, safety-check, and proposal — chairside, on an iPad, in real time. The consult moves at the speed of the surgeon, not the speed of paperwork.</p></div>
+      <div class="ben-card reveal"><div class="ben-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div><h4 data-i18n="b2_t">The connected aesthetic journey</h4><p data-i18n="b2_p">Profiler, Revela, ASC/Continuum, Companion on one encounter_id. The chart is never re-keyed, the patient never re-tells their history, and the surgeon never re-logs in.</p></div>
+      <div class="ben-card reveal"><div class="ben-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg></div><h4 data-i18n="b3_t">Clinical safety built in</h4><p data-i18n="b3_p">Validated risk scores (Caprini, STOP-Bang, RCRI, ASA) and AI safety flags before every procedure. The surgeon is the decision-maker; the system is the safety net.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERTWINES -->
+<section class="desc-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow gold" data-i18n="intw_eyebrow">The Connected Journey</span>
+      <h2 data-i18n-html="intw_h2">How it <em>intertwines.</em></h2>
+    </div>
+    <div class="desc-text reveal" style="max-width:800px;">
+      <p data-i18n="intw_p">The connected journey is the story: Profiler front-loads the aesthetic/surgical/family history. Revela documents the consult and generates the proposal chairside. ASC preference cards produce the facility cost, combined into one patient-facing estimate. On surgery day, ASC runs the live OR and Continuum captures the operative record — both on the same encounter_id. Post-op, Companion carries recovery with photo check-ins, adherence tracking, and red-flag alerts back to the surgeon's Forge console.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DIFFERENT -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="diff_eyebrow">Why It's Different</span>
+      <h2 data-i18n-html="diff_h2">Not a <em>commodity EMR.</em></h2>
+    </div>
+    <div class="desc-text reveal" style="max-width:800px;">
+      <p data-i18n="diff_p">Commodity aesthetic software makes a surgeon type into boxes at a desktop after the fact. Revela lets them photograph, draw on the patient's anatomy, run an AI safety check, and hand over a financed proposal — chairside, on an iPad, in real time — on a record that Profiler already populated and that ASC, Continuum, and Companion will carry through surgery and recovery.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="price_eyebrow">Pricing</span>
+      <h2 data-i18n-html="price_h2">Plans for <em>aesthetic practices.</em></h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="tier" data-i18n="t1_tier">Starter</div>
+        <div class="amount">$299</div>
+        <div class="period" data-i18n="t1_period">/provider/month</div>
+        <div class="desc" data-i18n="t1_desc">For individual cosmetic surgeons getting started with specialty documentation.</div>
+        <ul class="price-feats"><li data-i18n="t1_f1">Single provider</li><li data-i18n="t1_f2">Operative note templates</li><li data-i18n="t1_f3">Photo management</li><li data-i18n="t1_f4">Forge integration included</li></ul>
+        <a href="../pricing.html#revela" class="btn btn-ghost" style="width:100%;justify-content:center;" data-i18n="price_select">Get started</a>
+      </div>
+      <div class="price-card popular reveal">
+        <div class="price-badge" data-i18n="price_popular">Most Popular</div>
+        <div class="tier" data-i18n="t2_tier">Professional</div>
+        <div class="amount">$699</div>
+        <div class="period" data-i18n="t2_period">/month (up to 5 providers)</div>
+        <div class="desc" data-i18n="t2_desc">For growing aesthetic practices with multiple providers and advanced needs.</div>
+        <ul class="price-feats"><li data-i18n="t2_f1">Up to 5 providers</li><li data-i18n="t2_f2">Everything in Starter</li><li data-i18n="t2_f3">PM system integration</li><li data-i18n="t2_f4">Post-op planning tools</li></ul>
+        <a href="../pricing.html#revela" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="price_select">Get started</a>
+      </div>
+      <div class="price-card reveal">
+        <div class="tier" data-i18n="t3_tier">Enterprise</div>
+        <div class="amount">$1,499</div>
+        <div class="period" data-i18n="t3_period">/month (unlimited providers)</div>
+        <div class="desc" data-i18n="t3_desc">For multi-location aesthetic practices. Includes data migration and custom AI workflows.</div>
+        <ul class="price-feats"><li data-i18n="t3_f1">Unlimited providers</li><li data-i18n="t3_f2">Everything in Professional</li><li data-i18n="t3_f3">Data migration ($1,500 one-time)</li><li data-i18n="t3_f4">Custom AI workflows ($2,500 + $199/mo)</li><li data-i18n="t3_f5">Dedicated onboarding</li></ul>
+        <a href="../pricing.html#revela" class="btn btn-ghost" style="width:100%;justify-content:center;" data-i18n="price_contact">Contact sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap reveal">
+    <h2 data-i18n-html="cta_h2">Ready to elevate your <em>aesthetic practice?</em></h2>
+    <p data-i18n="cta_p">Document with the precision your cosmetic patients deserve.</p>
+    <div class="cta-buttons">
+      <a href="https://patienttrac-revela.com" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="cta_launch">Launch Revela</a>
+      <a href="../pricing.html#revela" class="btn btn-ghost" data-i18n="cta_pricing">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="../index.html" class="logo"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="pgrad2" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/></linearGradient></defs><path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z" fill="url(#pgrad2)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/><g stroke="#d4af37" stroke-width="0.9" opacity="0.9"><line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/><line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/><line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/><line x1="38" y1="20" x2="30" y2="26"/></g><g><circle cx="18" cy="13" r="2.1" fill="#fff"/><circle cx="31" cy="11" r="2.1" fill="#d4af37"/><circle cx="38" cy="20" r="2.1" fill="#fff"/><circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/><circle cx="30" cy="26" r="1.9" fill="#d4af37"/><circle cx="20" cy="34" r="1.9" fill="#fff"/></g></svg><span class="word"><span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span></span></a>
+        <p data-i18n="foot_blurb">The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.</p>
+      </div>
+      <div class="foot-col"><h5 data-i18n="foot_platform">Platform</h5><a href="forge.html">Forge</a><a href="revela.html">Revela</a><a href="mind.html">Mind</a><a href="asc.html">ASC</a><a href="continuum.html">Continuum</a><a href="profiler.html">Profiler</a><a href="companion.html">Companion</a></div>
+      <div class="foot-col"><h5 data-i18n="foot_company">Company</h5><a href="../index.html#about" data-i18n="nav_about">Company</a><a href="../pricing.html" data-i18n="nav_pricing">Pricing</a><a href="../compare.html" data-i18n="nav_compare">Compare</a><a href="../index.html#contact" data-i18n="foot_contact">Contact</a></div>
+      <div class="foot-col"><h5 data-i18n="foot_legal_h">Legal</h5><a href="#" data-i18n="foot_privacy">Privacy Policy</a><a href="#" data-i18n="foot_terms">Terms of Service</a><a href="#" data-i18n="foot_hipaa">HIPAA Notice</a><a href="#" data-i18n="foot_ba">Business Associate Agreement</a></div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; <span id="year"></span> PatientTrac Corp. <span data-i18n="foot_rights">All rights reserved.</span></p>
+      <div class="legal"><span style="font-family:'DM Mono',monospace;font-size:.74rem;color:var(--text-mute);" data-i18n="foot_compliance">HIPAA Compliant &middot; ONC &sect;170.315</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N={
+  en:{
+    nav_about:"Company",nav_products:"Platform",nav_pricing:"Pricing",nav_compare:"Compare",nav_contact:"Contact",nav_cta:"Launch Revela",
+    hero_eyebrow:"Cosmetic Surgery & Beauty EMR",hero_h1:"<em>Revela</em> — the surgeon's cockpit for the connected aesthetic journey.",hero_lede:"Speed at the point of care and a connected record that Profiler, ASC, and Companion intertwine around. The patient is profiled before they arrive, evaluated and proposed-to chairside, scheduled and costed through the OR, and carried through recovery — without a chart ever being re-keyed.",
+    cta_launch:"Launch Revela",cta_pricing:"View Pricing",
+    desc_eyebrow:"About Revela",desc_h2:"The connected, mobile, <em>real-time journey.</em>",desc_p:"Commodity aesthetic software makes a surgeon type into boxes at a desktop after the fact. Revela lets them photograph, draw on the patient's anatomy, run an AI safety check, and hand over a financed proposal — chairside, on an iPad, in real time — on a record that Profiler already populated and that ASC, Continuum, and Companion will carry through surgery and recovery. The differentiator is the connected, mobile, real-time journey, not any single screen.",
+    wf_eyebrow:"Core Workflows",wf_h2:"From intake to <em>recovery — one record.</em>",
+    wf1_t:"Before the visit — Profiler",wf1_p:"Profiler captures comprehensive patient and family history a plastic-surgery consult depends on — surgical/healing history, pregnancy/breastfeeding, family history of breast cancer — through adaptive AI-branching intake. It lands in the shared record before the patient sits down.",
+    wf2_t:"In the room — iPhone/iPad",wf2_p:"Chairside: capture clinical photos in real time, draw directly on professional anatomical SVG templates, document in region-specific modules (Face, Breast, Body, Liposuction), run an AI surgical-safety screen, and generate a patient proposal — all while the patient is still in the chair.",
+    wf3_t:"AI surgical safety",wf3_p:"Contraindications, drug interactions, missing pre-op, risk factors — built on validated scores: Caprini, STOP-Bang, RCRI, ASA. Severity-graded safety flags for clinician review.",
+    wf4_t:"Pricing the case",wf4_p:"ProposalBuilder combines the professional/surgeon fee and financing (branded PDF, down-payment/monthly/term options, emailed or secure link) with ASC facility and case costs from preference cards. One patient-facing proposal, professional and itemized.",
+    wf5_t:"Surgery day",wf5_p:"ASC drives the live OR: real-time case console, preference-card supplies and implants, equipment usage, DEA logging. Continuum captures the operative record. Both open on the same encounter_id Revela created.",
+    wf6_t:"After — Companion",wf6_p:"Post-op: guided recovery episodes, photo-based healing check-ins, medication/wound-care adherence, and care-team alerts when something looks off — closing the loop back to the surgeon.",
+    feat_eyebrow:"Features",feat_h2:"Chairside tools for <em>aesthetic surgery.</em>",
+    f1_t:"Real-time photo capture",f1_p:"Before/after, multi-angle clinical photography straight into the encounter, chairside on iPhone/iPad.",
+    f2_t:"Anatomical drawing tool",f2_p:"Professional SVG templates (Face, Breast, Body) for planned incisions, markings, and annotations — self-contained, offline-capable, instant.",
+    f3_t:"Region-specific modules",f3_p:"Face, Breast, Body, Liposuction, Initial Exam, Basic Operative Note — purpose-built documentation, not free-text boxes.",
+    f4_t:"AI surgical-safety screen",f4_p:"Caprini, STOP-Bang, RCRI, ASA risk scoring with contraindications, drug interactions, and missing pre-op flags.",
+    f5_t:"ProposalBuilder",f5_p:"AI-drafted, itemized estimates with financing (down payment, monthly, term, discount), branded PDF, secure delivery.",
+    f6_t:"AI operative-note draft",f6_p:"Server-side AI assists with note generation, PROMs insights, and an interactive Revela AI Assistant.",
+    f7_t:"Records & ROI",f7_p:"Third-party requestor portal, report builder, C-CDA, medication reconciliation, EHI export, hash-chained audit.",
+    f8_t:"Integration-ready",f8_p:"Designed for integration with Nextech, ModMed, and Aesthetic Record practice management systems.",
+    comp_eyebrow:"Compliance & Integration",comp_h2:"Integration-ready, <em>not bolted on.</em>",comp_p:"Revela is designed to work alongside your existing practice management systems. Integration with Nextech, ModMed, and Aesthetic Record is available — connecting Revela to your established workflows without replacing them.",
+    c1_t:"Nextech",c1_p:"Integration-ready",c2_t:"ModMed",c2_p:"Integration-ready",c3_t:"Aesthetic Record",c3_p:"Integration-ready",
+    ben_eyebrow:"Benefits",ben_h2:"Why aesthetic practices choose <em>Revela.</em>",
+    b1_t:"Speed at the point of care",b1_p:"Photograph, draw, safety-check, and proposal — chairside, on an iPad, in real time. The consult moves at the speed of the surgeon, not the speed of paperwork.",
+    b2_t:"The connected aesthetic journey",b2_p:"Profiler, Revela, ASC/Continuum, Companion on one encounter_id. The chart is never re-keyed, the patient never re-tells their history, and the surgeon never re-logs in.",
+    b3_t:"Clinical safety built in",b3_p:"Validated risk scores (Caprini, STOP-Bang, RCRI, ASA) and AI safety flags before every procedure. The surgeon is the decision-maker; the system is the safety net.",
+    intw_eyebrow:"The Connected Journey",intw_h2:"How it <em>intertwines.</em>",intw_p:"The connected journey is the story: Profiler front-loads the aesthetic/surgical/family history. Revela documents the consult and generates the proposal chairside. ASC preference cards produce the facility cost, combined into one patient-facing estimate. On surgery day, ASC runs the live OR and Continuum captures the operative record — both on the same encounter_id. Post-op, Companion carries recovery with photo check-ins, adherence tracking, and red-flag alerts back to the surgeon's Forge console.",
+    diff_eyebrow:"Why It's Different",diff_h2:"Not a <em>commodity EMR.</em>",diff_p:"Commodity aesthetic software makes a surgeon type into boxes at a desktop after the fact. Revela lets them photograph, draw on the patient's anatomy, run an AI safety check, and hand over a financed proposal — chairside, on an iPad, in real time — on a record that Profiler already populated and that ASC, Continuum, and Companion will carry through surgery and recovery.",
+    price_eyebrow:"Pricing",price_h2:"Plans for <em>aesthetic practices.</em>",price_popular:"Most Popular",price_select:"Get started",price_contact:"Contact sales",
+    t1_tier:"Starter",t1_period:"/provider/month",t1_desc:"For individual cosmetic surgeons getting started with specialty documentation.",t1_f1:"Single provider",t1_f2:"Operative note templates",t1_f3:"Photo management",t1_f4:"Forge integration included",
+    t2_tier:"Professional",t2_period:"/month (up to 5 providers)",t2_desc:"For growing aesthetic practices with multiple providers and advanced needs.",t2_f1:"Up to 5 providers",t2_f2:"Everything in Starter",t2_f3:"PM system integration",t2_f4:"Post-op planning tools",
+    t3_tier:"Enterprise",t3_period:"/month (unlimited providers)",t3_desc:"For multi-location aesthetic practices. Includes data migration and custom AI workflows.",t3_f1:"Unlimited providers",t3_f2:"Everything in Professional",t3_f3:"Data migration ($1,500 one-time)",t3_f4:"Custom AI workflows ($2,500 + $199/mo)",t3_f5:"Dedicated onboarding",
+    cta_h2:"Ready to elevate your <em>aesthetic practice?</em>",cta_p:"Document with the precision your cosmetic patients deserve.",
+    foot_blurb:"The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.",foot_platform:"Platform",foot_company:"Company",foot_contact:"Contact",foot_legal_h:"Legal",foot_privacy:"Privacy Policy",foot_terms:"Terms of Service",foot_hipaa:"HIPAA Notice",foot_ba:"Business Associate Agreement",foot_rights:"All rights reserved.",foot_compliance:"HIPAA Compliant · ONC §170.315"
+  },
+  es:{
+    nav_about:"Empresa",nav_products:"Plataforma",nav_pricing:"Precios",nav_compare:"Comparar",nav_contact:"Contacto",nav_cta:"Abrir Revela",
+    hero_eyebrow:"EMR de Cirugía Cosmética y Estética",hero_h1:"<em>Revela</em> — la cabina del cirujano para el recorrido estetico conectado.",hero_lede:"Velocidad en el punto de atencion y un registro conectado que Profiler, ASC y Companion entrelazan. El paciente es perfilado antes de llegar, evaluado y propuesto al lado de la silla, programado y costeado a traves del quirofano, y acompanado en la recuperacion — sin re-teclear jamas un historial.",
+    cta_launch:"Abrir Revela",cta_pricing:"Ver precios",
+    desc_eyebrow:"Acerca de Revela",desc_h2:"El recorrido conectado, movil, <em>en tiempo real.</em>",desc_p:"El software estetico convencional obliga al cirujano a teclear en casillas de un escritorio despues del hecho. Revela le permite fotografiar, dibujar sobre la anatomia del paciente, ejecutar una verificacion de seguridad con IA y entregar una propuesta financiada — al lado de la silla, en un iPad, en tiempo real — sobre un registro que Profiler ya completo y que ASC, Continuum y Companion llevaran a traves de la cirugia y la recuperacion.",
+    wf_eyebrow:"Flujos de trabajo",wf_h2:"De la admision a la <em>recuperacion — un registro.</em>",
+    wf1_t:"Antes de la visita — Profiler",wf1_p:"Profiler captura el historial completo del paciente y familiar que requiere una consulta de cirugia plastica — historial quirurgico/de cicatrizacion, embarazo/lactancia, antecedentes familiares de cancer de mama — mediante admision adaptativa con ramificacion de IA.",
+    wf2_t:"En la sala — iPhone/iPad",wf2_p:"Al lado de la silla: capture fotos clinicas en tiempo real, dibuje sobre plantillas SVG anatomicas profesionales, documente en modulos por region (Cara, Mama, Cuerpo, Liposuccion), ejecute un filtro de seguridad quirurgica con IA y genere una propuesta para el paciente.",
+    wf3_t:"Seguridad quirurgica con IA",wf3_p:"Contraindicaciones, interacciones medicamentosas, preoperatorio faltante, factores de riesgo — basado en puntuaciones validadas: Caprini, STOP-Bang, RCRI, ASA. Alertas de seguridad clasificadas por severidad.",
+    wf4_t:"Costear el caso",wf4_p:"ProposalBuilder combina el honorario profesional/del cirujano y financiamiento (PDF de marca, opciones de anticipo/mensual/plazo, enviado por email o enlace seguro) con costos de instalacion y caso de ASC desde tarjetas de preferencia.",
+    wf5_t:"Dia de cirugia",wf5_p:"ASC gestiona el quirofano en vivo: consola de caso en tiempo real, insumos e implantes de tarjetas de preferencia, uso de equipos, registro DEA. Continuum captura el registro operatorio. Ambos abren sobre el mismo encounter_id que creo Revela.",
+    wf6_t:"Despues — Companion",wf6_p:"Posoperatorio: episodios de recuperacion guiados, seguimiento de cicatrizacion con fotos, adherencia a medicamentos/cuidado de heridas y alertas al equipo de atencion cuando algo parece anormal.",
+    feat_eyebrow:"Caracteristicas",feat_h2:"Herramientas al lado de la silla para <em>cirugia estetica.</em>",
+    f1_t:"Captura de fotos en tiempo real",f1_p:"Fotografia clinica antes/despues, multi-angulo, directamente en el encuentro, al lado de la silla en iPhone/iPad.",
+    f2_t:"Herramienta de dibujo anatomico",f2_p:"Plantillas SVG profesionales (Cara, Mama, Cuerpo) para incisiones planificadas, marcaciones y anotaciones — autocontenidas, funcional sin conexion, instantaneas.",
+    f3_t:"Modulos por region",f3_p:"Cara, Mama, Cuerpo, Liposuccion, Examen Inicial, Nota Operatoria Basica — documentacion especifica, no casillas de texto libre.",
+    f4_t:"Filtro de seguridad quirurgica con IA",f4_p:"Puntuacion de riesgo Caprini, STOP-Bang, RCRI, ASA con contraindicaciones, interacciones medicamentosas y alertas de preoperatorio faltante.",
+    f5_t:"ProposalBuilder",f5_p:"Estimaciones detalladas asistidas por IA con financiamiento (anticipo, mensual, plazo, descuento), PDF de marca, entrega segura.",
+    f6_t:"Borrador de nota operatoria con IA",f6_p:"IA del lado del servidor asiste con generacion de notas, perspectivas PROMs y un Asistente de IA interactivo de Revela.",
+    f7_t:"Registros y ROI",f7_p:"Portal de solicitantes externos, generador de informes, C-CDA, reconciliacion de medicamentos, exportacion EHI, auditoria con cadena de hash.",
+    f8_t:"Lista para integracion",f8_p:"Disenado para integracion con sistemas de gestion de practica Nextech, ModMed y Aesthetic Record.",
+    comp_eyebrow:"Conformidad e integracion",comp_h2:"Lista para integracion, <em>no agregada.</em>",comp_p:"Revela esta disenada para trabajar junto a sus sistemas de gestion de practica existentes. La integracion con Nextech, ModMed y Aesthetic Record esta disponible.",
+    c1_t:"Nextech",c1_p:"Lista para integracion",c2_t:"ModMed",c2_p:"Lista para integracion",c3_t:"Aesthetic Record",c3_p:"Lista para integracion",
+    ben_eyebrow:"Beneficios",ben_h2:"Por que las practicas esteticas eligen <em>Revela.</em>",
+    b1_t:"Velocidad en el punto de atencion",b1_p:"Fotografiar, dibujar, verificar seguridad y propuesta — al lado de la silla, en un iPad, en tiempo real. La consulta se mueve a la velocidad del cirujano, no a la del papeleo.",
+    b2_t:"El recorrido estetico conectado",b2_p:"Profiler, Revela, ASC/Continuum, Companion en un encounter_id. El historial nunca se re-teclea, el paciente nunca repite su historia y el cirujano nunca re-inicia sesion.",
+    b3_t:"Seguridad clinica integrada",b3_p:"Puntuaciones de riesgo validadas (Caprini, STOP-Bang, RCRI, ASA) y alertas de seguridad con IA antes de cada procedimiento. El cirujano decide; el sistema es la red de seguridad.",
+    intw_eyebrow:"El recorrido conectado",intw_h2:"Como se <em>entrelaza.</em>",intw_p:"El recorrido conectado es la historia: Profiler anticipa el historial estetico/quirurgico/familiar. Revela documenta la consulta y genera la propuesta al lado de la silla. Las tarjetas de preferencia de ASC producen el costo de instalacion, combinado en un estimado unico para el paciente. El dia de cirugia, ASC gestiona el quirofano en vivo y Continuum captura el registro operatorio — ambos sobre el mismo encounter_id. Posoperatorio, Companion lleva la recuperacion con seguimiento con fotos, adherencia y alertas de alerta roja de vuelta a la consola Forge del cirujano.",
+    diff_eyebrow:"Por que es diferente",diff_h2:"No es un <em>EMR convencional.</em>",diff_p:"El software estetico convencional obliga al cirujano a teclear en casillas de un escritorio despues del hecho. Revela le permite fotografiar, dibujar sobre la anatomia del paciente, ejecutar una verificacion de seguridad con IA y entregar una propuesta financiada — al lado de la silla, en un iPad, en tiempo real — sobre un registro que Profiler ya completo y que ASC, Continuum y Companion llevaran a traves de la cirugia y la recuperacion.",
+    price_eyebrow:"Precios",price_h2:"Planes para <em>practicas esteticas.</em>",price_popular:"Mas popular",price_select:"Comenzar",price_contact:"Contactar ventas",
+    t1_tier:"Inicial",t1_period:"/proveedor/mes",t1_desc:"Para cirujanos cosmeticos individuales que comienzan con documentacion de especialidad.",t1_f1:"Un proveedor",t1_f2:"Plantillas de notas operatorias",t1_f3:"Gestion de fotos",t1_f4:"Integracion con Forge incluida",
+    t2_tier:"Profesional",t2_period:"/mes (hasta 5 proveedores)",t2_desc:"Para practicas esteticas en crecimiento con multiples proveedores.",t2_f1:"Hasta 5 proveedores",t2_f2:"Todo lo del plan Inicial",t2_f3:"Integracion con sistema PM",t2_f4:"Herramientas de planificacion posoperatoria",
+    t3_tier:"Empresarial",t3_period:"/mes (proveedores ilimitados)",t3_desc:"Para practicas esteticas multi-sede. Incluye migracion de datos y flujos de IA personalizados.",t3_f1:"Proveedores ilimitados",t3_f2:"Todo lo del plan Profesional",t3_f3:"Migracion de datos ($1,500 unico pago)",t3_f4:"Flujos de IA personalizados ($2,500 + $199/mes)",t3_f5:"Incorporacion dedicada",
+    cta_h2:"Listo para elevar su <em>practica estetica?</em>",cta_p:"Documente con la precision que sus pacientes cosmeticos merecen.",
+    foot_blurb:"The Clinical Intelligence Network — un conjunto conectado de plataformas clínicas con IA sobre una columna de datos segura.",foot_platform:"Plataforma",foot_company:"Empresa",foot_contact:"Contacto",foot_legal_h:"Legal",foot_privacy:"Politica de privacidad",foot_terms:"Terminos del servicio",foot_hipaa:"Aviso HIPAA",foot_ba:"Acuerdo de Asociado Comercial",foot_rights:"Todos los derechos reservados.",foot_compliance:"Cumple HIPAA · ONC §170.315"
+  },
+  fr:{
+    nav_about:"Societe",nav_products:"Plateforme",nav_pricing:"Tarifs",nav_compare:"Comparer",nav_contact:"Contact",nav_cta:"Ouvrir Revela",
+    hero_eyebrow:"DME de Chirurgie Cosmétique et Esthétique",hero_h1:"<em>Revela</em> — le cockpit du chirurgien pour le parcours esthetique connecte.",hero_lede:"Rapidite au point de soins et un dossier connecte autour duquel Profiler, ASC et Companion s'entrelacent. Le patient est profile avant son arrivee, evalue et propose au fauteuil, planifie et chiffre au bloc, et accompagne en recuperation — sans jamais ressaisir un dossier.",
+    cta_launch:"Ouvrir Revela",cta_pricing:"Voir les tarifs",
+    desc_eyebrow:"A propos de Revela",desc_h2:"Le parcours connecte, mobile, <em>en temps reel.</em>",desc_p:"Les logiciels esthetiques classiques obligent le chirurgien a saisir dans des cases sur un bureau apres coup. Revela lui permet de photographier, dessiner sur l'anatomie du patient, executer un controle de securite par IA et remettre une proposition financee — au fauteuil, sur un iPad, en temps reel — sur un dossier que Profiler a deja rempli et que ASC, Continuum et Companion porteront a travers la chirurgie et la recuperation.",
+    wf_eyebrow:"Flux de travail",wf_h2:"De l'accueil a la <em>recuperation — un dossier.</em>",
+    wf1_t:"Avant la visite — Profiler",wf1_p:"Profiler recueille l'historique complet du patient et de la famille dont depend une consultation de chirurgie plastique — historique chirurgical/cicatrisation, grossesse/allaitement, antecedents familiaux de cancer du sein — via un accueil adaptatif a ramification IA.",
+    wf2_t:"Dans la salle — iPhone/iPad",wf2_p:"Au fauteuil : capture de photos cliniques en temps reel, dessin sur des modeles SVG anatomiques professionnels, documentation dans des modules par region (Visage, Sein, Corps, Liposuccion), filtrage de securite chirurgicale par IA et generation d'une proposition patient.",
+    wf3_t:"Securite chirurgicale IA",wf3_p:"Contre-indications, interactions medicamenteuses, preoperatoire manquant, facteurs de risque — bases sur des scores valides : Caprini, STOP-Bang, RCRI, ASA. Alertes de securite classees par severite.",
+    wf4_t:"Chiffrer le cas",wf4_p:"ProposalBuilder combine les honoraires professionnels/du chirurgien et le financement (PDF de marque, options acompte/mensuel/duree, envoye par email ou lien securise) avec les couts d'installation et de cas ASC depuis les fiches de preference.",
+    wf5_t:"Jour de chirurgie",wf5_p:"ASC pilote le bloc en direct : console de cas en temps reel, fournitures et implants des fiches de preference, utilisation des equipements, journal DEA. Continuum capture le compte rendu operatoire. Les deux ouvrent sur le meme encounter_id cree par Revela.",
+    wf6_t:"Apres — Companion",wf6_p:"Postoperatoire : episodes de recuperation guides, suivis de cicatrisation par photo, adherence aux medicaments/soins de plaie et alertes a l'equipe soignante quand quelque chose semble anormal.",
+    feat_eyebrow:"Fonctionnalites",feat_h2:"Outils au fauteuil pour la <em>chirurgie esthetique.</em>",
+    f1_t:"Capture photo en temps reel",f1_p:"Photographie clinique avant/apres, multi-angle, directement dans la rencontre, au fauteuil sur iPhone/iPad.",
+    f2_t:"Outil de dessin anatomique",f2_p:"Modeles SVG professionnels (Visage, Sein, Corps) pour incisions planifiees, marquages et annotations — autonomes, hors ligne, instantanes.",
+    f3_t:"Modules par region",f3_p:"Visage, Sein, Corps, Liposuccion, Examen Initial, Note Operatoire Basique — documentation dediee, pas des cases de texte libre.",
+    f4_t:"Filtrage de securite chirurgicale IA",f4_p:"Scores de risque Caprini, STOP-Bang, RCRI, ASA avec contre-indications, interactions medicamenteuses et alertes de preoperatoire manquant.",
+    f5_t:"ProposalBuilder",f5_p:"Estimations detaillees assistees par IA avec financement (acompte, mensuel, duree, remise), PDF de marque, livraison securisee.",
+    f6_t:"Brouillon de note operatoire IA",f6_p:"L'IA cote serveur assiste la generation de notes, les perspectives PROMs et un Assistant IA Revela interactif.",
+    f7_t:"Dossiers et ROI",f7_p:"Portail de demandeurs tiers, generateur de rapports, C-CDA, reconciliation medicamenteuse, export EHI, audit a chaine de hachage.",
+    f8_t:"Prete a l'integration",f8_p:"Concue pour l'integration avec les systemes de gestion de cabinet Nextech, ModMed et Aesthetic Record.",
+    comp_eyebrow:"Conformite et integration",comp_h2:"Prete a l'integration, <em>pas rajoutee.</em>",comp_p:"Revela est concue pour fonctionner aux cotes de vos systemes de gestion de cabinet existants. L'integration avec Nextech, ModMed et Aesthetic Record est disponible.",
+    c1_t:"Nextech",c1_p:"Prete a l'integration",c2_t:"ModMed",c2_p:"Prete a l'integration",c3_t:"Aesthetic Record",c3_p:"Prete a l'integration",
+    ben_eyebrow:"Avantages",ben_h2:"Pourquoi les cabinets esthetiques choisissent <em>Revela.</em>",
+    b1_t:"Rapidite au point de soins",b1_p:"Photographier, dessiner, verifier la securite et proposer — au fauteuil, sur un iPad, en temps reel. La consultation avance a la vitesse du chirurgien, pas a celle de la paperasse.",
+    b2_t:"Le parcours esthetique connecte",b2_p:"Profiler, Revela, ASC/Continuum, Companion sur un encounter_id. Le dossier n'est jamais ressaisi, le patient ne repete jamais son historique et le chirurgien ne se reconnecte jamais.",
+    b3_t:"Securite clinique integree",b3_p:"Scores de risque valides (Caprini, STOP-Bang, RCRI, ASA) et alertes de securite IA avant chaque procedure. Le chirurgien decide ; le systeme est le filet de securite.",
+    intw_eyebrow:"Le parcours connecte",intw_h2:"Comment ca <em>s'entrelace.</em>",intw_p:"Le parcours connecte est l'histoire : Profiler anticipe l'historique esthetique/chirurgical/familial. Revela documente la consultation et genere la proposition au fauteuil. Les fiches de preference ASC produisent le cout d'installation, combine en un devis unique pour le patient. Le jour de la chirurgie, ASC pilote le bloc en direct et Continuum capture le compte rendu operatoire — tous deux sur le meme encounter_id. En postoperatoire, Companion porte la recuperation avec suivis photo, suivi d'adherence et alertes drapeau rouge vers la console Forge du chirurgien.",
+    diff_eyebrow:"Pourquoi c'est different",diff_h2:"Pas un <em>DME classique.</em>",diff_p:"Les logiciels esthetiques classiques obligent le chirurgien a saisir dans des cases sur un bureau apres coup. Revela lui permet de photographier, dessiner sur l'anatomie du patient, executer un controle de securite par IA et remettre une proposition financee — au fauteuil, sur un iPad, en temps reel — sur un dossier que Profiler a deja rempli et que ASC, Continuum et Companion porteront a travers la chirurgie et la recuperation.",
+    price_eyebrow:"Tarifs",price_h2:"Plans pour <em>les cabinets esthetiques.</em>",price_popular:"Le plus populaire",price_select:"Commencer",price_contact:"Contacter les ventes",
+    t1_tier:"Initial",t1_period:"/praticien/mois",t1_desc:"Pour les chirurgiens cosmetiques individuels qui commencent avec la documentation de specialite.",t1_f1:"Un praticien",t1_f2:"Modeles de comptes rendus operatoires",t1_f3:"Gestion des photos",t1_f4:"Integration Forge incluse",
+    t2_tier:"Professionnel",t2_period:"/mois (jusqu'a 5 praticiens)",t2_desc:"Pour les cabinets esthetiques en croissance avec plusieurs praticiens.",t2_f1:"Jusqu'a 5 praticiens",t2_f2:"Tout du plan Initial",t2_f3:"Integration systeme PM",t2_f4:"Outils de planification postoperatoire",
+    t3_tier:"Entreprise",t3_period:"/mois (praticiens illimites)",t3_desc:"Pour les cabinets esthetiques multi-sites. Inclut migration de donnees et flux IA personnalises.",t3_f1:"Praticiens illimites",t3_f2:"Tout du plan Professionnel",t3_f3:"Migration de donnees (1 500 $ unique)",t3_f4:"Flux IA personnalises (2 500 $ + 199 $/mois)",t3_f5:"Integration dediee",
+    cta_h2:"Pret a elever votre <em>cabinet esthetique ?</em>",cta_p:"Documentez avec la precision que vos patients cosmetiques meritent.",
+    foot_blurb:"The Clinical Intelligence Network — un ensemble connecté de plateformes cliniques pilotées par l'IA sur une colonne de donnees securisee.",foot_platform:"Plateforme",foot_company:"Societe",foot_contact:"Contact",foot_legal_h:"Mentions legales",foot_privacy:"Politique de confidentialite",foot_terms:"Conditions d'utilisation",foot_hipaa:"Avis HIPAA",foot_ba:"Accord de sous-traitance (BAA)",foot_rights:"Tous droits reserves.",foot_compliance:"Conforme HIPAA · ONC §170.315"
+  }
+};
+let LANG='en';
+function applyLang(lang){if(!I18N[lang])lang='en';LANG=lang;const d=I18N[lang];document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k]!=null)el.textContent=d[k];});document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(d[k]!=null)el.innerHTML=d[k];});document.querySelectorAll('.lang button').forEach(b=>{b.classList.toggle('active',b.getAttribute('data-lang')===lang);});try{localStorage.setItem('ptemr_lang',lang);}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>{b.addEventListener('click',()=>applyLang(b.getAttribute('data-lang')));});
+const topbar=document.getElementById('topbar');window.addEventListener('scroll',()=>{topbar.classList.toggle('scrolled',window.scrollY>40);});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.getElementById('year').textContent=new Date().getFullYear();
+(function init(){let s=null;try{s=localStorage.getItem('ptemr_lang');}catch(e){}if(!s){const n=(navigator.language||'en').slice(0,2);if(['es','fr'].includes(n))s=n;}applyLang(s||'en');})();
+</script>
+</body>
+</html>

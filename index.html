@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>PatientTrac — The Clinical Intelligence Network</title>
-<meta name="description" content="PatientTrac Corp builds a connected family of AI-powered clinical platforms — scheduling, specialty EMRs, perioperative operations, patient intake and self-management — on one secure clinical data spine." />
+<meta name="description" content="PatientTrac Corp builds a connected suite of AI-powered clinical platforms — scheduling, specialty EMRs, perioperative operations, patient intake and self-management — on one secure clinical data spine." />
 <meta property="og:title" content="PatientTrac — The Clinical Intelligence Network" />
-<meta property="og:description" content="One clinical data spine. A family of seven connected platforms. AI woven through the entire patient journey." />
+<meta property="og:description" content="One clinical data spine. A suite of seven connected platforms. AI woven through the entire patient journey." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -130,8 +130,24 @@
   .logo.sm .word .tag{ display:none; }
 
   /* ---------- HERO ---------- */
-  #hero{ padding:172px 0 120px; }
+  #hero{ padding:172px 0 120px; position:relative; overflow:hidden; }
+  #hero::before{
+    content:''; position:absolute; inset:0; z-index:0;
+    background:url('assets/PatientTrac_CIN_06262026.png') center top/cover no-repeat;
+    opacity:.18; pointer-events:none;
+  }
+  #hero .wrap{ position:relative; z-index:1; }
   .hero-grid{ display:grid; grid-template-columns:1.18fr .82fr; gap:54px; align-items:center; }
+  .hero-pillars{ display:flex; flex-wrap:wrap; gap:12px; margin:22px 0 8px; }
+  .hero-pillars span{
+    font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.1em;
+    padding:6px 14px; border-radius:999px; border:1px solid var(--line);
+    color:var(--text-soft); background:rgba(15,34,64,0.4);
+  }
+  .hero-tagline{
+    margin-top:18px; font-family:'DM Mono',monospace; font-size:.82rem;
+    color:var(--gold); letter-spacing:.06em; text-align:center;
+  }
   .hero h1{ font-size:clamp(2.6rem,5.6vw,4.5rem); margin:14px 0 22px; }
   .hero h1 em{ font-style:normal; background:linear-gradient(120deg,var(--cyan),var(--sky)); -webkit-background-clip:text; background-clip:text; color:transparent; }
   .hero .lede{ font-size:1.22rem; margin-bottom:34px; }
@@ -389,10 +405,10 @@
 
     <nav class="nav-links">
       <a href="#about" data-i18n="nav_about">Company</a>
-      <a href="#intelligence" data-i18n="nav_ai">Intelligence</a>
       <a href="#products" data-i18n="nav_products">Platform</a>
-      <a href="#revenue" data-i18n="nav_revenue">Revenue Cycle</a>
-      <a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a>
+      <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+      <a href="compare.html" data-i18n="nav_compare">Compare</a>
+      <a href="#contact" data-i18n="nav_contact_link">Contact</a>
     </nav>
 
     <div class="nav-right">
@@ -410,12 +426,18 @@
 <section id="hero" class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <span class="eyebrow" data-i18n="hero_eyebrow">Health Informatics · Since 2001</span>
-      <h1 data-i18n-html="hero_h1">One clinical spine. <em>A connected family</em> of intelligent platforms.</h1>
-      <p class="lede" data-i18n="hero_lede">PatientTrac builds a unified ecosystem of AI-powered clinical software — scheduling, specialty EMRs, the operating room, patient intake, and post-visit self-management — all sharing one secure clinical data layer and one universal encounter key.</p>
+      <span class="eyebrow" data-i18n="hero_eyebrow">The Clinical Intelligence Network</span>
+      <h1 data-i18n-html="hero_h1"><em>Connected care</em> from intake to recovery.</h1>
+      <p class="lede" data-i18n="hero_lede">PatientTrac builds a unified ecosystem of AI-powered clinical software — scheduling, specialty EMRs, ambulatory surgery, patient intake, and post-visit monitoring — all sharing one secure clinical data layer and one universal encounter key.</p>
+      <div class="hero-pillars">
+        <span data-i18n="pillar1">Patient-Centric</span>
+        <span data-i18n="pillar2">Secure &amp; Compliant</span>
+        <span data-i18n="pillar3">AI-Powered Intelligence</span>
+        <span data-i18n="pillar4">Revenue Optimization</span>
+      </div>
       <div class="hero-cta">
         <a href="#products" class="btn btn-primary" data-i18n="hero_cta1">Explore the Platform</a>
-        <a href="#about" class="btn btn-ghost" data-i18n="hero_cta2">Our Story</a>
+        <a href="pricing.html" class="btn btn-ghost" data-i18n="hero_cta2">View Pricing</a>
       </div>
     </div>
     <div class="hero-panel reveal">
@@ -428,6 +450,7 @@
       <div class="hero-spine"><span class="dot"></span><span data-i18n="hero_spine">encounter_id — the universal key across every app</span></div>
     </div>
   </div>
+  <div class="wrap"><div class="hero-tagline" data-i18n="hero_tagline">One Patient · One Record · One Network · Better Outcomes</div></div>
 </section>
 
 <!-- ================= ABOUT ================= -->
@@ -437,7 +460,7 @@
       <span class="eyebrow" data-i18n="about_eyebrow">The Company</span>
       <h2 style="font-size:clamp(2rem,3.8vw,2.9rem);margin-bottom:20px;" data-i18n-html="about_h2">Built by clinicians and engineers, <em>over a quarter century.</em></h2>
       <p data-i18n="about_p1">PatientTrac Corp was founded in 2001 to solve a problem most software still ignores: clinical work does not live in one screen. A patient is scheduled, examined, operated on, billed, and followed up — across specialties, sites, and systems that rarely speak to each other.</p>
-      <p data-i18n="about_p2">We answered with a single clinical data repository and a family of focused applications that sit on top of it. Each app is purpose-built for its specialty, yet every one reads and writes the same patient and encounter records, governed by row-level security and a tamper-evident HIPAA audit layer.</p>
+      <p data-i18n="about_p2">We answered with a single clinical data repository and a suite of focused applications that sit on top of it. Each app is purpose-built for its specialty, yet every one reads and writes the same patient and encounter records, governed by row-level security and a tamper-evident HIPAA audit layer.</p>
       <blockquote class="pullquote" data-i18n="about_quote">"We never set out to build one product. We set out to build the spine that every clinical product could share."</blockquote>
       <p data-i18n="about_p3">Today that spine carries seven live platforms and the AI that runs through all of them — modernized from a legacy clinical system into a connected, cloud-native network.</p>
     </div>
@@ -448,7 +471,7 @@
         <div class="tl-item"><div class="yr">2019</div><h4 data-i18n="tl3_t">The clinical spine</h4><p data-i18n="tl3_p">The unified clinical repository and the shared encounter key are formalized — one record, many applications.</p></div>
         <div class="tl-item"><div class="yr">2023</div><h4 data-i18n="tl4_t">Cloud-native rebuild</h4><p data-i18n="tl4_p">The legacy platform is modernized to a multi-tenant, RLS-isolated architecture with serverless clinical intelligence.</p></div>
         <div class="tl-item"><div class="yr">2025</div><h4 data-i18n="tl5_t">AI woven in</h4><p data-i18n="tl5_p">No-show prediction, smart scheduling, AI intake, denial-risk and coding assistance go live across the platform.</p></div>
-        <div class="tl-item"><div class="yr">2026</div><h4 data-i18n="tl6_t">The full family</h4><p data-i18n="tl6_p">Seven platforms live — from the operating room to post-visit self-management — under one trilingual experience.</p></div>
+        <div class="tl-item"><div class="yr">2026</div><h4 data-i18n="tl6_t">The full suite</h4><p data-i18n="tl6_p">Seven platforms live — from the operating room to post-visit self-management — under one trilingual experience.</p></div>
       </div>
     </div>
   </div>
@@ -482,8 +505,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow gold" data-i18n="prod_eyebrow">The Platform · Seven Live Apps</span>
-      <h2 data-i18n-html="prod_h2">One family. <em>Seven connected platforms.</em></h2>
-      <p class="lede" data-i18n="prod_lede">Each application is built for its specialty and shares the same patient, encounter and security layer. A patient scheduled in Forge flows seamlessly into Revela, Mind, the OR, and beyond — without ever re-keying a record.</p>
+      <h2 data-i18n-html="prod_h2">One network. <em>Seven connected platforms.</em></h2>
+      <p class="lede" data-i18n="prod_lede">Each application is built for its specialty and shares the same patient, encounter and security layer. A patient scheduled in Forge flows seamlessly into Revela, Mind, ASC, and beyond — without ever re-keying a record.</p>
     </div>
     <div class="prod-grid">
 
@@ -496,17 +519,17 @@
           <span class="card-badge" data-i18n="badge_live">Live</span>
         </div>
         <div class="card-body">
-          <span class="card-eyebrow">PatientTracForge</span>
+          <span class="card-eyebrow">PatientTrac Forge</span>
           <h3>Forge</h3>
-          <div class="tagline" data-i18n="forge_tag">Scheduling, billing & practice-management hub</div>
-          <p data-i18n="forge_p">The foundation of the network. Patient registration, demographics, insurance, scheduling, check-in and encounter creation — the source of the encounter_id every other app consumes.</p>
+          <div class="tagline" data-i18n="forge_tag">Patient Management, Scheduling & Revenue-Cycle Hub</div>
+          <p data-i18n="forge_p">The operational foundation of the PatientTrac network. Patient registration, demographics, insurance, scheduling, check-in and encounter creation — the source of the encounter_id every other app consumes.</p>
           <ul class="card-feats">
             <li data-i18n="forge_f1">Multi-provider calendar with drag-and-drop check-in</li>
             <li data-i18n="forge_f2">US + international demographics & insurance</li>
             <li data-i18n="forge_f3">Role-based access with TOTP multi-factor auth</li>
             <li data-i18n="forge_f4">Routes each encounter to the right specialty app</li>
           </ul>
-          <a class="card-link" href="https://patienttracforge.com" target="_blank" rel="noopener"><span data-i18n="visit">Visit site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="products/forge.html"><span data-i18n="learn_more">Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -521,15 +544,15 @@
         <div class="card-body">
           <span class="card-eyebrow">PatientTrac Revela</span>
           <h3>Revela</h3>
-          <div class="tagline" data-i18n="revela_tag">Plastic & reconstructive surgery EMR</div>
-          <p data-i18n="revela_p">Aesthetic and reconstructive documentation built for the specialty — operative notes, breast and body exams, post-op planning — integrating with Nextech, ModMed or Aesthetic Record during implementation.</p>
+          <div class="tagline" data-i18n="revela_tag">Cosmetic Surgery & Beauty EMR</div>
+          <p data-i18n="revela_p">Premium documentation for aesthetic and cosmetic care — operative notes, breast and body exams, post-op planning — integration-ready with Nextech, ModMed or Aesthetic Record.</p>
           <ul class="card-feats">
             <li data-i18n="revela_f1">Specialty operative & post-op note templates</li>
             <li data-i18n="revela_f2">Integrates with existing practice-management systems</li>
             <li data-i18n="revela_f3">Reads the shared encounter, writes surgical records</li>
             <li data-i18n="revela_f4">Pairs with Patient Profiler intake</li>
           </ul>
-          <a class="card-link" href="https://patienttrac-revela.com" target="_blank" rel="noopener"><span data-i18n="visit">Visit site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="products/revela.html"><span data-i18n="learn_more">Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -544,61 +567,61 @@
         <div class="card-body">
           <span class="card-eyebrow">PatientTrac Mind</span>
           <h3>Mind</h3>
-          <div class="tagline" data-i18n="mind_tag">Behavioral health EMR</div>
-          <p data-i18n="mind_p">Psychiatry and psychology documentation — initial evaluations, medication management, follow-up and inpatient visits — with DSM-5 reference data built in and clinical notes kept clear of billing prompts.</p>
+          <div class="tagline" data-i18n="mind_tag">Neurobehavioral Health EMR — psychiatry · psychology · neurology</div>
+          <p data-i18n="mind_p">One record across psychiatry, psychology, and neurology — initial evaluations, medication management, follow-up and inpatient visits — with DSM-5 reference data built in and clinical notes kept clear of billing prompts.</p>
           <ul class="card-feats">
             <li data-i18n="mind_f1">Psychiatric evaluation & follow-up forms</li>
             <li data-i18n="mind_f2">Medication management & inpatient notes</li>
             <li data-i18n="mind_f3">DSM-5 diagnosis reference integrated</li>
             <li data-i18n="mind_f4">Secure login: email, password & authenticator code</li>
           </ul>
-          <a class="card-link" href="https://patienttracmind.com" target="_blank" rel="noopener"><span data-i18n="visit">Visit site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="products/mind.html"><span data-i18n="learn_more">Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
-      <!-- OR -->
+      <!-- ASC -->
       <div class="prod-card reveal" style="--card-accent:#0097a7;">
         <div class="card-media">
           <div class="fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 7V5a3 3 0 0 1 6 0v2M12 11v4M10 13h4"/></svg></div>
-          <img src="public/cards/or.jpg" alt="" onerror="this.classList.add('missing')"/>
+          <img src="public/cards/asc.jpg" alt="" onerror="this.classList.add('missing')"/>
           <div class="scrim"></div>
           <span class="card-badge" data-i18n="badge_live">Live</span>
         </div>
         <div class="card-body">
-          <span class="card-eyebrow">PatientTrac OR</span>
-          <h3>OR</h3>
-          <div class="tagline" data-i18n="or_tag">Operating room & perioperative operations</div>
-          <p data-i18n="or_p">Live perioperative management — equipment catalog and a full AAMI ST79 sterile-processing workflow — with supplies, medication and DEA logging, preference cards and a live case console on the roadmap.</p>
+          <span class="card-eyebrow">PatientTrac ASC</span>
+          <h3>ASC</h3>
+          <div class="tagline" data-i18n="asc_tag">Ambulatory Surgery Center Operations</div>
+          <p data-i18n="asc_p">Real-time visibility across cases, rooms, supplies, and revenue — equipment catalog, AAMI ST79 sterile-processing workflow, medication and DEA logging, preference cards and a live case console.</p>
           <ul class="card-feats">
-            <li data-i18n="or_f1">Equipment catalog with 11-state sterile workflow</li>
-            <li data-i18n="or_f2">AAMI ST79-aligned processing tracking</li>
-            <li data-i18n="or_f3">Perioperative records on the shared spine</li>
-            <li data-i18n="or_f4">Supplies, DEA log & preference cards expanding</li>
+            <li data-i18n="asc_f1">Equipment catalog with 11-state sterile workflow</li>
+            <li data-i18n="asc_f2">AAMI ST79-aligned processing tracking</li>
+            <li data-i18n="asc_f3">Real-time case, room & supply visibility</li>
+            <li data-i18n="asc_f4">Medication, DEA log & preference cards</li>
           </ul>
-          <a class="card-link" href="https://patienttracsurgery.com" target="_blank" rel="noopener"><span data-i18n="visit">Visit site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="products/asc.html"><span data-i18n="learn_more">Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
-      <!-- SURGERY -->
+      <!-- CONTINUUM -->
       <div class="prod-card reveal" style="--card-accent:#00d4ff;">
         <div class="card-media">
           <div class="fallback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 4l6 6-9 9-6 1 1-6 8-8z"/><path d="M13 5l6 6"/></svg></div>
-          <img src="public/cards/surgery.jpg" alt="" onerror="this.classList.add('missing')"/>
+          <img src="public/cards/continuum.jpg" alt="" onerror="this.classList.add('missing')"/>
           <div class="scrim"></div>
           <span class="card-badge" data-i18n="badge_live">Live</span>
         </div>
         <div class="card-body">
-          <span class="card-eyebrow">PatientTrac Surgery</span>
-          <h3>Surgery</h3>
-          <div class="tagline" data-i18n="surgery_tag">Surgical documentation</div>
-          <p data-i18n="surgery_p">Focused surgical documentation for the procedure record itself — fast, structured capture that ties back to the encounter and feeds the operative and billing trail downstream.</p>
+          <span class="card-eyebrow">PatientTrac Continuum</span>
+          <h3>Continuum</h3>
+          <div class="tagline" data-i18n="continuum_tag">Perioperative & Procedural Documentation</div>
+          <p data-i18n="continuum_p">One record for the entire procedural episode — every specialty, pre-op to recovery. Structured capture that ties back to the encounter and feeds the operative and billing trail downstream.</p>
           <ul class="card-feats">
-            <li data-i18n="surgery_f1">Structured surgical & procedure records</li>
-            <li data-i18n="surgery_f2">Linked to the encounter and operative notes</li>
-            <li data-i18n="surgery_f3">Lightweight, fast documentation surface</li>
-            <li data-i18n="surgery_f4">Feeds the downstream revenue cycle</li>
+            <li data-i18n="continuum_f1">Full procedural episode documentation</li>
+            <li data-i18n="continuum_f2">Pre-op through recovery in one record</li>
+            <li data-i18n="continuum_f3">Multi-specialty procedural support</li>
+            <li data-i18n="continuum_f4">Feeds the downstream revenue cycle</li>
           </ul>
-          <a class="card-link" href="https://patienttracsurg.com" target="_blank" rel="noopener"><span data-i18n="visit">Visit site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="products/continuum.html"><span data-i18n="learn_more">Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -613,15 +636,15 @@
         <div class="card-body">
           <span class="card-eyebrow">Patient Profiler</span>
           <h3>Profiler</h3>
-          <div class="tagline" data-i18n="profiler_tag">Patient-facing intake portal</div>
-          <p data-i18n="profiler_p">The patient's front door. A trilingual, eight-step intake with nine specialty branches and an AI conversational mode — collecting history before the visit so the provider opens a pre-filled encounter.</p>
+          <div class="tagline" data-i18n="profiler_tag">Intelligent Patient Intake Portal</div>
+          <p data-i18n="profiler_p">The patient's front door before the visit. A trilingual, eight-step intake with nine specialty branches and an AI conversational mode — collecting history so the provider opens a pre-filled encounter.</p>
           <ul class="card-feats">
             <li data-i18n="profiler_f1">Trilingual (EN/ES/FR) 8-step intake</li>
             <li data-i18n="profiler_f2">Nine specialty form branches</li>
             <li data-i18n="profiler_f3">AI conversational intake, server-side key</li>
             <li data-i18n="profiler_f4">Tokenized links & walk-in mode, e-signature consent</li>
           </ul>
-          <a class="card-link" href="https://patienttracprofiler.com" target="_blank" rel="noopener"><span data-i18n="visit">Visit site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="products/profiler.html"><span data-i18n="learn_more">Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -636,15 +659,15 @@
         <div class="card-body">
           <span class="card-eyebrow">PatientTrac Companion</span>
           <h3>Companion</h3>
-          <div class="tagline" data-i18n="companion_tag">Patient self-management & monitoring</div>
-          <p data-i18n="companion_p">The journey after the visit. Patients track recovery, medications and symptoms; the care team monitors progress and is alerted when something needs attention — closing the loop that Profiler opens.</p>
+          <div class="tagline" data-i18n="companion_tag">Patient Engagement & Remote Monitoring</div>
+          <p data-i18n="companion_p">Care continues after the visit. Patients track recovery, medications and symptoms; the care team monitors progress and is alerted when something needs attention — closing the loop that Profiler opens.</p>
           <ul class="card-feats">
             <li data-i18n="companion_f1">Post-visit recovery & symptom tracking</li>
             <li data-i18n="companion_f2">Medication & care-plan adherence</li>
             <li data-i18n="companion_f3">Care-team monitoring with alerts</li>
             <li data-i18n="companion_f4">Closes the Profiler → visit → Companion loop</li>
           </ul>
-          <a class="card-link" href="https://patienttraccompanion.com" target="_blank" rel="noopener"><span data-i18n="visit">Visit site</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="card-link" href="products/companion.html"><span data-i18n="learn_more">Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -694,9 +717,9 @@
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </div>
       <div class="loop-stage reveal">
-        <div class="ph" data-i18n="loop2_ph">During · The Family</div>
+        <div class="ph" data-i18n="loop2_ph">During · The Network</div>
         <h4 data-i18n="loop2_t">The encounter</h4>
-        <p data-i18n="loop2_p">Forge, Revela, Mind, OR and Surgery document the visit on the shared spine — one encounter, the right specialty surface, no re-keying.</p>
+        <p data-i18n="loop2_p">Forge, Revela, Mind, ASC and Continuum document the visit on the shared spine — one encounter, the right specialty surface, no re-keying.</p>
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </div>
       <div class="loop-stage reveal">
@@ -799,7 +822,7 @@
       </div>
       <div class="lead-copy reveal">
         <p data-i18n="lead_p1">Wayne Hayes Jr. founded PatientTrac Corp in 2001 and has been its principal architect ever since — designing the clinical data model, building the applications, and steering the platform from a legacy system into the connected, AI-driven network it is today.</p>
-        <p data-i18n="lead_p2">His conviction is simple: clinical software should adapt to how medicine is actually practiced — across specialties and settings — rather than forcing every discipline into one generic screen. That belief is the reason PatientTrac is a family of focused applications on a single shared spine, not a monolith.</p>
+        <p data-i18n="lead_p2">His conviction is simple: clinical software should adapt to how medicine is actually practiced — across specialties and settings — rather than forcing every discipline into one generic screen. That belief is the reason PatientTrac is a suite of focused applications on a single shared spine, not a monolith.</p>
         <div class="advisory">
           <h4 data-i18n="adv_h">Chief Medical Advisory Council</h4>
           <p data-i18n="adv_p">PatientTrac's clinical logic and database architecture were shaped alongside a multidisciplinary, international clinical team — surgeons, psychiatrists, trauma and emergency specialists, and plastic and reconstructive surgeons — ensuring each specialty module reflects real practice, not assumptions.</p>
@@ -871,23 +894,23 @@
           </svg>
           <span class="word"><span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span></span>
         </a>
-        <p data-i18n="foot_blurb">The Clinical Intelligence Network — a connected family of AI-powered clinical platforms on one secure data spine.</p>
+        <p data-i18n="foot_blurb">The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.</p>
       </div>
       <div class="foot-col">
         <h5 data-i18n="foot_platform">Platform</h5>
-        <a href="https://patienttracforge.com" target="_blank" rel="noopener">Forge</a>
-        <a href="https://patienttrac-revela.com" target="_blank" rel="noopener">Revela</a>
-        <a href="https://patienttracmind.com" target="_blank" rel="noopener">Mind</a>
-        <a href="https://patienttracsurgery.com" target="_blank" rel="noopener">OR</a>
-        <a href="https://patienttracsurg.com" target="_blank" rel="noopener">Surgery</a>
-        <a href="https://patienttracprofiler.com" target="_blank" rel="noopener">Profiler</a>
-        <a href="https://patienttraccompanion.com" target="_blank" rel="noopener">Companion</a>
+        <a href="products/forge.html">Forge</a>
+        <a href="products/revela.html">Revela</a>
+        <a href="products/mind.html">Mind</a>
+        <a href="products/asc.html">ASC</a>
+        <a href="products/continuum.html">Continuum</a>
+        <a href="products/profiler.html">Profiler</a>
+        <a href="products/companion.html">Companion</a>
       </div>
       <div class="foot-col">
         <h5 data-i18n="foot_company">Company</h5>
         <a href="#about" data-i18n="nav_about">Company</a>
-        <a href="#intelligence" data-i18n="nav_ai">Intelligence</a>
-        <a href="#revenue" data-i18n="nav_revenue">Revenue Cycle</a>
+        <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+        <a href="compare.html" data-i18n="nav_compare">Compare</a>
         <a href="#leadership" data-i18n="foot_leadership">Leadership</a>
         <a href="#contact" data-i18n="foot_contact">Contact</a>
       </div>
@@ -913,16 +936,20 @@
 const I18N = {
   en: {
     nav_about:"Company", nav_ai:"Intelligence", nav_products:"Platform", nav_revenue:"Revenue Cycle", nav_roadmap:"Roadmap", nav_cta:"Join the Waitlist",
-    hero_eyebrow:"Health Informatics · Since 2001",
-    hero_h1:"One clinical spine. <em>A connected family</em> of intelligent platforms.",
-    hero_lede:"PatientTrac builds a unified ecosystem of AI-powered clinical software — scheduling, specialty EMRs, the operating room, patient intake, and post-visit self-management — all sharing one secure clinical data layer and one universal encounter key.",
-    hero_cta1:"Explore the Platform", hero_cta2:"Our Story",
+    nav_pricing:"Pricing", nav_compare:"Compare", nav_contact_link:"Contact",
+    hero_eyebrow:"The Clinical Intelligence Network",
+    hero_h1:"<em>Connected care</em> from intake to recovery.",
+    hero_lede:"PatientTrac builds a unified ecosystem of AI-powered clinical software — scheduling, specialty EMRs, ambulatory surgery, patient intake, and post-visit monitoring — all sharing one secure clinical data layer and one universal encounter key.",
+    hero_cta1:"Explore the Platform", hero_cta2:"View Pricing",
+    pillar1:"Patient-Centric", pillar2:"Secure & Compliant", pillar3:"AI-Powered Intelligence", pillar4:"Revenue Optimization",
+    hero_tagline:"One Patient · One Record · One Network · Better Outcomes",
+    learn_more:"Learn more",
     hs_apps:"Live platforms", hs_years:"Years in informatics", hs_tables:"Clinical tables · 100% RLS", hs_lang:"Languages, end to end",
     hero_spine:"encounter_id — the universal key across every app",
     about_eyebrow:"The Company",
     about_h2:"Built by clinicians and engineers, <em>over a quarter century.</em>",
     about_p1:"PatientTrac Corp was founded in 2001 to solve a problem most software still ignores: clinical work does not live in one screen. A patient is scheduled, examined, operated on, billed, and followed up — across specialties, sites, and systems that rarely speak to each other.",
-    about_p2:"We answered with a single clinical data repository and a family of focused applications that sit on top of it. Each app is purpose-built for its specialty, yet every one reads and writes the same patient and encounter records, governed by row-level security and a tamper-evident HIPAA audit layer.",
+    about_p2:"We answered with a single clinical data repository and a suite of focused applications that sit on top of it. Each app is purpose-built for its specialty, yet every one reads and writes the same patient and encounter records, governed by row-level security and a tamper-evident HIPAA audit layer.",
     about_quote:"\"We never set out to build one product. We set out to build the spine that every clinical product could share.\"",
     about_p3:"Today that spine carries seven live platforms and the AI that runs through all of them — modernized from a legacy clinical system into a connected, cloud-native network.",
     tl1_t:"Founded", tl1_p:"PatientTrac Corp begins as a specialty clinical documentation system built on a relational clinical model.",
@@ -930,7 +957,7 @@ const I18N = {
     tl3_t:"The clinical spine", tl3_p:"The unified clinical repository and the shared encounter key are formalized — one record, many applications.",
     tl4_t:"Cloud-native rebuild", tl4_p:"The legacy platform is modernized to a multi-tenant, RLS-isolated architecture with serverless clinical intelligence.",
     tl5_t:"AI woven in", tl5_p:"No-show prediction, smart scheduling, AI intake, denial-risk and coding assistance go live across the platform.",
-    tl6_t:"The full family", tl6_p:"Seven platforms live — from the operating room to post-visit self-management — under one trilingual experience.",
+    tl6_t:"The full suite", tl6_p:"Seven platforms live — from the operating room to post-visit self-management — under one trilingual experience.",
     ai_eyebrow:"Clinical Intelligence",
     ai_h2:"AI that lives <em>inside the workflow,</em> not beside it.",
     ai_lede:"Every intelligent feature reads from the same clinical record and writes back to it. No bolt-on chatbots — the AI is wired into scheduling, intake, the encounter, and the revenue cycle, with the model key held server-side only.",
@@ -940,29 +967,29 @@ const I18N = {
     ai4_t:"Coding & denial risk", ai4_p:"After the encounter closes, suggested CPT/ICD codes and a denial-risk score reach the biller — never the clinician, by design.",
     sch1:"Clinical · 166 tables", sch2:"Multi-tenancy", sch3:"CPT · ICD-10 · DSM-5", sch4:"Tamper-evident HIPAA log",
     prod_eyebrow:"The Platform · Seven Live Apps",
-    prod_h2:"One family. <em>Seven connected platforms.</em>",
-    prod_lede:"Each application is built for its specialty and shares the same patient, encounter and security layer. A patient scheduled in Forge flows seamlessly into Revela, Mind, the OR, and beyond — without ever re-keying a record.",
+    prod_h2:"One network. <em>Seven connected platforms.</em>",
+    prod_lede:"Each application is built for its specialty and shares the same patient, encounter and security layer. A patient scheduled in Forge flows seamlessly into Revela, Mind, ASC, and beyond — without ever re-keying a record.",
     badge_live:"Live", visit:"Visit site",
-    forge_tag:"Scheduling, billing & practice-management hub",
-    forge_p:"The foundation of the network. Patient registration, demographics, insurance, scheduling, check-in and encounter creation — the source of the encounter_id every other app consumes.",
+    forge_tag:"Patient Management, Scheduling & Revenue-Cycle Hub",
+    forge_p:"The operational foundation of the PatientTrac network. Patient registration, demographics, insurance, scheduling, check-in and encounter creation — the source of the encounter_id every other app consumes.",
     forge_f1:"Multi-provider calendar with drag-and-drop check-in", forge_f2:"US + international demographics & insurance", forge_f3:"Role-based access with TOTP multi-factor auth", forge_f4:"Routes each encounter to the right specialty app",
-    revela_tag:"Plastic & reconstructive surgery EMR",
-    revela_p:"Aesthetic and reconstructive documentation built for the specialty — operative notes, breast and body exams, post-op planning — integrating with Nextech, ModMed or Aesthetic Record during implementation.",
+    revela_tag:"Cosmetic Surgery & Beauty EMR",
+    revela_p:"Premium documentation for aesthetic and cosmetic care — operative notes, breast and body exams, post-op planning — integration-ready with Nextech, ModMed or Aesthetic Record.",
     revela_f1:"Specialty operative & post-op note templates", revela_f2:"Integrates with existing practice-management systems", revela_f3:"Reads the shared encounter, writes surgical records", revela_f4:"Pairs with Patient Profiler intake",
-    mind_tag:"Behavioral health EMR",
-    mind_p:"Psychiatry and psychology documentation — initial evaluations, medication management, follow-up and inpatient visits — with DSM-5 reference data built in and clinical notes kept clear of billing prompts.",
+    mind_tag:"Neurobehavioral Health EMR — psychiatry · psychology · neurology",
+    mind_p:"One record across psychiatry, psychology, and neurology — initial evaluations, medication management, follow-up and inpatient visits — with DSM-5 reference data built in and clinical notes kept clear of billing prompts.",
     mind_f1:"Psychiatric evaluation & follow-up forms", mind_f2:"Medication management & inpatient notes", mind_f3:"DSM-5 diagnosis reference integrated", mind_f4:"Secure login: email, password & authenticator code",
-    or_tag:"Operating room & perioperative operations",
-    or_p:"Live perioperative management — equipment catalog and a full AAMI ST79 sterile-processing workflow — with supplies, medication and DEA logging, preference cards and a live case console on the roadmap.",
-    or_f1:"Equipment catalog with 11-state sterile workflow", or_f2:"AAMI ST79-aligned processing tracking", or_f3:"Perioperative records on the shared spine", or_f4:"Supplies, DEA log & preference cards expanding",
-    surgery_tag:"Surgical documentation",
-    surgery_p:"Focused surgical documentation for the procedure record itself — fast, structured capture that ties back to the encounter and feeds the operative and billing trail downstream.",
-    surgery_f1:"Structured surgical & procedure records", surgery_f2:"Linked to the encounter and operative notes", surgery_f3:"Lightweight, fast documentation surface", surgery_f4:"Feeds the downstream revenue cycle",
-    profiler_tag:"Patient-facing intake portal",
-    profiler_p:"The patient's front door. A trilingual, eight-step intake with nine specialty branches and an AI conversational mode — collecting history before the visit so the provider opens a pre-filled encounter.",
+    asc_tag:"Ambulatory Surgery Center Operations",
+    asc_p:"Real-time visibility across cases, rooms, supplies, and revenue — equipment catalog, AAMI ST79 sterile-processing workflow, medication and DEA logging, preference cards and a live case console.",
+    asc_f1:"Equipment catalog with 11-state sterile workflow", asc_f2:"AAMI ST79-aligned processing tracking", asc_f3:"Real-time case, room & supply visibility", asc_f4:"Medication, DEA log & preference cards",
+    continuum_tag:"Perioperative & Procedural Documentation",
+    continuum_p:"One record for the entire procedural episode — every specialty, pre-op to recovery. Structured capture that ties back to the encounter and feeds the operative and billing trail downstream.",
+    continuum_f1:"Full procedural episode documentation", continuum_f2:"Pre-op through recovery in one record", continuum_f3:"Multi-specialty procedural support", continuum_f4:"Feeds the downstream revenue cycle",
+    profiler_tag:"Intelligent Patient Intake Portal",
+    profiler_p:"The patient's front door before the visit. A trilingual, eight-step intake with nine specialty branches and an AI conversational mode — collecting history so the provider opens a pre-filled encounter.",
     profiler_f1:"Trilingual (EN/ES/FR) 8-step intake", profiler_f2:"Nine specialty form branches", profiler_f3:"AI conversational intake, server-side key", profiler_f4:"Tokenized links & walk-in mode, e-signature consent",
-    companion_tag:"Patient self-management & monitoring",
-    companion_p:"The journey after the visit. Patients track recovery, medications and symptoms; the care team monitors progress and is alerted when something needs attention — closing the loop that Profiler opens.",
+    companion_tag:"Patient Engagement & Remote Monitoring",
+    companion_p:"Care continues after the visit. Patients track recovery, medications and symptoms; the care team monitors progress and is alerted when something needs attention — closing the loop that Profiler opens.",
     companion_f1:"Post-visit recovery & symptom tracking", companion_f2:"Medication & care-plan adherence", companion_f3:"Care-team monitoring with alerts", companion_f4:"Closes the Profiler → visit → Companion loop",
     rev_eyebrow:"Revenue Cycle",
     rev_h2:"From the encounter to <em>paid</em> — one connected pipeline.",
@@ -980,7 +1007,7 @@ const I18N = {
     cont_h2:"Before, during, and <em>after</em> the visit.",
     cont_lede:"Profiler and Companion bookend the encounter into one continuous loop — intake feeds the visit, the visit feeds self-management, and the care team watches the whole arc.",
     loop1_ph:"Before · Profiler", loop1_t:"Pre-visit intake", loop1_p:"The patient completes a trilingual, specialty-aware intake — history, medications, symptoms — and AI triage flags anything urgent. The provider opens a pre-filled encounter.",
-    loop2_ph:"During · The Family", loop2_t:"The encounter", loop2_p:"Forge, Revela, Mind, OR and Surgery document the visit on the shared spine — one encounter, the right specialty surface, no re-keying.",
+    loop2_ph:"During · The Network", loop2_t:"The encounter", loop2_p:"Forge, Revela, Mind, ASC and Continuum document the visit on the shared spine — one encounter, the right specialty surface, no re-keying.",
     loop3_ph:"After · Companion", loop3_t:"Self-management & monitoring", loop3_p:"The patient tracks recovery and adherence at home; the care team monitors progress and is alerted when intervention is needed — then the loop begins again.",
     loop_foot:"Profiler → visit → Companion → back to care — one continuous record.",
     rm_eyebrow:"Roadmap",
@@ -999,7 +1026,7 @@ const I18N = {
     wl_ok_h:"You're on the list", wl_ok_p:"Thank you. A member of our team will be in touch shortly.",
     lead_eyebrow:"Leadership", lead_h2:"Founder-led, <em>clinician-validated.</em>", lead_role:"Founder & Chief Executive Officer",
     lead_p1:"Wayne Hayes Jr. founded PatientTrac Corp in 2001 and has been its principal architect ever since — designing the clinical data model, building the applications, and steering the platform from a legacy system into the connected, AI-driven network it is today.",
-    lead_p2:"His conviction is simple: clinical software should adapt to how medicine is actually practiced — across specialties and settings — rather than forcing every discipline into one generic screen. That belief is the reason PatientTrac is a family of focused applications on a single shared spine, not a monolith.",
+    lead_p2:"His conviction is simple: clinical software should adapt to how medicine is actually practiced — across specialties and settings — rather than forcing every discipline into one generic screen. That belief is the reason PatientTrac is a suite of focused applications on a single shared spine, not a monolith.",
     adv_h:"Chief Medical Advisory Council",
     adv_p:"PatientTrac's clinical logic and database architecture were shaped alongside a multidisciplinary, international clinical team — surgeons, psychiatrists, trauma and emergency specialists, and plastic and reconstructive surgeons — ensuring each specialty module reflects real practice, not assumptions.",
     adv1:"Plastic & Reconstructive Surgery", adv2:"Psychiatry", adv3:"Trauma Surgery", adv4:"Emergency Medicine", adv5:"Perioperative Nursing",
@@ -1013,23 +1040,27 @@ const I18N = {
     contact_addr:"PatientTrac Corp · United States", contact_hours:"Mon–Fri · response within one business day",
     cf_name:"Name", cf_email:"Email", cf_msg:"Message", cf_submit:"Send message",
     cf_ok:"Thank you — we'll respond shortly.", cf_err:"Please add your name, a valid email, and a message.",
-    foot_blurb:"The Clinical Intelligence Network — a connected family of AI-powered clinical platforms on one secure data spine.",
+    foot_blurb:"The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.",
     foot_platform:"Platform", foot_company:"Company", foot_leadership:"Leadership", foot_contact:"Contact",
     foot_legal_h:"Legal", foot_privacy:"Privacy Policy", foot_terms:"Terms of Service", foot_hipaa:"HIPAA Notice", foot_ba:"Business Associate Agreement",
     foot_rights:"All rights reserved.", foot_compliance:"HIPAA Compliant · ONC §170.315"
   },
   es: {
     nav_about:"Empresa", nav_ai:"Inteligencia", nav_products:"Plataforma", nav_revenue:"Ciclo de ingresos", nav_roadmap:"Hoja de ruta", nav_cta:"Unirse a la lista",
-    hero_eyebrow:"Informática clínica · Desde 2001",
-    hero_h1:"Una columna clínica. <em>Una familia conectada</em> de plataformas inteligentes.",
-    hero_lede:"PatientTrac construye un ecosistema unificado de software clínico con IA — agendamiento, EMR de especialidad, el quirófano, admisión de pacientes y autocuidado posterior a la visita — todo sobre una misma capa segura de datos clínicos y una clave de encuentro universal.",
-    hero_cta1:"Explorar la plataforma", hero_cta2:"Nuestra historia",
+    nav_pricing:"Precios", nav_compare:"Comparar", nav_contact_link:"Contacto",
+    hero_eyebrow:"The Clinical Intelligence Network",
+    hero_h1:"<em>Atención conectada</em> desde la admisión hasta la recuperación.",
+    hero_lede:"PatientTrac construye un ecosistema unificado de software clínico con IA — agendamiento, EMR de especialidad, cirugía ambulatoria, admisión de pacientes y monitoreo posterior — todo sobre una misma capa segura de datos clínicos y una clave de encuentro universal.",
+    hero_cta1:"Explorar la plataforma", hero_cta2:"Ver precios",
+    pillar1:"Centrado en el paciente", pillar2:"Seguro y conforme", pillar3:"Inteligencia con IA", pillar4:"Optimización de ingresos",
+    hero_tagline:"Un paciente · Un registro · Una red · Mejores resultados",
+    learn_more:"Más información",
     hs_apps:"Plataformas activas", hs_years:"Años en informática", hs_tables:"Tablas clínicas · 100% RLS", hs_lang:"Idiomas, de principio a fin",
     hero_spine:"encounter_id — la clave universal en cada aplicación",
     about_eyebrow:"La empresa",
     about_h2:"Creada por clínicos e ingenieros, <em>durante un cuarto de siglo.</em>",
     about_p1:"PatientTrac Corp se fundó en 2001 para resolver un problema que la mayoría del software aún ignora: el trabajo clínico no vive en una sola pantalla. Un paciente se agenda, se examina, se opera, se factura y se controla — entre especialidades, sedes y sistemas que rara vez se comunican.",
-    about_p2:"Respondimos con un único repositorio de datos clínicos y una familia de aplicaciones enfocadas que se apoyan en él. Cada aplicación está diseñada para su especialidad, pero todas leen y escriben los mismos registros de paciente y encuentro, regidos por seguridad a nivel de fila y una capa de auditoría HIPAA a prueba de manipulaciones.",
+    about_p2:"Respondimos con un único repositorio de datos clínicos y un conjunto de aplicaciones enfocadas que se apoyan en él. Cada aplicación está diseñada para su especialidad, pero todas leen y escriben los mismos registros de paciente y encuentro, regidos por seguridad a nivel de fila y una capa de auditoría HIPAA a prueba de manipulaciones.",
     about_quote:"«Nunca quisimos construir un solo producto. Quisimos construir la columna que todo producto clínico pudiera compartir.»",
     about_p3:"Hoy esa columna soporta siete plataformas activas y la IA que recorre todas ellas — modernizada de un sistema clínico heredado a una red conectada y nativa en la nube.",
     tl1_t:"Fundación", tl1_p:"PatientTrac Corp nace como un sistema de documentación clínica de especialidad sobre un modelo clínico relacional.",
@@ -1037,7 +1068,7 @@ const I18N = {
     tl3_t:"La columna clínica", tl3_p:"Se formalizan el repositorio clínico unificado y la clave de encuentro compartida — un registro, muchas aplicaciones.",
     tl4_t:"Reconstrucción nativa en la nube", tl4_p:"La plataforma heredada se moderniza a una arquitectura multiinquilino aislada por RLS con inteligencia clínica sin servidor.",
     tl5_t:"IA integrada", tl5_p:"Predicción de ausencias, agendamiento inteligente, admisión con IA, riesgo de rechazo y asistencia de codificación entran en producción.",
-    tl6_t:"La familia completa", tl6_p:"Siete plataformas activas — del quirófano al autocuidado posterior — bajo una sola experiencia trilingüe.",
+    tl6_t:"El conjunto completo", tl6_p:"Siete plataformas activas — del quirófano al autocuidado posterior — bajo una sola experiencia trilingüe.",
     ai_eyebrow:"Inteligencia clínica",
     ai_h2:"IA que vive <em>dentro del flujo de trabajo,</em> no a su lado.",
     ai_lede:"Cada función inteligente lee del mismo registro clínico y escribe en él. Sin chatbots añadidos — la IA está integrada en el agendamiento, la admisión, el encuentro y el ciclo de ingresos, con la clave del modelo guardada solo en el servidor.",
@@ -1047,29 +1078,29 @@ const I18N = {
     ai4_t:"Codificación y riesgo de rechazo", ai4_p:"Al cerrar el encuentro, los códigos CPT/ICD sugeridos y un puntaje de riesgo de rechazo llegan al facturador — nunca al clínico, por diseño.",
     sch1:"Clínico · 166 tablas", sch2:"Multiinquilino", sch3:"CPT · ICD-10 · DSM-5", sch4:"Registro HIPAA inalterable",
     prod_eyebrow:"La plataforma · Siete apps activas",
-    prod_h2:"Una familia. <em>Siete plataformas conectadas.</em>",
-    prod_lede:"Cada aplicación está hecha para su especialidad y comparte la misma capa de paciente, encuentro y seguridad. Un paciente agendado en Forge fluye sin fricción a Revela, Mind, el quirófano y más allá — sin volver a teclear un registro.",
+    prod_h2:"Una red. <em>Siete plataformas conectadas.</em>",
+    prod_lede:"Cada aplicación está hecha para su especialidad y comparte la misma capa de paciente, encuentro y seguridad. Un paciente agendado en Forge fluye sin fricción a Revela, Mind, ASC y más allá — sin volver a teclear un registro.",
     badge_live:"Activo", visit:"Visitar sitio",
-    forge_tag:"Centro de agendamiento, facturación y gestión",
-    forge_p:"La base de la red. Registro de pacientes, demografía, seguros, agendamiento, admisión y creación de encuentros — el origen del encounter_id que consumen las demás aplicaciones.",
+    forge_tag:"Gestión de Pacientes, Agendamiento y Ciclo de Ingresos",
+    forge_p:"La base operativa de la red PatientTrac. Registro de pacientes, demografía, seguros, agendamiento, admisión y creación de encuentros — el origen del encounter_id que consumen las demás aplicaciones.",
     forge_f1:"Calendario multiproveedor con admisión por arrastrar y soltar", forge_f2:"Demografía y seguros de EE. UU. e internacionales", forge_f3:"Acceso por roles con autenticación TOTP de doble factor", forge_f4:"Enruta cada encuentro a la app de especialidad correcta",
-    revela_tag:"EMR de cirugía plástica y reconstructiva",
-    revela_p:"Documentación estética y reconstructiva hecha para la especialidad — notas operatorias, exámenes de mama y cuerpo, planificación posoperatoria — integrándose con Nextech, ModMed o Aesthetic Record durante la implementación.",
+    revela_tag:"EMR de cirugía cosmética y estética",
+    revela_p:"Documentación premium para el cuidado estético y cosmético — notas operatorias, exámenes de mama y cuerpo, planificación posoperatoria — lista para integración con Nextech, ModMed o Aesthetic Record.",
     revela_f1:"Plantillas de notas operatorias y posoperatorias", revela_f2:"Se integra con sistemas de gestión existentes", revela_f3:"Lee el encuentro compartido, escribe registros quirúrgicos", revela_f4:"Se combina con la admisión de Patient Profiler",
-    mind_tag:"EMR de salud conductual",
-    mind_p:"Documentación de psiquiatría y psicología — evaluaciones iniciales, manejo de medicación, seguimiento y visitas hospitalarias — con datos de referencia DSM-5 integrados y notas clínicas libres de indicaciones de facturación.",
+    mind_tag:"EMR de salud neuroconductual — psiquiatría · psicología · neurología",
+    mind_p:"Un registro para psiquiatría, psicología y neurología — evaluaciones iniciales, manejo de medicación, seguimiento y visitas hospitalarias — con datos de referencia DSM-5 integrados y notas clínicas libres de indicaciones de facturación.",
     mind_f1:"Formularios de evaluación psiquiátrica y seguimiento", mind_f2:"Manejo de medicación y notas hospitalarias", mind_f3:"Referencia diagnóstica DSM-5 integrada", mind_f4:"Acceso seguro: correo, contraseña y código de autenticador",
-    or_tag:"Quirófano y operaciones perioperatorias",
-    or_p:"Gestión perioperatoria activa — catálogo de equipos y un flujo completo de procesamiento estéril AAMI ST79 — con insumos, registro de medicación y DEA, tarjetas de preferencia y una consola de casos en vivo en la hoja de ruta.",
-    or_f1:"Catálogo de equipos con flujo estéril de 11 estados", or_f2:"Seguimiento de procesamiento alineado con AAMI ST79", or_f3:"Registros perioperatorios sobre la columna compartida", or_f4:"Insumos, registro DEA y tarjetas de preferencia en expansión",
-    surgery_tag:"Documentación quirúrgica",
-    surgery_p:"Documentación quirúrgica enfocada en el propio registro del procedimiento — captura rápida y estructurada que se vincula al encuentro y alimenta el rastro operatorio y de facturación.",
-    surgery_f1:"Registros quirúrgicos y de procedimientos estructurados", surgery_f2:"Vinculado al encuentro y a las notas operatorias", surgery_f3:"Superficie de documentación ligera y rápida", surgery_f4:"Alimenta el ciclo de ingresos posterior",
-    profiler_tag:"Portal de admisión para el paciente",
-    profiler_p:"La puerta de entrada del paciente. Una admisión trilingüe de ocho pasos con nueve ramas de especialidad y un modo conversacional con IA — recopilando antecedentes antes de la visita para que el proveedor abra un encuentro precompletado.",
+    asc_tag:"Operaciones de centro de cirugía ambulatoria",
+    asc_p:"Visibilidad en tiempo real de casos, salas, insumos e ingresos — catálogo de equipos, flujo de procesamiento estéril AAMI ST79, registro de medicación y DEA, tarjetas de preferencia y una consola de casos en vivo.",
+    asc_f1:"Catálogo de equipos con flujo estéril de 11 estados", asc_f2:"Seguimiento de procesamiento alineado con AAMI ST79", asc_f3:"Visibilidad en tiempo real de casos, salas e insumos", asc_f4:"Medicación, registro DEA y tarjetas de preferencia",
+    continuum_tag:"Documentación perioperatoria y de procedimientos",
+    continuum_p:"Un registro para todo el episodio procedimental — cada especialidad, del preoperatorio a la recuperación. Captura estructurada que se vincula al encuentro y alimenta el rastro operatorio y de facturación.",
+    continuum_f1:"Documentación completa del episodio procedimental", continuum_f2:"Del preoperatorio a la recuperación en un registro", continuum_f3:"Soporte procedimental multiespecialidad", continuum_f4:"Alimenta el ciclo de ingresos posterior",
+    profiler_tag:"Portal Inteligente de Admisión del Paciente",
+    profiler_p:"La puerta de entrada del paciente antes de la visita. Una admisión trilingüe de ocho pasos con nueve ramas de especialidad y un modo conversacional con IA — recopilando antecedentes para que el proveedor abra un encuentro precompletado.",
     profiler_f1:"Admisión trilingüe (EN/ES/FR) de 8 pasos", profiler_f2:"Nueve ramas de formularios por especialidad", profiler_f3:"Admisión conversacional con IA, clave en el servidor", profiler_f4:"Enlaces con token y modo presencial, consentimiento con firma electrónica",
-    companion_tag:"Autocuidado y monitoreo del paciente",
-    companion_p:"El recorrido después de la visita. Los pacientes registran recuperación, medicación y síntomas; el equipo de atención supervisa el progreso y recibe alertas cuando algo requiere atención — cerrando el ciclo que abre Profiler.",
+    companion_tag:"Participación del Paciente y Monitoreo Remoto",
+    companion_p:"La atención continúa después de la visita. Los pacientes registran recuperación, medicación y síntomas; el equipo de atención supervisa el progreso y recibe alertas cuando algo requiere atención — cerrando el ciclo que abre Profiler.",
     companion_f1:"Seguimiento de recuperación y síntomas posvisita", companion_f2:"Adherencia a la medicación y al plan de cuidados", companion_f3:"Monitoreo del equipo de atención con alertas", companion_f4:"Cierra el ciclo Profiler → visita → Companion",
     rev_eyebrow:"Ciclo de ingresos",
     rev_h2:"Del encuentro al <em>pago</em> — una sola tubería conectada.",
@@ -1087,7 +1118,7 @@ const I18N = {
     cont_h2:"Antes, durante y <em>después</em> de la visita.",
     cont_lede:"Profiler y Companion enmarcan el encuentro en un ciclo continuo — la admisión alimenta la visita, la visita alimenta el autocuidado y el equipo de atención observa todo el recorrido.",
     loop1_ph:"Antes · Profiler", loop1_t:"Admisión previa a la visita", loop1_p:"El paciente completa una admisión trilingüe según especialidad — antecedentes, medicación, síntomas — y el triaje con IA marca lo urgente. El proveedor abre un encuentro precompletado.",
-    loop2_ph:"Durante · La familia", loop2_t:"El encuentro", loop2_p:"Forge, Revela, Mind, OR y Surgery documentan la visita sobre la columna compartida — un encuentro, la superficie de especialidad correcta, sin volver a teclear.",
+    loop2_ph:"Durante · La red", loop2_t:"El encuentro", loop2_p:"Forge, Revela, Mind, ASC y Continuum documentan la visita sobre la columna compartida — un encuentro, la superficie de especialidad correcta, sin volver a teclear.",
     loop3_ph:"Después · Companion", loop3_t:"Autocuidado y monitoreo", loop3_p:"El paciente registra recuperación y adherencia en casa; el equipo de atención supervisa el progreso y recibe alertas cuando se necesita intervención — y el ciclo vuelve a empezar.",
     loop_foot:"Profiler → visita → Companion → de vuelta a la atención — un registro continuo.",
     rm_eyebrow:"Hoja de ruta",
@@ -1106,7 +1137,7 @@ const I18N = {
     wl_ok_h:"Está en la lista", wl_ok_p:"Gracias. Un miembro de nuestro equipo se pondrá en contacto pronto.",
     lead_eyebrow:"Liderazgo", lead_h2:"Liderada por su fundador, <em>validada por clínicos.</em>", lead_role:"Fundador y Director Ejecutivo",
     lead_p1:"Wayne Hayes Jr. fundó PatientTrac Corp en 2001 y ha sido su arquitecto principal desde entonces — diseñando el modelo de datos clínicos, construyendo las aplicaciones y llevando la plataforma de un sistema heredado a la red conectada e impulsada por IA que es hoy.",
-    lead_p2:"Su convicción es simple: el software clínico debe adaptarse a cómo se practica realmente la medicina — entre especialidades y entornos — en lugar de forzar cada disciplina a una pantalla genérica. Por eso PatientTrac es una familia de aplicaciones enfocadas sobre una columna compartida, no un monolito.",
+    lead_p2:"Su convicción es simple: el software clínico debe adaptarse a cómo se practica realmente la medicina — entre especialidades y entornos — en lugar de forzar cada disciplina a una pantalla genérica. Por eso PatientTrac es un conjunto de aplicaciones enfocadas sobre una columna compartida, no un monolito.",
     adv_h:"Consejo Médico Asesor",
     adv_p:"La lógica clínica y la arquitectura de datos de PatientTrac se formaron junto a un equipo clínico internacional y multidisciplinario — cirujanos, psiquiatras, especialistas en trauma y emergencias, y cirujanos plásticos y reconstructivos — asegurando que cada módulo refleje la práctica real, no suposiciones.",
     adv1:"Cirugía plástica y reconstructiva", adv2:"Psiquiatría", adv3:"Cirugía de trauma", adv4:"Medicina de emergencia", adv5:"Enfermería perioperatoria",
@@ -1120,23 +1151,27 @@ const I18N = {
     contact_addr:"PatientTrac Corp · Estados Unidos", contact_hours:"Lun–Vie · respuesta en un día hábil",
     cf_name:"Nombre", cf_email:"Correo", cf_msg:"Mensaje", cf_submit:"Enviar mensaje",
     cf_ok:"Gracias — responderemos en breve.", cf_err:"Agregue su nombre, un correo válido y un mensaje.",
-    foot_blurb:"The Clinical Intelligence Network — una familia conectada de plataformas clínicas con IA sobre una columna de datos segura.",
+    foot_blurb:"The Clinical Intelligence Network — un conjunto conectado de plataformas clínicas con IA sobre una columna de datos segura.",
     foot_platform:"Plataforma", foot_company:"Empresa", foot_leadership:"Liderazgo", foot_contact:"Contacto",
     foot_legal_h:"Legal", foot_privacy:"Política de privacidad", foot_terms:"Términos del servicio", foot_hipaa:"Aviso HIPAA", foot_ba:"Acuerdo de Asociado Comercial",
     foot_rights:"Todos los derechos reservados.", foot_compliance:"Cumple HIPAA · ONC §170.315"
   },
   fr: {
     nav_about:"Société", nav_ai:"Intelligence", nav_products:"Plateforme", nav_revenue:"Cycle de revenus", nav_roadmap:"Feuille de route", nav_cta:"Rejoindre la liste",
-    hero_eyebrow:"Informatique clinique · Depuis 2001",
-    hero_h1:"Une colonne clinique. <em>Une famille connectée</em> de plateformes intelligentes.",
-    hero_lede:"PatientTrac construit un écosystème unifié de logiciels cliniques pilotés par l'IA — planification, DME de spécialité, le bloc opératoire, l'accueil des patients et le suivi après la visite — partageant tous une même couche de données cliniques sécurisée et une clé de rencontre universelle.",
-    hero_cta1:"Explorer la plateforme", hero_cta2:"Notre histoire",
+    nav_pricing:"Tarifs", nav_compare:"Comparer", nav_contact_link:"Contact",
+    hero_eyebrow:"The Clinical Intelligence Network",
+    hero_h1:"<em>Soins connectés</em> de l'accueil à la récupération.",
+    hero_lede:"PatientTrac construit un écosystème unifié de logiciels cliniques pilotés par l'IA — planification, DME de spécialité, chirurgie ambulatoire, accueil des patients et suivi après la visite — partageant tous une même couche de données cliniques sécurisée et une clé de rencontre universelle.",
+    hero_cta1:"Explorer la plateforme", hero_cta2:"Voir les tarifs",
+    pillar1:"Centré sur le patient", pillar2:"Sécurisé et conforme", pillar3:"Intelligence par IA", pillar4:"Optimisation des revenus",
+    hero_tagline:"Un patient · Un dossier · Un réseau · De meilleurs résultats",
+    learn_more:"En savoir plus",
     hs_apps:"Plateformes actives", hs_years:"Ans en informatique", hs_tables:"Tables cliniques · 100% RLS", hs_lang:"Langues, de bout en bout",
     hero_spine:"encounter_id — la clé universelle dans chaque application",
     about_eyebrow:"La société",
     about_h2:"Conçue par des cliniciens et des ingénieurs, <em>depuis un quart de siècle.</em>",
     about_p1:"PatientTrac Corp a été fondée en 2001 pour résoudre un problème que la plupart des logiciels ignorent encore : le travail clinique ne tient pas sur un seul écran. Un patient est planifié, examiné, opéré, facturé et suivi — entre des spécialités, des sites et des systèmes qui se parlent rarement.",
-    about_p2:"Nous avons répondu par un référentiel de données cliniques unique et une famille d'applications ciblées qui s'appuient dessus. Chaque application est conçue pour sa spécialité, mais toutes lisent et écrivent les mêmes dossiers patient et rencontre, encadrés par une sécurité au niveau des lignes et une couche d'audit HIPAA inviolable.",
+    about_p2:"Nous avons répondu par un référentiel de données cliniques unique et un ensemble d'applications ciblées qui s'appuient dessus. Chaque application est conçue pour sa spécialité, mais toutes lisent et écrivent les mêmes dossiers patient et rencontre, encadrés par une sécurité au niveau des lignes et une couche d'audit HIPAA inviolable.",
     about_quote:"« Nous n'avons jamais voulu créer un seul produit. Nous voulions créer la colonne que chaque produit clinique pourrait partager. »",
     about_p3:"Aujourd'hui cette colonne porte sept plateformes actives et l'IA qui les traverse toutes — modernisée d'un système clinique hérité vers un réseau connecté et natif du cloud.",
     tl1_t:"Fondation", tl1_p:"PatientTrac Corp débute comme un système de documentation clinique de spécialité bâti sur un modèle clinique relationnel.",
@@ -1144,7 +1179,7 @@ const I18N = {
     tl3_t:"La colonne clinique", tl3_p:"Le référentiel clinique unifié et la clé de rencontre partagée sont formalisés — un dossier, plusieurs applications.",
     tl4_t:"Reconstruction native cloud", tl4_p:"La plateforme héritée est modernisée vers une architecture multi-tenant isolée par RLS avec une intelligence clinique sans serveur.",
     tl5_t:"IA intégrée", tl5_p:"Prédiction d'absences, planification intelligente, accueil par IA, risque de refus et aide au codage entrent en production.",
-    tl6_t:"La famille complète", tl6_p:"Sept plateformes actives — du bloc opératoire au suivi après la visite — sous une seule expérience trilingue.",
+    tl6_t:"L'ensemble complet", tl6_p:"Sept plateformes actives — du bloc opératoire au suivi après la visite — sous une seule expérience trilingue.",
     ai_eyebrow:"Intelligence clinique",
     ai_h2:"Une IA qui vit <em>dans le flux de travail,</em> pas à côté.",
     ai_lede:"Chaque fonction intelligente lit le même dossier clinique et y réécrit. Pas de chatbots ajoutés — l'IA est intégrée à la planification, à l'accueil, à la rencontre et au cycle de revenus, la clé du modèle restant uniquement côté serveur.",
@@ -1154,29 +1189,29 @@ const I18N = {
     ai4_t:"Codage et risque de refus", ai4_p:"À la clôture de la rencontre, les codes CPT/ICD suggérés et un score de risque de refus parviennent au facturateur — jamais au clinicien, par conception.",
     sch1:"Clinique · 166 tables", sch2:"Multi-tenant", sch3:"CPT · ICD-10 · DSM-5", sch4:"Journal HIPAA inviolable",
     prod_eyebrow:"La plateforme · Sept applis actives",
-    prod_h2:"Une famille. <em>Sept plateformes connectées.</em>",
-    prod_lede:"Chaque application est conçue pour sa spécialité et partage la même couche patient, rencontre et sécurité. Un patient planifié dans Forge passe sans friction vers Revela, Mind, le bloc et au-delà — sans jamais ressaisir un dossier.",
+    prod_h2:"Un réseau. <em>Sept plateformes connectées.</em>",
+    prod_lede:"Chaque application est conçue pour sa spécialité et partage la même couche patient, rencontre et sécurité. Un patient planifié dans Forge passe sans friction vers Revela, Mind, ASC et au-delà — sans jamais ressaisir un dossier.",
     badge_live:"Actif", visit:"Voir le site",
-    forge_tag:"Pôle de planification, facturation et gestion",
-    forge_p:"La fondation du réseau. Enregistrement des patients, démographie, assurance, planification, accueil et création de rencontres — la source de l'encounter_id que consomment toutes les autres applications.",
+    forge_tag:"Gestion des Patients, Planification et Cycle de Revenus",
+    forge_p:"La fondation opérationnelle du réseau PatientTrac. Enregistrement des patients, démographie, assurance, planification, accueil et création de rencontres — la source de l'encounter_id que consomment toutes les autres applications.",
     forge_f1:"Calendrier multi-praticiens avec accueil par glisser-déposer", forge_f2:"Démographie et assurance américaines et internationales", forge_f3:"Accès par rôles avec authentification TOTP à deux facteurs", forge_f4:"Oriente chaque rencontre vers la bonne appli de spécialité",
-    revela_tag:"DME de chirurgie plastique et reconstructive",
-    revela_p:"Documentation esthétique et reconstructive conçue pour la spécialité — comptes rendus opératoires, examens du sein et du corps, planification postopératoire — s'intégrant à Nextech, ModMed ou Aesthetic Record lors de la mise en œuvre.",
+    revela_tag:"DME de chirurgie cosmétique et esthétique",
+    revela_p:"Documentation premium pour les soins esthétiques et cosmétiques — comptes rendus opératoires, examens du sein et du corps, planification postopératoire — prête à l'intégration avec Nextech, ModMed ou Aesthetic Record.",
     revela_f1:"Modèles de comptes rendus opératoires et postopératoires", revela_f2:"S'intègre aux systèmes de gestion existants", revela_f3:"Lit la rencontre partagée, écrit les dossiers chirurgicaux", revela_f4:"Se combine à l'accueil Patient Profiler",
-    mind_tag:"DME de santé comportementale",
-    mind_p:"Documentation de psychiatrie et de psychologie — évaluations initiales, gestion des médicaments, suivi et visites hospitalières — avec les données de référence DSM-5 intégrées et des notes cliniques exemptes d'invites de facturation.",
+    mind_tag:"DME de santé neurocomportementale — psychiatrie · psychologie · neurologie",
+    mind_p:"Un dossier unique pour la psychiatrie, la psychologie et la neurologie — évaluations initiales, gestion des médicaments, suivi et visites hospitalières — avec les données de référence DSM-5 intégrées et des notes cliniques exemptes d'invites de facturation.",
     mind_f1:"Formulaires d'évaluation psychiatrique et de suivi", mind_f2:"Gestion des médicaments et notes hospitalières", mind_f3:"Référentiel diagnostique DSM-5 intégré", mind_f4:"Connexion sécurisée : e-mail, mot de passe et code d'authentification",
-    or_tag:"Bloc opératoire et opérations périopératoires",
-    or_p:"Gestion périopératoire active — catalogue d'équipements et un flux complet de traitement stérile AAMI ST79 — avec fournitures, journal des médicaments et DEA, fiches de préférence et une console de cas en direct à la feuille de route.",
-    or_f1:"Catalogue d'équipements avec flux stérile à 11 états", or_f2:"Suivi du traitement aligné sur AAMI ST79", or_f3:"Dossiers périopératoires sur la colonne partagée", or_f4:"Fournitures, journal DEA et fiches de préférence en expansion",
-    surgery_tag:"Documentation chirurgicale",
-    surgery_p:"Documentation chirurgicale ciblée sur le dossier de l'intervention lui-même — une saisie rapide et structurée qui se rattache à la rencontre et alimente la piste opératoire et de facturation.",
-    surgery_f1:"Dossiers chirurgicaux et d'intervention structurés", surgery_f2:"Relié à la rencontre et aux comptes rendus opératoires", surgery_f3:"Surface de documentation légère et rapide", surgery_f4:"Alimente le cycle de revenus en aval",
-    profiler_tag:"Portail d'accueil destiné au patient",
-    profiler_p:"La porte d'entrée du patient. Un accueil trilingue en huit étapes avec neuf branches de spécialité et un mode conversationnel par IA — recueillant les antécédents avant la visite pour que le praticien ouvre une rencontre préremplie.",
+    asc_tag:"Opérations de centre de chirurgie ambulatoire",
+    asc_p:"Visibilité en temps réel des cas, des salles, des fournitures et des revenus — catalogue d'équipements, flux de traitement stérile AAMI ST79, journal des médicaments et DEA, fiches de préférence et console de cas en direct.",
+    asc_f1:"Catalogue d'équipements avec flux stérile à 11 états", asc_f2:"Suivi du traitement aligné sur AAMI ST79", asc_f3:"Visibilité en temps réel des cas, salles et fournitures", asc_f4:"Médicaments, journal DEA et fiches de préférence",
+    continuum_tag:"Documentation périopératoire et procédurale",
+    continuum_p:"Un dossier pour l'ensemble de l'épisode procédural — chaque spécialité, du préopératoire à la récupération. Saisie structurée qui se rattache à la rencontre et alimente la piste opératoire et de facturation.",
+    continuum_f1:"Documentation complète de l'épisode procédural", continuum_f2:"Du préopératoire à la récupération en un dossier", continuum_f3:"Support procédural multispécialité", continuum_f4:"Alimente le cycle de revenus en aval",
+    profiler_tag:"Portail Intelligent d'Accueil du Patient",
+    profiler_p:"La porte d'entrée du patient avant la visite. Un accueil trilingue en huit étapes avec neuf branches de spécialité et un mode conversationnel par IA — recueillant les antécédents pour que le praticien ouvre une rencontre préremplie.",
     profiler_f1:"Accueil trilingue (EN/ES/FR) en 8 étapes", profiler_f2:"Neuf branches de formulaires par spécialité", profiler_f3:"Accueil conversationnel par IA, clé côté serveur", profiler_f4:"Liens à jeton et mode sur place, consentement par signature électronique",
-    companion_tag:"Autogestion et suivi du patient",
-    companion_p:"Le parcours après la visite. Les patients suivent leur rétablissement, leurs médicaments et leurs symptômes ; l'équipe soignante surveille les progrès et est alertée lorsqu'une attention est requise — bouclant la boucle qu'ouvre Profiler.",
+    companion_tag:"Engagement du Patient et Surveillance à Distance",
+    companion_p:"Les soins continuent après la visite. Les patients suivent leur rétablissement, leurs médicaments et leurs symptômes ; l'équipe soignante surveille les progrès et est alertée lorsqu'une attention est requise — bouclant la boucle qu'ouvre Profiler.",
     companion_f1:"Suivi du rétablissement et des symptômes après la visite", companion_f2:"Observance des médicaments et du plan de soins", companion_f3:"Surveillance par l'équipe soignante avec alertes", companion_f4:"Boucle Profiler → visite → Companion",
     rev_eyebrow:"Cycle de revenus",
     rev_h2:"De la rencontre au <em>paiement</em> — un seul pipeline connecté.",
@@ -1194,7 +1229,7 @@ const I18N = {
     cont_h2:"Avant, pendant et <em>après</em> la visite.",
     cont_lede:"Profiler et Companion encadrent la rencontre en une boucle continue — l'accueil alimente la visite, la visite alimente l'autogestion, et l'équipe soignante observe tout le parcours.",
     loop1_ph:"Avant · Profiler", loop1_t:"Accueil avant la visite", loop1_p:"Le patient complète un accueil trilingue adapté à la spécialité — antécédents, médicaments, symptômes — et le triage par IA signale l'urgent. Le praticien ouvre une rencontre préremplie.",
-    loop2_ph:"Pendant · La famille", loop2_t:"La rencontre", loop2_p:"Forge, Revela, Mind, OR et Surgery documentent la visite sur la colonne partagée — une rencontre, la bonne surface de spécialité, aucune ressaisie.",
+    loop2_ph:"Pendant · Le réseau", loop2_t:"La rencontre", loop2_p:"Forge, Revela, Mind, ASC et Continuum documentent la visite sur la colonne partagée — une rencontre, la bonne surface de spécialité, aucune ressaisie.",
     loop3_ph:"Après · Companion", loop3_t:"Autogestion et suivi", loop3_p:"Le patient suit son rétablissement et son observance à domicile ; l'équipe soignante surveille les progrès et est alertée si une intervention est nécessaire — puis la boucle recommence.",
     loop_foot:"Profiler → visite → Companion → retour aux soins — un dossier continu.",
     rm_eyebrow:"Feuille de route",
@@ -1213,7 +1248,7 @@ const I18N = {
     wl_ok_h:"Vous êtes inscrit", wl_ok_p:"Merci. Un membre de notre équipe vous contactera sous peu.",
     lead_eyebrow:"Direction", lead_h2:"Dirigée par son fondateur, <em>validée par les cliniciens.</em>", lead_role:"Fondateur et Directeur général",
     lead_p1:"Wayne Hayes Jr. a fondé PatientTrac Corp en 2001 et en est l'architecte principal depuis — concevant le modèle de données cliniques, construisant les applications et menant la plateforme d'un système hérité au réseau connecté et piloté par l'IA qu'elle est aujourd'hui.",
-    lead_p2:"Sa conviction est simple : le logiciel clinique doit s'adapter à la façon dont la médecine se pratique réellement — entre spécialités et environnements — plutôt que de forcer chaque discipline dans un écran générique. C'est pourquoi PatientTrac est une famille d'applications ciblées sur une colonne partagée, non un monolithe.",
+    lead_p2:"Sa conviction est simple : le logiciel clinique doit s'adapter à la façon dont la médecine se pratique réellement — entre spécialités et environnements — plutôt que de forcer chaque discipline dans un écran générique. C'est pourquoi PatientTrac est un ensemble d'applications ciblées sur une colonne partagée, non un monolithe.",
     adv_h:"Conseil consultatif médical",
     adv_p:"La logique clinique et l'architecture de données de PatientTrac ont été façonnées avec une équipe clinique internationale et pluridisciplinaire — chirurgiens, psychiatres, spécialistes du trauma et de l'urgence, et chirurgiens plasticiens et reconstructeurs — garantissant que chaque module reflète la pratique réelle, non des suppositions.",
     adv1:"Chirurgie plastique et reconstructive", adv2:"Psychiatrie", adv3:"Chirurgie du trauma", adv4:"Médecine d'urgence", adv5:"Soins infirmiers périopératoires",
@@ -1227,7 +1262,7 @@ const I18N = {
     contact_addr:"PatientTrac Corp · États-Unis", contact_hours:"Lun–Ven · réponse sous un jour ouvré",
     cf_name:"Nom", cf_email:"E-mail", cf_msg:"Message", cf_submit:"Envoyer le message",
     cf_ok:"Merci — nous répondrons sous peu.", cf_err:"Ajoutez votre nom, un e-mail valide et un message.",
-    foot_blurb:"The Clinical Intelligence Network — une famille connectée de plateformes cliniques pilotées par l'IA sur une colonne de données sécurisée.",
+    foot_blurb:"The Clinical Intelligence Network — un ensemble connecté de plateformes cliniques pilotées par l'IA sur une colonne de données sécurisée.",
     foot_platform:"Plateforme", foot_company:"Société", foot_leadership:"Direction", foot_contact:"Contact",
     foot_legal_h:"Mentions légales", foot_privacy:"Politique de confidentialité", foot_terms:"Conditions d'utilisation", foot_hipaa:"Avis HIPAA", foot_ba:"Accord de sous-traitance (BAA)",
     foot_rights:"Tous droits réservés.", foot_compliance:"Conforme HIPAA · ONC §170.315"
