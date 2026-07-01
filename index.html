@@ -143,13 +143,16 @@
     border-bottom:1px solid rgba(215,180,106,.14);
   }
   #hero::before{
-    content:''; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.76;
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.9;
     background-image:
+      url('assets/hero-biotech-network-bg.png'),
       linear-gradient(rgba(215,180,106,0.055) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0,212,255,0.045) 1px, transparent 1px),
       radial-gradient(circle at 55% 45%, rgba(246,211,141,.10), transparent 28%);
-    background-size:96px 96px,96px 96px,auto;
-    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.82) 72%,transparent 100%);
+    background-size: min(980px, 66vw) auto,96px 96px,96px 96px,auto;
+    background-position: right center,0 0,0 0,55% 45%;
+    background-repeat:no-repeat,repeat,repeat,no-repeat;
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 76%,transparent 100%);
   }
   #hero::after{
     content:''; position:absolute; left:-10%; right:-10%; bottom:0; height:190px; pointer-events:none; z-index:0;
@@ -159,8 +162,10 @@
     opacity:.78;
   }
   #hero .wrap{ position:relative; z-index:1; }
-  .hero-grid{ display:grid; grid-template-columns:1.04fr .96fr; gap:58px; align-items:center; }
+  .hero-grid{ display:grid; grid-template-columns:1.04fr .96fr; gap:58px; align-items:center; position:relative; }
   .hero-pillars{ display:flex; flex-wrap:wrap; gap:12px; margin:24px 0 10px; }
+  .hero-copy{ position:relative; z-index:2; padding:18px 18px 18px 0; }
+  .hero-copy::before{ content:''; position:absolute; inset:-24px 18% -24px -28px; z-index:-1; border-radius:28px; background:linear-gradient(90deg, rgba(3,9,22,.74), rgba(3,9,22,.24) 70%, transparent); filter:blur(2px); }
   .hero-pillars span{
     font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.1em;
     padding:7px 14px; border-radius:999px; border:1px solid rgba(215,180,106,.28);
@@ -502,7 +507,7 @@
 <!-- ================= HERO ================= -->
 <section id="hero" class="hero">
   <div class="wrap hero-grid">
-    <div class="reveal">
+    <div class="reveal hero-copy">
       <span class="eyebrow" data-i18n="hero_eyebrow">The Clinical Intelligence Network</span>
       <h1 data-i18n-html="hero_h1"><em>Connected care</em> from intake to recovery.</h1>
       <p class="lede" data-i18n="hero_lede">PatientTrac builds a unified ecosystem of AI-powered clinical software — scheduling, specialty EMRs, ambulatory surgery, patient intake, and post-visit monitoring — all sharing one secure clinical data layer and one universal encounter key.</p>
