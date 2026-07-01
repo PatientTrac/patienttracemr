@@ -2,7 +2,7 @@
 
 The corporate site for **PatientTrac Corp** — *The Clinical Intelligence Network.*
 
-**Live:** https://patienttracemr.com
+**Live:** https://patienttrac.com
 **Repo:** github.com/PatientTrac/patienttracemr
 **Deployed:** Netlify → auto-deploy on push to `master`
 
