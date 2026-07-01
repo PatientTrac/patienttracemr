@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy | PatientTrac</title>
+<meta name="description" content="How PatientTrac handles website information, customer information, and HIPAA-regulated data processed for customers." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* premium medical brand tokens */
+    --navy:        #030712;
+    --bg:          #071326;
+    --bg-raised:   #0a1930;
+    --bg-card:     #0c1d36;
+    --bg-card-2:   #102846;
+    --cyan:        #00d4ff;
+    --teal:        #16b8c7;
+    --sky:         #6ed9ff;
+    --gold:        #d7b46a;
+    --gold-bright: #f6d38d;
+    --gold-deep:   #9f7432;
+    --gold-logo:   #d4af37;
+    --text:        #f1f7ff;
+    --text-soft:   #b8c7da;
+    --text-mute:   #7d8da6;
+    --line:        rgba(215,180,106,0.22);
+    --line-soft:   rgba(0,212,255,0.16);
+    --gold-line:   rgba(246,211,141,0.58);
+    --radius:      18px;
+    --maxw:        1180px;
+    --ease:        cubic-bezier(.22,.61,.36,1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body {
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--navy);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:''; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1100px 700px at 78% -8%, rgba(0,151,167,0.16), transparent 60%),
+      radial-gradient(900px 600px at 8% 18%, rgba(0,212,255,0.10), transparent 55%),
+      radial-gradient(800px 800px at 50% 120%, rgba(212,175,55,0.06), transparent 60%),
+      var(--navy);
+  }
+  body::after{
+    content:''; position:fixed; inset:0; z-index:-1; opacity:.5; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.035) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+  }
+
+  h1,h2,h3,h4 { font-family:'Sora',system-ui,sans-serif; font-weight:800; line-height:1.04; letter-spacing:-0.035em; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:rgba(0,212,255,0.28); color:#fff; }
+  .wrap { max-width:var(--maxw); margin:0 auto; padding:0 26px; }
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--gold-bright); margin-bottom:18px; display:inline-block; text-shadow:0 0 18px rgba(246,211,141,.18);
+  }
+
+  /* ---------- TOPBAR ---------- */
+  #topbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:18px 0; transition:all .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  #topbar.scrolled{
+    background:rgba(6,14,28,0.82); backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(215,180,106,.22); padding:12px 0; box-shadow:0 18px 50px rgba(0,0,0,.28);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{
+    font-size:.86rem; color:var(--text-soft); font-weight:500; position:relative; transition:color .25s;
+  }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg,var(--gold-bright),var(--gold)); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+
+  /* language switch */
+  .lang{ display:flex; gap:2px; border:1px solid var(--line); border-radius:999px; padding:3px; }
+  .lang button{
+    font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--text-mute);
+    background:none; border:none; cursor:pointer; padding:5px 9px; border-radius:999px; transition:all .2s;
+  }
+  .lang button.active{ background:linear-gradient(135deg,var(--gold-bright),var(--gold)); color:var(--navy); font-weight:700; }
+  .lang button:hover:not(.active){ color:var(--text); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; font-family:'Inter',system-ui,sans-serif;
+    font-weight:600; font-size:.9rem; padding:12px 22px; border-radius:999px; cursor:pointer;
+    border:1px solid transparent; transition:all .28s var(--ease); white-space:nowrap;
+  }
+  .btn-primary{ background:linear-gradient(135deg,var(--gold-bright),var(--gold) 55%,var(--gold-deep)); color:var(--navy); box-shadow:0 12px 36px rgba(215,180,106,0.28); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 18px 48px rgba(246,211,141,0.38); }
+  .btn-ghost{ border-color:rgba(215,180,106,.35); color:var(--text); background:rgba(255,255,255,0.025); }
+  .btn-ghost:hover{ border-color:var(--gold-bright); color:var(--gold-bright); box-shadow:0 10px 30px rgba(215,180,106,.14); }
+
+  /* ---------- LOGO (reversed lockup for dark) ---------- */
+  .logo{ display:flex; align-items:center; gap:13px; }
+  .logo svg{ width:42px; height:42px; flex-shrink:0; }
+  .logo .word{ display:flex; flex-direction:column; line-height:1; }
+  .logo .word .name{ font-family:'Poppins',sans-serif; font-weight:700; font-size:1.42rem; letter-spacing:-0.01em; }
+  .logo .word .name .p1{ color:#eef5ff; }
+  .logo .word .name .p2{ color:var(--gold-logo); }
+  .logo .word .tag{
+    display:flex; align-items:center; gap:7px; margin-top:5px;
+    font-family:'DM Mono',monospace; font-size:.54rem; letter-spacing:.2em; text-transform:uppercase; color:var(--sky); white-space:nowrap;
+  }
+  .logo .word .tag::before,.logo .word .tag::after{ content:''; height:1px; width:14px; background:var(--gold-logo); opacity:.8; }
+  .logo.sm .word .tag{ display:none; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:64px 0 36px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; margin-bottom:46px; }
+  .foot-brand p{ color:var(--text-soft); font-size:.9rem; margin-top:16px; max-width:300px; }
+  .foot-col h5{ font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-mute); margin-bottom:16px; }
+  .foot-col a{ display:block; color:var(--text-soft); font-size:.88rem; margin-bottom:10px; transition:color .2s; }
+  .foot-col a:hover{ color:var(--cyan); }
+  .foot-bottom{ border-top:1px solid var(--line); padding-top:26px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+  .foot-bottom p{ font-family:'DM Mono',monospace; font-size:.74rem; color:var(--text-mute); }
+  .foot-bottom .legal{ display:flex; gap:20px; }
+  .foot-bottom .legal a{ font-size:.78rem; color:var(--text-mute); }
+  .foot-bottom .legal a:hover{ color:var(--text-soft); }
+
+  /* ---------- LEGAL HERO ---------- */
+  .legal-hero{
+    position:relative; overflow:hidden; padding:168px 0 62px;
+    border-bottom:1px solid rgba(215,180,106,.14);
+    background:linear-gradient(135deg,#030712 0%,#07162c 54%,#031022 100%);
+  }
+  .legal-hero::before{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image:url('assets/hero-biotech-network-bg.png');
+    background-repeat:no-repeat; background-size:min(980px,66vw) auto; background-position:right center;
+    opacity:.82; mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 74%,transparent 100%);
+  }
+  .legal-hero::after{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:linear-gradient(90deg,rgba(3,7,18,.92) 0%,rgba(3,7,18,.74) 44%,rgba(3,7,18,.20) 100%);
+  }
+  .legal-hero .wrap{ position:relative; z-index:1; }
+  .legal-hero h1{ font-size:clamp(2.4rem,5vw,4.45rem); line-height:1.04; margin:14px 0 18px; max-width:900px; }
+  .legal-hero h1 em{ font-style:normal; background:linear-gradient(120deg,var(--gold-bright),var(--gold),#fff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .legal-hero .lede{ font-size:1.12rem; max-width:850px; color:#d4e3f4; }
+  .meta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+  .chip{ border:1px solid var(--line-soft); border-radius:999px; padding:8px 12px; background:rgba(15,34,64,.52); font-size:.82rem; color:#d8e9f8; }
+
+  /* ---------- LEGAL BODY ---------- */
+  .section{ padding:54px 0; }
+  .notice{
+    border:1px solid rgba(246,211,141,.28);
+    background:linear-gradient(135deg,rgba(246,211,141,.09),rgba(0,151,167,.08));
+    border-radius:18px; padding:18px 20px; margin:0 0 28px; color:#dbe8f6;
+  }
+  .policy-body{ display:grid; grid-template-columns:280px 1fr; gap:34px; align-items:start; }
+  .toc{ position:sticky; top:100px; border:1px solid var(--line); border-radius:18px; background:rgba(15,34,64,.62); padding:18px; }
+  .toc a{ display:block; padding:8px 0; color:var(--text-soft); font-size:.92rem; border-bottom:1px solid rgba(255,255,255,.06); }
+  .toc a:last-child{ border-bottom:0; }
+  .toc a:hover{ color:var(--gold-bright); }
+  .legal-section{ scroll-margin-top:100px; border-bottom:1px solid rgba(255,255,255,.08); padding:0 0 26px; margin:0 0 28px; }
+  .legal-section h2{ font-family:'Sora',sans-serif; font-size:1.65rem; margin:0 0 16px; }
+  .legal-section p{ margin:0 0 18px; color:var(--text-soft); }
+  .legal-section ul{ margin:0 0 22px; padding-left:22px; color:var(--text-soft); }
+  .legal-section li{ margin:6px 0; }
+  .legal-section strong{ color:#fff; }
+  .callout{ border-left:3px solid var(--gold); background:rgba(246,211,141,.08); padding:15px 18px; border-radius:0 12px 12px 0; color:var(--text-soft); margin:20px 0; }
+  .lang-content{ display:none; }
+  .lang-content.active{ display:block; }
+
+  /* ---------- RESPONSIVE ---------- */
+  .menu-toggle{ display:none; }
+  @media (max-width:980px){
+    .nav-links{ display:none; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .policy-body{ grid-template-columns:1fr; }
+    .toc{ position:relative; top:auto; }
+    .legal-hero{ padding-top:132px; }
+  }
+  @media (max-width:560px){
+    .foot-grid{ grid-template-columns:1fr; }
+    .logo .word .name{ font-size:1.2rem; }
+    .foot-bottom{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOPBAR ================= -->
+<header id="topbar">
+  <div class="wrap nav">
+    <a href="index.html#hero" class="logo" aria-label="PatientTrac home">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="pgrad" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/>
+          </linearGradient>
+        </defs>
+        <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z"
+              fill="url(#pgrad)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+        <g stroke="#d4af37" stroke-width="0.9" opacity="0.9">
+          <line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/>
+          <line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/>
+          <line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/>
+          <line x1="38" y1="20" x2="30" y2="26"/><line x1="24" y1="22" x2="30" y2="26"/>
+        </g>
+        <g>
+          <circle cx="18" cy="13" r="2.1" fill="#fff"/>
+          <circle cx="31" cy="11" r="2.1" fill="#d4af37"/>
+          <circle cx="38" cy="20" r="2.1" fill="#fff"/>
+          <circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/>
+          <circle cx="30" cy="26" r="1.9" fill="#d4af37"/>
+          <circle cx="20" cy="34" r="1.9" fill="#fff"/>
+        </g>
+      </svg>
+      <span class="word">
+        <span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span>
+        <span class="tag">The Clinical Intelligence Network</span>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html#about" data-i18n="nav_about">Company</a>
+      <a href="index.html#products" data-i18n="nav_products">Platform</a>
+      <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+      <a href="compare.html" data-i18n="nav_compare">Compare</a>
+      <a href="index.html#contact" data-i18n="nav_contact_link">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="fr">FR</button>
+      </div>
+      <a href="index.html#roadmap" class="btn btn-primary" data-i18n="nav_cta">Join the Waitlist</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="legal-hero">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="eyebrow">PatientTrac Legal &amp; Trust Center</span>
+    <h1 data-i18n-html="privacy_h1"><em>Privacy Policy</em> for PatientTrac websites and services.</h1>
+    <p class="lede" data-i18n="privacy_sub">How PatientTrac handles website information, customer information, and HIPAA-regulated data processed for customers.</p>
+    <div class="meta">
+      <span class="chip" data-i18n="chip1">Website privacy</span>
+      <span class="chip" data-i18n="chip2">PHI handled under BAA</span>
+      <span class="chip" data-i18n="chip3">Server-side AI posture</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEGAL BODY ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="notice" data-i18n-html="review_notice">This public policy describes PatientTrac practices and customer-facing commitments. It should be reviewed by qualified legal counsel before publication.</div>
+    <article class="lang-content" data-lang-content="en"><div class="policy-body"><aside class="toc"><a href="#overview">Privacy Policy</a><a href="#scope">Scope of this policy</a><a href="#collect">Information we collect</a><a href="#use">How we use information</a><a href="#phi">PHI and HIPAA-regulated data</a><a href="#ai">AI features and clinical review</a><a href="#share">How information may be disclosed</a><a href="#security">Security safeguards</a><a href="#retention">Retention and deletion</a><a href="#rights">Choices and requests</a><a href="#contact">Contact</a></aside><main><section id="overview" class="legal-section"><h2>Privacy Policy</h2><p><strong>Last updated: July 1, 2026.</strong> This Privacy Policy explains how PatientTrac Corp. (“PatientTrac,” “we,” “our,” or “us”) collects, uses, discloses, and safeguards information through the PatientTrac website, public forms, support channels, and hosted clinical applications.</p><p>PatientTrac is a clinical software company. When we maintain protected health information (“PHI”) for a health care provider, health plan, or another HIPAA-regulated customer, we generally act as a business associate and handle PHI according to our customer agreement, Business Associate Agreement (“BAA”), and applicable law.</p></section><section id="scope" class="legal-section"><h2>Scope of this policy</h2><p>This policy applies to information collected through patienttrac.com, PatientTrac public forms, product demonstrations, sales and support communications, and PatientTrac-hosted services. It does not replace the privacy practices of a physician practice, hospital, surgery center, clinic, health plan, or other customer that uses PatientTrac.</p><div class="callout">Patients should contact their care provider directly for access, amendment, restrictions, or other rights relating to their medical record.</div></section><section id="collect" class="legal-section"><h2>Information we collect</h2><ul><li><strong>Website and inquiry information:</strong> name, organization, role, email, phone, message content, product interests, and demo or BAA request details.</li><li><strong>Account and administrative information:</strong> user profile, organization, role, authentication status, MFA/TOTP status, configuration settings, and audit-relevant events.</li><li><strong>Customer clinical data:</strong> patient, encounter, documentation, intake, billing, messaging, recovery, and related clinical records processed on behalf of customers.</li><li><strong>Technical and security data:</strong> IP address, device/browser data, logs, session events, access timestamps, error diagnostics, and security telemetry.</li><li><strong>Support information:</strong> troubleshooting data, support tickets, configuration details, and limited record examples when provided by authorized customer personnel.</li></ul></section><section id="use" class="legal-section"><h2>How we use information</h2><ul><li>Provide, secure, maintain, and improve PatientTrac services.</li><li>Authenticate users, enforce role-based access, support multi-tenant isolation, and preserve audit trails.</li><li>Respond to sales, support, legal, privacy, security, and BAA requests.</li><li>Operate revenue-cycle, documentation, interoperability, intake, monitoring, messaging, and related workflows on behalf of customers.</li><li>Detect, prevent, investigate, and remediate security events, unauthorized access, fraud, and misuse.</li><li>Comply with legal obligations and enforce contracts.</li></ul></section><section id="phi" class="legal-section"><h2>PHI and HIPAA-regulated data</h2><p>When PatientTrac processes PHI for a HIPAA-regulated customer, our permitted uses and disclosures are governed by the applicable BAA and service agreement. We do not use PHI for unrelated marketing. We do not sell PHI. We support customer-directed workflows such as access, amendment, accounting of disclosures, ROI, C-CDA, EHI export, audit reporting, and clinical documentation only as permitted by the customer agreement and applicable law.</p></section><section id="ai" class="legal-section"><h2>AI features and clinical review</h2><p>PatientTrac AI features are designed as clinician-assistive tools. AI outputs may include drafts, summaries, flags, suggestions, red-flag prompts, or educational support for review by authorized users. AI features do not replace professional judgment, do not independently diagnose or prescribe, and should not be treated as a final clinical decision.</p><p>PatientTrac’s AI integrations are designed to run server-side so API keys are not exposed in the browser.</p></section><section id="share" class="legal-section"><h2>How information may be disclosed</h2><ul><li><strong>Customers and authorized users:</strong> according to configured permissions, roles, and organizational access rules.</li><li><strong>Service providers and subprocessors:</strong> for hosting, security, communications, support, analytics, and infrastructure, subject to appropriate contractual obligations.</li><li><strong>Legal and safety purposes:</strong> when required by law, legal process, enforcement of agreements, security investigation, or protection of rights and safety.</li><li><strong>Business changes:</strong> in connection with a merger, acquisition, financing, corporate transaction, or reorganization, subject to appropriate protections.</li></ul></section><section id="security" class="legal-section"><h2>Security safeguards</h2><p>PatientTrac is designed around concrete security mechanisms, including organization-level multi-tenant isolation, Row-Level Security, role-based access, TOTP multi-factor authentication, server-side keys, audit logging, and hash-chained PHI audit events where applicable. No security program can guarantee absolute security, but PatientTrac uses administrative, technical, and operational safeguards intended to protect confidentiality, integrity, and availability.</p></section><section id="retention" class="legal-section"><h2>Retention and deletion</h2><p>We retain information for as long as reasonably necessary to provide services, comply with legal or contractual obligations, resolve disputes, enforce agreements, preserve audit integrity, and support customer data-export or termination obligations. PHI retention and return/destruction obligations are handled under the applicable customer agreement and BAA.</p></section><section id="rights" class="legal-section"><h2>Choices and requests</h2><p>Website visitors may contact us to update contact information, opt out of non-transactional communications, or ask privacy questions. Patients seeking access to medical records should contact their provider or health plan directly. PatientTrac will assist customers with rights requests when required by an applicable BAA or service agreement.</p></section><section id="contact" class="legal-section"><h2>Contact</h2><p>Privacy and legal inquiries may be directed to <strong>privacy@patienttrac.com</strong> or PatientTrac Corp., United States. BAA requests should be submitted through the Request a BAA page.</p></section></main></div></article><article class="lang-content" data-lang-content="es"><div class="policy-body"><aside class="toc"><a href="#overview">Política de privacidad</a><a href="#scope">Alcance</a><a href="#collect">Información que recopilamos</a><a href="#use">Cómo usamos la información</a><a href="#phi">PHI y datos regulados por HIPAA</a><a href="#ai">IA y revisión clínica</a><a href="#share">Divulgaciones</a><a href="#security">Salvaguardas</a><a href="#retention">Retención</a><a href="#rights">Opciones y solicitudes</a><a href="#contact">Contacto</a></aside><main><section id="overview" class="legal-section"><h2>Política de privacidad</h2><p><strong>Última actualización: 1 de julio de 2026.</strong> Esta Política de privacidad explica cómo PatientTrac Corp. (“PatientTrac”, “nosotros”) recopila, usa, divulga y protege información a través del sitio web, formularios públicos, canales de soporte y aplicaciones clínicas alojadas.</p><p>Cuando mantenemos información de salud protegida (“PHI”) para un proveedor, plan de salud u otro cliente regulado por HIPAA, normalmente actuamos como asociado comercial y manejamos la PHI conforme al contrato del cliente, el Acuerdo de Asociado Comercial (“BAA”) y la ley aplicable.</p></section><section id="scope" class="legal-section"><h2>Alcance</h2><p>Esta política se aplica a patienttrac.com, formularios públicos, demostraciones, comunicaciones de ventas y soporte, y servicios alojados de PatientTrac. No reemplaza las prácticas de privacidad del proveedor, hospital, centro quirúrgico, clínica o plan de salud que usa PatientTrac.</p><div class="callout">Los pacientes deben comunicarse directamente con su proveedor para ejercer derechos sobre su expediente médico.</div></section><section id="collect" class="legal-section"><h2>Información que recopilamos</h2><ul><li>Información de sitio web y consultas.</li><li>Información de cuenta y administración.</li><li>Datos clínicos del cliente procesados en nombre del cliente.</li><li>Datos técnicos, registros, eventos de sesión y telemetría de seguridad.</li><li>Información de soporte y solución de problemas.</li></ul></section><section id="use" class="legal-section"><h2>Cómo usamos la información</h2><ul><li>Proporcionar, proteger, mantener y mejorar los servicios.</li><li>Autenticar usuarios, aplicar acceso por roles y preservar auditoría.</li><li>Responder solicitudes de ventas, soporte, legales, privacidad, seguridad y BAA.</li><li>Operar flujos clínicos, administrativos y de ciclo de ingresos en nombre de clientes.</li><li>Detectar y remediar eventos de seguridad o uso indebido.</li></ul></section><section id="phi" class="legal-section"><h2>PHI y datos regulados por HIPAA</h2><p>Cuando PatientTrac procesa PHI para un cliente regulado por HIPAA, los usos y divulgaciones permitidos se rigen por el BAA y el contrato de servicio. No usamos PHI para mercadeo no relacionado ni vendemos PHI.</p></section><section id="ai" class="legal-section"><h2>IA y revisión clínica</h2><p>Las funciones de IA de PatientTrac son herramientas de asistencia clínica. Sus resultados son borradores, resúmenes, alertas, sugerencias o apoyo educativo para revisión por usuarios autorizados. No reemplazan el juicio profesional ni diagnostican o prescriben de forma independiente.</p></section><section id="share" class="legal-section"><h2>Divulgaciones</h2><ul><li>A clientes y usuarios autorizados según permisos.</li><li>A proveedores y subprocesadores bajo obligaciones contractuales.</li><li>Por obligaciones legales, seguridad o protección de derechos.</li><li>En transacciones corporativas sujetas a protecciones adecuadas.</li></ul></section><section id="security" class="legal-section"><h2>Salvaguardas</h2><p>PatientTrac está diseñado con aislamiento multiinquilino por organización, Row-Level Security, acceso por roles, TOTP, llaves del lado servidor, registros de auditoría y eventos PHI con cadena hash cuando aplica.</p></section><section id="retention" class="legal-section"><h2>Retención</h2><p>Retenemos información según sea necesario para prestar servicios, cumplir obligaciones legales o contractuales, resolver disputas, preservar auditoría y apoyar exportación o terminación de datos del cliente.</p></section><section id="rights" class="legal-section"><h2>Opciones y solicitudes</h2><p>Los visitantes pueden contactarnos para actualizar información de contacto u optar por no recibir comunicaciones no transaccionales. Los pacientes deben solicitar expedientes médicos a su proveedor o plan de salud.</p></section><section id="contact" class="legal-section"><h2>Contacto</h2><p>Consultas de privacidad y legales: <strong>privacy@patienttrac.com</strong>. Las solicitudes de BAA deben enviarse en la página Solicitar BAA.</p></section></main></div></article><article class="lang-content" data-lang-content="fr"><div class="policy-body"><aside class="toc"><a href="#overview">Politique de confidentialité</a><a href="#scope">Portée</a><a href="#collect">Informations collectées</a><a href="#use">Utilisation</a><a href="#phi">PHI et données réglementées HIPAA</a><a href="#ai">IA et revue clinique</a><a href="#share">Divulgations</a><a href="#security">Mesures de sécurité</a><a href="#retention">Conservation</a><a href="#rights">Choix et demandes</a><a href="#contact">Contact</a></aside><main><section id="overview" class="legal-section"><h2>Politique de confidentialité</h2><p><strong>Dernière mise à jour : 1 juillet 2026.</strong> Cette politique explique comment PatientTrac Corp. collecte, utilise, divulgue et protège les informations via le site, les formulaires publics, le support et les applications cliniques hébergées.</p><p>Lorsque nous traitons des informations de santé protégées (“PHI”) pour un client réglementé par HIPAA, nous agissons généralement comme business associate et traitons la PHI selon le contrat client, le BAA et le droit applicable.</p></section><section id="scope" class="legal-section"><h2>Portée</h2><p>Cette politique s’applique à patienttrac.com, aux formulaires publics, démonstrations, communications commerciales et de support, et aux services hébergés. Elle ne remplace pas les pratiques de confidentialité du prestataire, hôpital, centre chirurgical, clinique ou plan de santé qui utilise PatientTrac.</p><div class="callout">Les patients doivent contacter directement leur prestataire de soins pour les droits relatifs à leur dossier médical.</div></section><section id="collect" class="legal-section"><h2>Informations collectées</h2><ul><li>Informations de site web et de demande.</li><li>Informations de compte et d’administration.</li><li>Données cliniques client traitées pour le compte du client.</li><li>Données techniques, journaux, événements de session et télémétrie de sécurité.</li><li>Informations de support et de diagnostic.</li></ul></section><section id="use" class="legal-section"><h2>Utilisation</h2><ul><li>Fournir, sécuriser, maintenir et améliorer les services.</li><li>Authentifier les utilisateurs, appliquer les rôles et conserver les journaux d’audit.</li><li>Répondre aux demandes commerciales, support, juridiques, confidentialité, sécurité et BAA.</li><li>Exécuter des flux cliniques, administratifs et de cycle de revenus pour les clients.</li><li>Détecter et traiter les incidents de sécurité ou d’usage abusif.</li></ul></section><section id="phi" class="legal-section"><h2>PHI et données réglementées HIPAA</h2><p>Lorsque PatientTrac traite de la PHI pour un client réglementé par HIPAA, les utilisations et divulgations permises sont régies par le BAA et le contrat de service. Nous n’utilisons pas la PHI pour un marketing non lié et nous ne vendons pas la PHI.</p></section><section id="ai" class="legal-section"><h2>IA et revue clinique</h2><p>Les fonctions d’IA de PatientTrac sont des outils d’assistance clinique. Les résultats sont des brouillons, résumés, alertes, suggestions ou supports éducatifs à examiner par des utilisateurs autorisés. Ils ne remplacent pas le jugement professionnel.</p></section><section id="share" class="legal-section"><h2>Divulgations</h2><ul><li>Aux clients et utilisateurs autorisés selon les permissions.</li><li>Aux prestataires et sous-traitants sous obligations contractuelles.</li><li>Lorsque la loi, la sécurité ou la protection des droits l’exige.</li><li>Dans des opérations d’entreprise avec protections appropriées.</li></ul></section><section id="security" class="legal-section"><h2>Mesures de sécurité</h2><p>PatientTrac est conçu avec isolation multi-tenant par organisation, Row-Level Security, accès par rôles, TOTP, clés côté serveur, journaux d’audit et événements PHI chaînés par hachage le cas échéant.</p></section><section id="retention" class="legal-section"><h2>Conservation</h2><p>Nous conservons les informations aussi longtemps que nécessaire pour fournir les services, respecter les obligations légales ou contractuelles, résoudre les litiges, préserver l’audit et soutenir l’export ou la fin de service.</p></section><section id="rights" class="legal-section"><h2>Choix et demandes</h2><p>Les visiteurs peuvent nous contacter pour mettre à jour leurs coordonnées ou refuser les communications non transactionnelles. Les patients doivent demander leur dossier médical à leur prestataire ou plan de santé.</p></section><section id="contact" class="legal-section"><h2>Contact</h2><p>Demandes confidentialité et juridiques : <strong>privacy@patienttrac.com</strong>. Les demandes de BAA doivent être soumises via la page Demander un BAA.</p></section></main></div></article>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html#hero" class="logo sm">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="pgrad2" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/>
+              </linearGradient>
+            </defs>
+            <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z" fill="url(#pgrad2)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+            <g stroke="#d4af37" stroke-width="0.9" opacity="0.9"><line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/><line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/><line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/><line x1="38" y1="20" x2="30" y2="26"/></g>
+            <g><circle cx="18" cy="13" r="2.1" fill="#fff"/><circle cx="31" cy="11" r="2.1" fill="#d4af37"/><circle cx="38" cy="20" r="2.1" fill="#fff"/><circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/><circle cx="30" cy="26" r="1.9" fill="#d4af37"/><circle cx="20" cy="34" r="1.9" fill="#fff"/></g>
+          </svg>
+          <span class="word"><span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span></span>
+        </a>
+        <p data-i18n="foot_blurb">The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_platform">Platform</h5>
+        <a href="products/forge.html">Forge</a>
+        <a href="products/revela.html">Revela</a>
+        <a href="products/mind.html">Mind</a>
+        <a href="products/asc.html">ASC</a>
+        <a href="products/continuum.html">Continuum</a>
+        <a href="products/profiler.html">Profiler</a>
+        <a href="products/companion.html">Companion</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_company">Company</h5>
+        <a href="index.html#about" data-i18n="nav_about">Company</a>
+        <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+        <a href="compare.html" data-i18n="nav_compare">Compare</a>
+        <a href="index.html#leadership" data-i18n="foot_leadership">Company Heritage</a>
+        <a href="index.html#contact" data-i18n="foot_contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_legal_h">Legal</h5>
+        <a href="privacy-policy.html" data-i18n="foot_privacy">Privacy Policy</a>
+        <a href="terms-of-service.html" data-i18n="foot_terms">Terms of Service</a>
+        <a href="hipaa-notice.html" data-i18n="foot_hipaa">HIPAA Notice</a>
+        <a href="baa-request.html" data-i18n="foot_ba">Business Associate Agreement</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year"></span> PatientTrac Corp. <span data-i18n="foot_rights">All rights reserved.</span></p>
+      <div class="legal">
+        <span style="font-family:'DM Mono',monospace;font-size:.74rem;color:var(--text-mute);" data-i18n="foot_compliance">HIPAA Compliant · ONC §170.315</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ I18N (chrome + hero) ============ */
+const I18N = {
+  en: {
+    nav_about:"Company", nav_products:"Platform", nav_pricing:"Pricing", nav_compare:"Compare", nav_contact_link:"Contact", nav_cta:"Join the Waitlist",
+    foot_blurb:"The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.",
+    foot_platform:"Platform", foot_company:"Company", foot_leadership:"Company Heritage", foot_contact:"Contact",
+    foot_legal_h:"Legal", foot_privacy:"Privacy Policy", foot_terms:"Terms of Service", foot_hipaa:"HIPAA Notice", foot_ba:"Business Associate Agreement",
+    foot_rights:"All rights reserved.", foot_compliance:"HIPAA Compliant · ONC §170.315",
+    eyebrow:"PatientTrac Legal & Trust Center",
+    privacy_h1:"<em>Privacy Policy</em> for PatientTrac websites and services.",
+    privacy_sub:"How PatientTrac handles website information, customer information, and HIPAA-regulated data processed for customers.",
+    chip1:"Website privacy", chip2:"PHI handled under BAA", chip3:"Server-side AI posture",
+    review_notice:"This public policy describes PatientTrac practices and customer-facing commitments. It should be reviewed by qualified legal counsel before publication."
+  },
+  es: {
+    nav_about:"Empresa", nav_products:"Plataforma", nav_pricing:"Precios", nav_compare:"Comparar", nav_contact_link:"Contacto", nav_cta:"Unirse a la lista",
+    foot_blurb:"The Clinical Intelligence Network — un conjunto conectado de plataformas clínicas con IA sobre una columna de datos segura.",
+    foot_platform:"Plataforma", foot_company:"Empresa", foot_leadership:"Historia de la empresa", foot_contact:"Contacto",
+    foot_legal_h:"Legal", foot_privacy:"Política de privacidad", foot_terms:"Términos del servicio", foot_hipaa:"Aviso HIPAA", foot_ba:"Acuerdo de Asociado Comercial",
+    foot_rights:"Todos los derechos reservados.", foot_compliance:"Cumple HIPAA · ONC §170.315",
+    eyebrow:"Centro Legal y de Confianza de PatientTrac",
+    privacy_h1:"<em>Política de privacidad</em> para sitios y servicios PatientTrac.",
+    privacy_sub:"Cómo PatientTrac maneja información del sitio, información de clientes y datos regulados por HIPAA procesados para clientes.",
+    chip1:"Privacidad del sitio", chip2:"PHI bajo BAA", chip3:"IA del lado servidor",
+    review_notice:"Esta política pública describe prácticas y compromisos de PatientTrac. Debe revisarse por asesoría legal antes de publicarse."
+  },
+  fr: {
+    nav_about:"Société", nav_products:"Plateforme", nav_pricing:"Tarifs", nav_compare:"Comparer", nav_contact_link:"Contact", nav_cta:"Rejoindre la liste",
+    foot_blurb:"The Clinical Intelligence Network — un ensemble connecté de plateformes cliniques pilotées par l'IA sur une colonne de données sécurisée.",
+    foot_platform:"Plateforme", foot_company:"Société", foot_leadership:"Histoire de l’entreprise", foot_contact:"Contact",
+    foot_legal_h:"Mentions légales", foot_privacy:"Politique de confidentialité", foot_terms:"Conditions d'utilisation", foot_hipaa:"Avis HIPAA", foot_ba:"Accord de sous-traitance (BAA)",
+    foot_rights:"Tous droits réservés.", foot_compliance:"Conforme HIPAA · ONC §170.315",
+    eyebrow:"Centre juridique et de confiance PatientTrac",
+    privacy_h1:"<em>Politique de confidentialité</em> pour les sites et services PatientTrac.",
+    privacy_sub:"Comment PatientTrac traite les informations du site, les informations client et les données réglementées HIPAA traitées pour les clients.",
+    chip1:"Confidentialité du site", chip2:"PHI sous BAA", chip3:"IA côté serveur",
+    review_notice:"Cette politique publique décrit les pratiques et engagements de PatientTrac. Elle doit être revue par un conseil juridique avant publication."
+  }
+};
+function applyLang(lang){
+  if(!I18N[lang]) lang = 'en';
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k] != null) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(dict[k] != null) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+  });
+  document.querySelectorAll('[data-lang-content]').forEach(el=>{
+    el.classList.toggle('active', el.getAttribute('data-lang-content')===lang);
+  });
+  try{ localStorage.setItem('ptemr_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>applyLang(b.getAttribute('data-lang')));
+});
+
+/* ============ TOPBAR SCROLL ============ */
+const topbar = document.getElementById('topbar');
+window.addEventListener('scroll',()=>{ topbar.classList.toggle('scrolled', window.scrollY>40); });
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============ INIT ============ */
+(function init(){
+  let saved = null;
+  try{ saved = localStorage.getItem('ptemr_lang'); }catch(e){}
+  if(!saved){
+    const nav = (navigator.language||'en').slice(0,2);
+    if(['es','fr'].includes(nav)) saved = nav;
+  }
+  applyLang(saved||'en');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HIPAA Notice | PatientTrac</title>
+<meta name="description" content="PatientTrac’s HIPAA posture, business-associate role, safeguards, and customer support obligations." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* premium medical brand tokens */
+    --navy:        #030712;
+    --bg:          #071326;
+    --bg-raised:   #0a1930;
+    --bg-card:     #0c1d36;
+    --bg-card-2:   #102846;
+    --cyan:        #00d4ff;
+    --teal:        #16b8c7;
+    --sky:         #6ed9ff;
+    --gold:        #d7b46a;
+    --gold-bright: #f6d38d;
+    --gold-deep:   #9f7432;
+    --gold-logo:   #d4af37;
+    --text:        #f1f7ff;
+    --text-soft:   #b8c7da;
+    --text-mute:   #7d8da6;
+    --line:        rgba(215,180,106,0.22);
+    --line-soft:   rgba(0,212,255,0.16);
+    --gold-line:   rgba(246,211,141,0.58);
+    --radius:      18px;
+    --maxw:        1180px;
+    --ease:        cubic-bezier(.22,.61,.36,1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body {
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--navy);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:''; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1100px 700px at 78% -8%, rgba(0,151,167,0.16), transparent 60%),
+      radial-gradient(900px 600px at 8% 18%, rgba(0,212,255,0.10), transparent 55%),
+      radial-gradient(800px 800px at 50% 120%, rgba(212,175,55,0.06), transparent 60%),
+      var(--navy);
+  }
+  body::after{
+    content:''; position:fixed; inset:0; z-index:-1; opacity:.5; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.035) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+  }
+
+  h1,h2,h3,h4 { font-family:'Sora',system-ui,sans-serif; font-weight:800; line-height:1.04; letter-spacing:-0.035em; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:rgba(0,212,255,0.28); color:#fff; }
+  .wrap { max-width:var(--maxw); margin:0 auto; padding:0 26px; }
+  .eyebrow {
+    font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--gold-bright); margin-bottom:18px; display:inline-block; text-shadow:0 0 18px rgba(246,211,141,.18);
+  }
+
+  /* ---------- TOPBAR ---------- */
+  #topbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:18px 0; transition:all .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  #topbar.scrolled{
+    background:rgba(6,14,28,0.82); backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(215,180,106,.22); padding:12px 0; box-shadow:0 18px 50px rgba(0,0,0,.28);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{
+    font-size:.86rem; color:var(--text-soft); font-weight:500; position:relative; transition:color .25s;
+  }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:linear-gradient(90deg,var(--gold-bright),var(--gold)); transition:width .3s var(--ease);
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+
+  /* language switch */
+  .lang{ display:flex; gap:2px; border:1px solid var(--line); border-radius:999px; padding:3px; }
+  .lang button{
+    font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; color:var(--text-mute);
+    background:none; border:none; cursor:pointer; padding:5px 9px; border-radius:999px; transition:all .2s;
+  }
+  .lang button.active{ background:linear-gradient(135deg,var(--gold-bright),var(--gold)); color:var(--navy); font-weight:700; }
+  .lang button:hover:not(.active){ color:var(--text); }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; font-family:'Inter',system-ui,sans-serif;
+    font-weight:600; font-size:.9rem; padding:12px 22px; border-radius:999px; cursor:pointer;
+    border:1px solid transparent; transition:all .28s var(--ease); white-space:nowrap;
+  }
+  .btn-primary{ background:linear-gradient(135deg,var(--gold-bright),var(--gold) 55%,var(--gold-deep)); color:var(--navy); box-shadow:0 12px 36px rgba(215,180,106,0.28); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 18px 48px rgba(246,211,141,0.38); }
+  .btn-ghost{ border-color:rgba(215,180,106,.35); color:var(--text); background:rgba(255,255,255,0.025); }
+  .btn-ghost:hover{ border-color:var(--gold-bright); color:var(--gold-bright); box-shadow:0 10px 30px rgba(215,180,106,.14); }
+
+  /* ---------- LOGO (reversed lockup for dark) ---------- */
+  .logo{ display:flex; align-items:center; gap:13px; }
+  .logo svg{ width:42px; height:42px; flex-shrink:0; }
+  .logo .word{ display:flex; flex-direction:column; line-height:1; }
+  .logo .word .name{ font-family:'Poppins',sans-serif; font-weight:700; font-size:1.42rem; letter-spacing:-0.01em; }
+  .logo .word .name .p1{ color:#eef5ff; }
+  .logo .word .name .p2{ color:var(--gold-logo); }
+  .logo .word .tag{
+    display:flex; align-items:center; gap:7px; margin-top:5px;
+    font-family:'DM Mono',monospace; font-size:.54rem; letter-spacing:.2em; text-transform:uppercase; color:var(--sky); white-space:nowrap;
+  }
+  .logo .word .tag::before,.logo .word .tag::after{ content:''; height:1px; width:14px; background:var(--gold-logo); opacity:.8; }
+  .logo.sm .word .tag{ display:none; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:64px 0 36px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; margin-bottom:46px; }
+  .foot-brand p{ color:var(--text-soft); font-size:.9rem; margin-top:16px; max-width:300px; }
+  .foot-col h5{ font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--text-mute); margin-bottom:16px; }
+  .foot-col a{ display:block; color:var(--text-soft); font-size:.88rem; margin-bottom:10px; transition:color .2s; }
+  .foot-col a:hover{ color:var(--cyan); }
+  .foot-bottom{ border-top:1px solid var(--line); padding-top:26px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+  .foot-bottom p{ font-family:'DM Mono',monospace; font-size:.74rem; color:var(--text-mute); }
+  .foot-bottom .legal{ display:flex; gap:20px; }
+  .foot-bottom .legal a{ font-size:.78rem; color:var(--text-mute); }
+  .foot-bottom .legal a:hover{ color:var(--text-soft); }
+
+  /* ---------- LEGAL HERO ---------- */
+  .legal-hero{
+    position:relative; overflow:hidden; padding:168px 0 62px;
+    border-bottom:1px solid rgba(215,180,106,.14);
+    background:linear-gradient(135deg,#030712 0%,#07162c 54%,#031022 100%);
+  }
+  .legal-hero::before{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image:url('assets/hero-biotech-network-bg.png');
+    background-repeat:no-repeat; background-size:min(980px,66vw) auto; background-position:right center;
+    opacity:.82; mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 74%,transparent 100%);
+  }
+  .legal-hero::after{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:linear-gradient(90deg,rgba(3,7,18,.92) 0%,rgba(3,7,18,.74) 44%,rgba(3,7,18,.20) 100%);
+  }
+  .legal-hero .wrap{ position:relative; z-index:1; }
+  .legal-hero h1{ font-size:clamp(2.4rem,5vw,4.45rem); line-height:1.04; margin:14px 0 18px; max-width:900px; }
+  .legal-hero h1 em{ font-style:normal; background:linear-gradient(120deg,var(--gold-bright),var(--gold),#fff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .legal-hero .lede{ font-size:1.12rem; max-width:850px; color:#d4e3f4; }
+  .meta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+  .chip{ border:1px solid var(--line-soft); border-radius:999px; padding:8px 12px; background:rgba(15,34,64,.52); font-size:.82rem; color:#d8e9f8; }
+
+  /* ---------- LEGAL BODY ---------- */
+  .section{ padding:54px 0; }
+  .notice{
+    border:1px solid rgba(246,211,141,.28);
+    background:linear-gradient(135deg,rgba(246,211,141,.09),rgba(0,151,167,.08));
+    border-radius:18px; padding:18px 20px; margin:0 0 28px; color:#dbe8f6;
+  }
+  .policy-body{ display:grid; grid-template-columns:280px 1fr; gap:34px; align-items:start; }
+  .toc{ position:sticky; top:100px; border:1px solid var(--line); border-radius:18px; background:rgba(15,34,64,.62); padding:18px; }
+  .toc a{ display:block; padding:8px 0; color:var(--text-soft); font-size:.92rem; border-bottom:1px solid rgba(255,255,255,.06); }
+  .toc a:last-child{ border-bottom:0; }
+  .toc a:hover{ color:var(--gold-bright); }
+  .legal-section{ scroll-margin-top:100px; border-bottom:1px solid rgba(255,255,255,.08); padding:0 0 26px; margin:0 0 28px; }
+  .legal-section h2{ font-family:'Sora',sans-serif; font-size:1.65rem; margin:0 0 16px; }
+  .legal-section p{ margin:0 0 18px; color:var(--text-soft); }
+  .legal-section ul{ margin:0 0 22px; padding-left:22px; color:var(--text-soft); }
+  .legal-section li{ margin:6px 0; }
+  .legal-section strong{ color:#fff; }
+  .callout{ border-left:3px solid var(--gold); background:rgba(246,211,141,.08); padding:15px 18px; border-radius:0 12px 12px 0; color:var(--text-soft); margin:20px 0; }
+  .lang-content{ display:none; }
+  .lang-content.active{ display:block; }
+
+  /* ---------- RESPONSIVE ---------- */
+  .menu-toggle{ display:none; }
+  @media (max-width:980px){
+    .nav-links{ display:none; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .policy-body{ grid-template-columns:1fr; }
+    .toc{ position:relative; top:auto; }
+    .legal-hero{ padding-top:132px; }
+  }
+  @media (max-width:560px){
+    .foot-grid{ grid-template-columns:1fr; }
+    .logo .word .name{ font-size:1.2rem; }
+    .foot-bottom{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOPBAR ================= -->
+<header id="topbar">
+  <div class="wrap nav">
+    <a href="index.html#hero" class="logo" aria-label="PatientTrac home">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="pgrad" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/>
+          </linearGradient>
+        </defs>
+        <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z"
+              fill="url(#pgrad)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+        <g stroke="#d4af37" stroke-width="0.9" opacity="0.9">
+          <line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/>
+          <line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/>
+          <line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/>
+          <line x1="38" y1="20" x2="30" y2="26"/><line x1="24" y1="22" x2="30" y2="26"/>
+        </g>
+        <g>
+          <circle cx="18" cy="13" r="2.1" fill="#fff"/>
+          <circle cx="31" cy="11" r="2.1" fill="#d4af37"/>
+          <circle cx="38" cy="20" r="2.1" fill="#fff"/>
+          <circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/>
+          <circle cx="30" cy="26" r="1.9" fill="#d4af37"/>
+          <circle cx="20" cy="34" r="1.9" fill="#fff"/>
+        </g>
+      </svg>
+      <span class="word">
+        <span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span>
+        <span class="tag">The Clinical Intelligence Network</span>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html#about" data-i18n="nav_about">Company</a>
+      <a href="index.html#products" data-i18n="nav_products">Platform</a>
+      <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+      <a href="compare.html" data-i18n="nav_compare">Compare</a>
+      <a href="index.html#contact" data-i18n="nav_contact_link">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="fr">FR</button>
+      </div>
+      <a href="index.html#roadmap" class="btn btn-primary" data-i18n="nav_cta">Join the Waitlist</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="legal-hero">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="eyebrow">PatientTrac Legal &amp; Trust Center</span>
+    <h1 data-i18n-html="hipaa_h1"><em>HIPAA Notice</em> for customers and prospects.</h1>
+    <p class="lede" data-i18n="hipaa_sub">PatientTrac’s HIPAA posture, business-associate role, safeguards, and customer support obligations.</p>
+    <div class="meta">
+      <span class="chip" data-i18n="chip1">BAA-based obligations</span>
+      <span class="chip" data-i18n="chip2">Not a provider NPP</span>
+      <span class="chip" data-i18n="chip3">No PHI in public forms</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEGAL BODY ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="notice" data-i18n-html="review_notice">This HIPAA Notice is a public website explanation. Covered entities must maintain their own Notice of Privacy Practices and should review this page with counsel.</div>
+    <article class="lang-content" data-lang-content="en"><div class="policy-body"><aside class="toc"><a href="#notice">HIPAA Notice</a><a href="#role">PatientTrac’s role</a><a href="#uses">Permitted uses and disclosures</a><a href="#rights">Individual rights and provider notices</a><a href="#safeguards">Safeguards for ePHI</a><a href="#baa">Business Associate Agreements</a><a href="#incidents">Security incidents and breach response</a><a href="#ai">HIPAA and AI</a><a href="#contact">HIPAA contact</a></aside><main><section id="notice" class="legal-section"><h2>HIPAA Notice</h2><p><strong>Last updated: July 1, 2026.</strong> This HIPAA Notice describes PatientTrac’s HIPAA posture for customers and prospects. It is not a covered health care provider’s Notice of Privacy Practices and does not replace the notice that a physician practice, surgery center, hospital, clinic, health plan, or other covered entity must provide to its patients or members.</p></section><section id="role" class="legal-section"><h2>PatientTrac’s role</h2><p>PatientTrac provides software and technology services. When PatientTrac creates, receives, maintains, or transmits PHI on behalf of a HIPAA-regulated customer, PatientTrac generally acts as a business associate or business-associate subcontractor. PatientTrac’s HIPAA obligations are established by applicable law and the signed BAA.</p></section><section id="uses" class="legal-section"><h2>Permitted uses and disclosures</h2><p>PatientTrac uses and discloses PHI only as permitted by the BAA, the service agreement, customer configuration and instructions, and applicable law. Common permitted purposes may include hosting, support, security, audit logging, clinical documentation workflows, intake, messaging, interoperability, revenue-cycle workflows, and customer-directed data export.</p><p>PatientTrac applies a minimum-necessary posture where applicable and does not sell PHI.</p></section><section id="rights" class="legal-section"><h2>Individual rights and provider notices</h2><p>Patients and members generally exercise HIPAA rights — such as access, amendment, restrictions, confidential communications, or accounting of disclosures — through their health care provider, health plan, or other covered entity. PatientTrac supports customer-directed access, amendment, ROI, accounting-of-disclosures, C-CDA, and EHI-export workflows when required by contract.</p></section><section id="safeguards" class="legal-section"><h2>Safeguards for ePHI</h2><p>PatientTrac’s platform is designed with administrative, technical, and operational safeguards for ePHI, including organization-level tenant isolation, Row-Level Security, role-based access, TOTP multi-factor authentication, server-side API keys, audit logging, and hash-chained PHI audit events where applicable. Customers remain responsible for configuring users, roles, policies, and local workflows appropriately.</p></section><section id="baa" class="legal-section"><h2>Business Associate Agreements</h2><p>A BAA is required when a HIPAA-regulated customer uses PatientTrac to create, receive, maintain, or transmit PHI. PatientTrac’s BAA addresses permitted uses and disclosures, safeguards, reporting, subcontractors, access/amendment/accounting support, availability to HHS where required, termination obligations, and other HIPAA-required provisions.</p></section><section id="incidents" class="legal-section"><h2>Security incidents and breach response</h2><p>PatientTrac maintains processes to detect, investigate, document, and respond to security events. If PatientTrac determines that an incident triggers contractual or legal notification obligations, PatientTrac will notify affected customers according to the applicable BAA and law.</p></section><section id="ai" class="legal-section"><h2>HIPAA and AI</h2><p>PatientTrac AI features are designed to operate server-side. AI outputs are assistive drafts, summaries, suggestions, flags, or educational support for review by authorized professionals. AI does not replace clinician review and should not be used as an autonomous diagnostic, treatment, prescribing, coding, or reimbursement determination.</p></section><section id="contact" class="legal-section"><h2>HIPAA contact</h2><p>HIPAA and BAA inquiries may be sent to <strong>privacy@patienttrac.com</strong> or submitted through the Request a BAA page. Do not submit PHI through public website forms.</p></section></main></div></article><article class="lang-content" data-lang-content="es"><div class="policy-body"><aside class="toc"><a href="#notice">Aviso HIPAA</a><a href="#role">Rol de PatientTrac</a><a href="#uses">Usos y divulgaciones permitidos</a><a href="#rights">Derechos individuales</a><a href="#safeguards">Salvaguardas de ePHI</a><a href="#baa">BAA</a><a href="#incidents">Incidentes y respuesta</a><a href="#ai">HIPAA e IA</a><a href="#contact">Contacto HIPAA</a></aside><main><section id="notice" class="legal-section"><h2>Aviso HIPAA</h2><p><strong>Última actualización: 1 de julio de 2026.</strong> Este Aviso HIPAA describe la postura de PatientTrac para clientes y prospectos. No es el Aviso de Prácticas de Privacidad de un proveedor cubierto y no reemplaza el aviso que un proveedor, centro quirúrgico, hospital, clínica o plan de salud debe entregar a pacientes o miembros.</p></section><section id="role" class="legal-section"><h2>Rol de PatientTrac</h2><p>Cuando PatientTrac crea, recibe, mantiene o transmite PHI en nombre de un cliente regulado por HIPAA, generalmente actúa como asociado comercial o subcontratista de asociado comercial.</p></section><section id="uses" class="legal-section"><h2>Usos y divulgaciones permitidos</h2><p>PatientTrac usa y divulga PHI solo según lo permitido por el BAA, el contrato de servicio, la configuración e instrucciones del cliente y la ley aplicable. No vendemos PHI.</p></section><section id="rights" class="legal-section"><h2>Derechos individuales</h2><p>Los pacientes generalmente ejercen derechos HIPAA a través de su proveedor o plan de salud. PatientTrac apoya flujos dirigidos por el cliente como acceso, enmienda, ROI, contabilidad de divulgaciones, C-CDA y exportación EHI.</p></section><section id="safeguards" class="legal-section"><h2>Salvaguardas de ePHI</h2><p>PatientTrac está diseñado con aislamiento por organización, Row-Level Security, acceso por roles, TOTP, llaves del lado servidor, auditoría y eventos PHI con cadena hash cuando aplica.</p></section><section id="baa" class="legal-section"><h2>BAA</h2><p>Se requiere un BAA cuando un cliente regulado por HIPAA usa PatientTrac para crear, recibir, mantener o transmitir PHI.</p></section><section id="incidents" class="legal-section"><h2>Incidentes y respuesta</h2><p>PatientTrac mantiene procesos para detectar, investigar, documentar y responder a eventos de seguridad y notificará según el BAA y la ley aplicable.</p></section><section id="ai" class="legal-section"><h2>HIPAA e IA</h2><p>Las funciones de IA operan del lado servidor y producen borradores, resúmenes, sugerencias o alertas para revisión profesional. No son determinaciones autónomas.</p></section><section id="contact" class="legal-section"><h2>Contacto HIPAA</h2><p>Consultas HIPAA y BAA: <strong>privacy@patienttrac.com</strong>. No envíe PHI por formularios públicos.</p></section></main></div></article><article class="lang-content" data-lang-content="fr"><div class="policy-body"><aside class="toc"><a href="#notice">Avis HIPAA</a><a href="#role">Rôle de PatientTrac</a><a href="#uses">Utilisations et divulgations permises</a><a href="#rights">Droits individuels</a><a href="#safeguards">Mesures pour ePHI</a><a href="#baa">BAA</a><a href="#incidents">Incidents et réponse</a><a href="#ai">HIPAA et IA</a><a href="#contact">Contact HIPAA</a></aside><main><section id="notice" class="legal-section"><h2>Avis HIPAA</h2><p><strong>Dernière mise à jour : 1 juillet 2026.</strong> Cet avis décrit la posture HIPAA de PatientTrac pour clients et prospects. Il ne remplace pas l’avis de pratiques de confidentialité qu’un prestataire, hôpital, centre chirurgical, clinique ou plan de santé doit fournir.</p></section><section id="role" class="legal-section"><h2>Rôle de PatientTrac</h2><p>Lorsque PatientTrac crée, reçoit, maintient ou transmet de la PHI pour un client réglementé par HIPAA, PatientTrac agit généralement comme business associate ou sous-traitant.</p></section><section id="uses" class="legal-section"><h2>Utilisations et divulgations permises</h2><p>PatientTrac utilise et divulgue la PHI uniquement selon le BAA, le contrat de service, la configuration et les instructions du client, et le droit applicable. Nous ne vendons pas la PHI.</p></section><section id="rights" class="legal-section"><h2>Droits individuels</h2><p>Les patients exercent généralement leurs droits HIPAA auprès de leur prestataire ou plan de santé. PatientTrac soutient les flux client d’accès, amendement, ROI, accounting of disclosures, C-CDA et EHI export.</p></section><section id="safeguards" class="legal-section"><h2>Mesures pour ePHI</h2><p>PatientTrac est conçu avec isolation par organisation, Row-Level Security, accès par rôles, TOTP, clés côté serveur, audit et événements PHI chaînés par hachage le cas échéant.</p></section><section id="baa" class="legal-section"><h2>BAA</h2><p>Un BAA est requis lorsqu’un client soumis à HIPAA utilise PatientTrac pour créer, recevoir, maintenir ou transmettre de la PHI.</p></section><section id="incidents" class="legal-section"><h2>Incidents et réponse</h2><p>PatientTrac maintient des processus pour détecter, enquêter, documenter et traiter les événements de sécurité et notifier selon le BAA et la loi applicable.</p></section><section id="ai" class="legal-section"><h2>HIPAA et IA</h2><p>Les fonctions IA opèrent côté serveur et produisent des brouillons, résumés, suggestions ou alertes à examiner par des professionnels. Elles ne sont pas des décisions autonomes.</p></section><section id="contact" class="legal-section"><h2>Contact HIPAA</h2><p>Questions HIPAA et BAA : <strong>privacy@patienttrac.com</strong>. N’envoyez pas de PHI par formulaires publics.</p></section></main></div></article>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html#hero" class="logo sm">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="pgrad2" x1="10" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#1aa6b8"/><stop offset="0.55" stop-color="#0d6f9e"/><stop offset="1" stop-color="#0b2d4d"/>
+              </linearGradient>
+            </defs>
+            <path d="M14 42 V8 H29 C36.7 8 42 13 42 20 C42 27 36.7 31.5 29 31.5 H22 V42 Z" fill="url(#pgrad2)" stroke="#d4af37" stroke-width="1.4" stroke-linejoin="round"/>
+            <g stroke="#d4af37" stroke-width="0.9" opacity="0.9"><line x1="18" y1="13" x2="31" y2="11"/><line x1="31" y1="11" x2="38" y2="20"/><line x1="18" y1="13" x2="24" y2="22"/><line x1="24" y1="22" x2="31" y2="11"/><line x1="24" y1="22" x2="38" y2="20"/><line x1="24" y1="22" x2="20" y2="34"/><line x1="38" y1="20" x2="30" y2="26"/></g>
+            <g><circle cx="18" cy="13" r="2.1" fill="#fff"/><circle cx="31" cy="11" r="2.1" fill="#d4af37"/><circle cx="38" cy="20" r="2.1" fill="#fff"/><circle cx="24" cy="22" r="2.8" fill="#0b2d4d" stroke="#4db6e5" stroke-width="1.2"/><circle cx="30" cy="26" r="1.9" fill="#d4af37"/><circle cx="20" cy="34" r="1.9" fill="#fff"/></g>
+          </svg>
+          <span class="word"><span class="name"><span class="p1">Patient</span><span class="p2">Trac</span></span></span>
+        </a>
+        <p data-i18n="foot_blurb">The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_platform">Platform</h5>
+        <a href="products/forge.html">Forge</a>
+        <a href="products/revela.html">Revela</a>
+        <a href="products/mind.html">Mind</a>
+        <a href="products/asc.html">ASC</a>
+        <a href="products/continuum.html">Continuum</a>
+        <a href="products/profiler.html">Profiler</a>
+        <a href="products/companion.html">Companion</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_company">Company</h5>
+        <a href="index.html#about" data-i18n="nav_about">Company</a>
+        <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+        <a href="compare.html" data-i18n="nav_compare">Compare</a>
+        <a href="index.html#leadership" data-i18n="foot_leadership">Company Heritage</a>
+        <a href="index.html#contact" data-i18n="foot_contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_legal_h">Legal</h5>
+        <a href="privacy-policy.html" data-i18n="foot_privacy">Privacy Policy</a>
+        <a href="terms-of-service.html" data-i18n="foot_terms">Terms of Service</a>
+        <a href="hipaa-notice.html" data-i18n="foot_hipaa">HIPAA Notice</a>
+        <a href="baa-request.html" data-i18n="foot_ba">Business Associate Agreement</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="year"></span> PatientTrac Corp. <span data-i18n="foot_rights">All rights reserved.</span></p>
+      <div class="legal">
+        <span style="font-family:'DM Mono',monospace;font-size:.74rem;color:var(--text-mute);" data-i18n="foot_compliance">HIPAA Compliant · ONC §170.315</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ I18N (chrome + hero) ============ */
+const I18N = {
+  en: {
+    nav_about:"Company", nav_products:"Platform", nav_pricing:"Pricing", nav_compare:"Compare", nav_contact_link:"Contact", nav_cta:"Join the Waitlist",
+    foot_blurb:"The Clinical Intelligence Network — a connected suite of AI-powered clinical platforms on one secure data spine.",
+    foot_platform:"Platform", foot_company:"Company", foot_leadership:"Company Heritage", foot_contact:"Contact",
+    foot_legal_h:"Legal", foot_privacy:"Privacy Policy", foot_terms:"Terms of Service", foot_hipaa:"HIPAA Notice", foot_ba:"Business Associate Agreement",
+    foot_rights:"All rights reserved.", foot_compliance:"HIPAA Compliant · ONC §170.315",
+    eyebrow:"PatientTrac Legal & Trust Center",
+    hipaa_h1:"<em>HIPAA Notice</em> for customers and prospects.",
+    hipaa_sub:"PatientTrac’s HIPAA posture, business-associate role, safeguards, and customer support obligations.",
+    chip1:"BAA-based obligations", chip2:"Not a provider NPP", chip3:"No PHI in public forms",
+    review_notice:"This HIPAA Notice is a public website explanation. Covered entities must maintain their own Notice of Privacy Practices and should review this page with counsel."
+  },
+  es: {
+    nav_about:"Empresa", nav_products:"Plataforma", nav_pricing:"Precios", nav_compare:"Comparar", nav_contact_link:"Contacto", nav_cta:"Unirse a la lista",
+    foot_blurb:"The Clinical Intelligence Network — un conjunto conectado de plataformas clínicas con IA sobre una columna de datos segura.",
+    foot_platform:"Plataforma", foot_company:"Empresa", foot_leadership:"Historia de la empresa", foot_contact:"Contacto",
+    foot_legal_h:"Legal", foot_privacy:"Política de privacidad", foot_terms:"Términos del servicio", foot_hipaa:"Aviso HIPAA", foot_ba:"Acuerdo de Asociado Comercial",
+    foot_rights:"Todos los derechos reservados.", foot_compliance:"Cumple HIPAA · ONC §170.315",
+    eyebrow:"Centro Legal y de Confianza de PatientTrac",
+    hipaa_h1:"<em>Aviso HIPAA</em> para clientes y prospectos.",
+    hipaa_sub:"Postura HIPAA de PatientTrac, rol de asociado comercial, salvaguardas y obligaciones de soporte al cliente.",
+    chip1:"Obligaciones bajo BAA", chip2:"No es NPP de proveedor", chip3:"Sin PHI en formularios públicos",
+    review_notice:"Este Aviso HIPAA es una explicación pública. Las entidades cubiertas deben mantener su propio aviso y revisar esta página con asesoría legal."
+  },
+  fr: {
+    nav_about:"Société", nav_products:"Plateforme", nav_pricing:"Tarifs", nav_compare:"Comparer", nav_contact_link:"Contact", nav_cta:"Rejoindre la liste",
+    foot_blurb:"The Clinical Intelligence Network — un ensemble connecté de plateformes cliniques pilotées par l'IA sur une colonne de données sécurisée.",
+    foot_platform:"Plateforme", foot_company:"Société", foot_leadership:"Histoire de l’entreprise", foot_contact:"Contact",
+    foot_legal_h:"Mentions légales", foot_privacy:"Politique de confidentialité", foot_terms:"Conditions d'utilisation", foot_hipaa:"Avis HIPAA", foot_ba:"Accord de sous-traitance (BAA)",
+    foot_rights:"Tous droits réservés.", foot_compliance:"Conforme HIPAA · ONC §170.315",
+    eyebrow:"Centre juridique et de confiance PatientTrac",
+    hipaa_h1:"<em>Avis HIPAA</em> pour clients et prospects.",
+    hipaa_sub:"Posture HIPAA de PatientTrac, rôle de business associate, mesures de sécurité et obligations de support client.",
+    chip1:"Obligations fondées sur BAA", chip2:"Pas un NPP prestataire", chip3:"Pas de PHI dans les formulaires publics",
+    review_notice:"Cet avis HIPAA est une explication publique. Les entités couvertes doivent maintenir leur propre avis et faire revoir cette page par conseil juridique."
+  }
+};
+function applyLang(lang){
+  if(!I18N[lang]) lang = 'en';
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k] != null) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(dict[k] != null) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+  });
+  document.querySelectorAll('[data-lang-content]').forEach(el=>{
+    el.classList.toggle('active', el.getAttribute('data-lang-content')===lang);
+  });
+  try{ localStorage.setItem('ptemr_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>applyLang(b.getAttribute('data-lang')));
+});
+
+/* ============ TOPBAR SCROLL ============ */
+const topbar = document.getElementById('topbar');
+window.addEventListener('scroll',()=>{ topbar.classList.toggle('scrolled', window.scrollY>40); });
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============ INIT ============ */
+(function init(){
+  let saved = null;
+  try{ saved = localStorage.getItem('ptemr_lang'); }catch(e){}
+  if(!saved){
+    const nav = (navigator.language||'en').slice(0,2);
+    if(['es','fr'].includes(nav)) saved = nav;
+  }
+  applyLang(saved||'en');
+})();
+</script>
+</body>
+</html>

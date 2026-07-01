@@ -67,3 +67,44 @@
   from = "/compare"
   to = "/compare.html"
   status = 200
+
+# Clean URLs for legal and trust pages
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy-policy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms-of-service"
+  to = "/terms-of-service.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms-of-service.html"
+  status = 200
+
+[[redirects]]
+  from = "/hipaa-notice"
+  to = "/hipaa-notice.html"
+  status = 200
+
+[[redirects]]
+  from = "/hipaa"
+  to = "/hipaa-notice.html"
+  status = 200
+
+[[redirects]]
+  from = "/baa-request"
+  to = "/baa-request.html"
+  status = 200
+
+[[redirects]]
+  from = "/business-associate-agreement"
+  to = "/baa-request.html"
+  status = 200
